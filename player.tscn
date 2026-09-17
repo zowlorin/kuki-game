@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://wnyu5xqf1yeh"]
+
+[ext_resource type="Script" uid="uid://s5orqn6p1mrb" path="res://player.gd" id="1_4flbx"]
+
+[sub_resource type="Curve" id="Curve_onrkg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5631068, 0.83157897), -0.7381859, -0.7381859, 0, 0, Vector2(0.7718447, 0.56842107), -1.4456137, -1.4456137, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_i3pqv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5631068, 0.42105263), -3.147709, -3.147709, 0, 0, Vector2(0.94174755, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3owqy"]
+
+[node name="Player" type="CharacterBody2D" unique_id=1561153767]
+script = ExtResource("1_4flbx")
+jump_curve = SubResource("Curve_onrkg")
+fall_curve = SubResource("Curve_i3pqv")
+jump_duration = 0.3
+fall_duration = 1.0
+fall_speed = 500.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=741499986]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_3owqy")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1821666061]
+offset_left = -10.0
+offset_top = -30.0
+offset_right = 10.0
