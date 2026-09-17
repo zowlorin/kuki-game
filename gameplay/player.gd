@@ -2,12 +2,13 @@ extends CharacterBody2D
 
 @export var jump_curve: Curve
 @export var fall_curve: Curve
+
 @export var jump_duration: float = 2.0
 @export var fall_duration: float = 2.0
 
-@export var jump_speed = 400.0
-@export var fall_speed = 400.0
-@export var move_speed = 400.0
+@export var jump_speed: float = 400.0
+@export var fall_speed: float = 400.0
+@export var move_speed: float = 400.0
 
 @onready var jump_frame = Time.get_unix_time_from_system()
 @onready var fall_frame = Time.get_unix_time_from_system()
@@ -46,7 +47,7 @@ func _physics_process(delta: float) -> void:
 	if (curr_state == State.FALLING):
 		velocity.y = (1 - fall_curve.sample((curr_frame - fall_frame) / fall_duration)) * fall_speed;
 		
-	if ((curr_frame - jump_frame) >= jump_duration and curr_state == State.JUMPING or is_on_ceiling()):
+	if ((curr_frame - jump_frame) >= jump_duration and curr_state == State.JUMPING or is_on_ceiling() or Input.is_action_just_released("move_jump")):
 		fall()
 
 	if Input.is_action_just_pressed("move_jump") and is_on_floor():

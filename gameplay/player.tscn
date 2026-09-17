@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://wnyu5xqf1yeh"]
 
-[ext_resource type="Script" uid="uid://s5orqn6p1mrb" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://s5orqn6p1mrb" path="res://gameplay/player.gd" id="1_4flbx"]
 
 [sub_resource type="Curve" id="Curve_onrkg"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5631068, 0.83157897), -0.7381859, -0.7381859, 0, 0, Vector2(0.7718447, 0.56842107), -1.4456137, -1.4456137, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.4660194, 1), -0.7381859, -0.7381859, 0, 0, Vector2(0.88349515, 0.8842106), -1.4456137, -1.4456137, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="Curve" id="Curve_i3pqv"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5631068, 0.42105263), -3.147709, -3.147709, 0, 0, Vector2(0.94174755, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.16019416, 0.37894738), -2.6170597, -2.6170597, 0, 0, Vector2(0.44174755, 0.14736843), -0.92083645, -0.92083645, 0, 0, Vector2(0.94174755, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3owqy"]
 
