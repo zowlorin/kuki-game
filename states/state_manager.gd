@@ -7,7 +7,10 @@ var sprite: AnimatedSprite2D
 var state: Node2D
 
 func _ready() -> void:
+	var debug = Label.new()
+	debug.text = get_class()
 	self.name = "current_state"
+
 
 func _init(state: Node2D, state_changer: Callable, sprite: AnimatedSprite2D) -> void:
 	self.change_state = state_changer

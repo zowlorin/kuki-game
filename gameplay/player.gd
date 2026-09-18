@@ -46,7 +46,7 @@ func fall():
 func _physics_process(delta: float) -> void:
 	var curr_frame: float = Time.get_unix_time_from_system()
 	
-	if not is_on_floor() and (not curr_states.has(StateMachine.State.FALLING) or not curr_states.has(StateMachine.State.JUMPING)):
+	if not is_on_floor() and (not curr_states.has(StateMachine.State.FALLING) and not curr_states.has(StateMachine.State.JUMPING)):
 		fall()
 	
 	if is_on_floor():
@@ -59,13 +59,14 @@ func _physics_process(delta: float) -> void:
 		
 	if (curr_states.has(StateMachine.State.FALLING)):
 		velocity.y = (1 - (fall_curve.sample((curr_frame - fall_frame) / fall_duration))) * fall_speed;
-		print((curr_frame - fall_frame) / fall_duration, velocity.y)
+		#print((curr_frame - fall_frame) / fall_duration, velocity.y)
 		
-	if (((curr_frame - jump_frame) >= jump_duration and curr_states.has(StateMachine.State.JUMPING)) or is_on_ceiling() or Input.is_action_just_released("move_jump")):
+	if (((curr_frame - jump_frame) >= jump_duration or is_on_ceiling() or Input.is_action_just_released("move_jump")) and curr_states.has(StateMachine.State.JUMPING)):
 		curr_states.erase(StateMachine.State.JUMPING)
 		fall()
 
 	if Input.is_action_just_pressed("move_jump") and is_on_floor():
+		print("fuck u ")
 		jump()
 		
 	var move_direction: float = Input.get_axis("move_left", "move_right")
