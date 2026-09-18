@@ -1,17 +1,29 @@
 extends CharacterBody2D
 
+@export_category("Vertical Motion")
 @export var jump_curve: Curve
-@export var fall_curve: Curve
-
 @export var jump_duration: float = 2.0
-@export var fall_duration: float = 2.0
-
 @export var jump_speed: float = 400.0
+@export var fall_curve: Curve
+@export var fall_duration: float = 2.0
 @export var fall_speed: float = 400.0
-@export var move_speed: float = 400.0
+
+
+
+
+@export_category("Horizontal Motion")
+@export var accel_curve: Curve
+@export var accel_duration: float = 0.5
+
+@export var decel_curve: Curve
+@export var decel_duration: float = 0.5
+
+@export var max_speed: float = 400.0
 
 @onready var jump_frame = Time.get_unix_time_from_system()
 @onready var fall_frame = Time.get_unix_time_from_system()
+@onready var accel_frame = Time.get_unix_time_from_system()
+@onready var decel_frame = Time.get_unix_time_from_system()
 
 @onready var was_on_floor: bool = false
 
@@ -19,30 +31,58 @@ extends CharacterBody2D
 @onready var curr_states: Array[StateMachine.State] = []
 @onready var state_machine : StateMachine = StateMachine.new()
 
+@onready var move_speed: float = 0.0
+
 func _ready() -> void:
 	add_state(StateMachine.State.IDLE)
+	add_state(StateMachine.State.FALLING)
 
 func add_state(state: StateMachine.State):
 	if curr_states.has(state):
 		return
 	
-	if curr_states.has(StateMachine.State.FALLING) and state == StateMachine.State.JUMPING:
-		curr_states.erase(StateMachine.State.FALLING)
-	elif curr_states.has(StateMachine.State.JUMPING) and state == StateMachine.State.FALLING:
-		return
-	
 	curr_states.append(state)
 
+func fall():
+	if (!curr_states.has(StateMachine.State.JUMPING)):
+		return
+	if (curr_states.has(StateMachine.State.FALLING)):
+		return
+		
+	add_state(StateMachine.State.FALLING)
+	curr_states.erase(StateMachine.State.JUMPING)
+	
+	fall_frame = Time.get_unix_time_from_system()
+
 func jump():
+	if (curr_states.has(StateMachine.State.JUMPING)):
+		return
+	if (!curr_states.has(StateMachine.State.FALLING)):
+		return
 	add_state(StateMachine.State.JUMPING)
+	curr_states.erase(StateMachine.State.FALLING)
+	
 	jump_frame = Time.get_unix_time_from_system()
 	
-	velocity.y = -jump_speed
+func accel():
+	if (curr_states.has(StateMachine.State.MOVING)):
+		return
+	if (!curr_states.has(StateMachine.State.IDLE)):
+		return
+	add_state(StateMachine.State.MOVING)
+	curr_states.erase(StateMachine.State.IDLE)
+	accel_frame = Time.get_unix_time_from_system()
 	
-func fall():
-	add_state(StateMachine.State.FALLING)
-	fall_frame = Time.get_unix_time_from_system()
+func decel():
+	if (!curr_states.has(StateMachine.State.MOVING)):
+		return
+	if (curr_states.has(StateMachine.State.IDLE)):
+		return
+	add_state(StateMachine.State.IDLE)
+	curr_states.erase(StateMachine.State.MOVING)
+	decel_frame = Time.get_unix_time_from_system()
 	
+
 func _physics_process(delta: float) -> void:
 	var curr_frame: float = Time.get_unix_time_from_system()
 	
@@ -50,8 +90,6 @@ func _physics_process(delta: float) -> void:
 		fall()
 	
 	if is_on_floor():
-		curr_states.clear()
-		add_state(StateMachine.State.IDLE)
 		velocity.y = 0
 		
 	if (curr_states.has(StateMachine.State.JUMPING)):
@@ -59,21 +97,32 @@ func _physics_process(delta: float) -> void:
 		
 	if (curr_states.has(StateMachine.State.FALLING)):
 		velocity.y = (1 - (fall_curve.sample((curr_frame - fall_frame) / fall_duration))) * fall_speed;
-		#print((curr_frame - fall_frame) / fall_duration, velocity.y)
+		
+	if (curr_states.has(StateMachine.State.MOVING)):
+		move_speed = accel_curve.sample((curr_frame - accel_frame) / accel_duration) * max_speed
+		
+	if (curr_states.has(StateMachine.State.IDLE)):
+		move_speed = decel_curve.sample((curr_frame - decel_frame) / decel_duration) * max_speed
 		
 	if (((curr_frame - jump_frame) >= jump_duration or is_on_ceiling() or Input.is_action_just_released("move_jump")) and curr_states.has(StateMachine.State.JUMPING)):
-		curr_states.erase(StateMachine.State.JUMPING)
+		fall()
+		
+	if (!curr_states.has(StateMachine.State.JUMPING)):
 		fall()
 
 	if Input.is_action_just_pressed("move_jump") and is_on_floor():
-		print("fuck u ")
 		jump()
 		
 	var move_direction: float = Input.get_axis("move_left", "move_right")
 	
 	velocity.x = move_direction * move_speed
-	if abs(move_direction) > 0:
-		add_state(StateMachine.State.MOVING)
+	
+	if abs(move_direction) > 0 and (!curr_states.has(StateMachine.State.MOVING)) and (curr_states.has(StateMachine.State.IDLE)):
+		accel()
+		
+		
+	if move_direction == 0 and (curr_states.has(StateMachine.State.MOVING)) and (!curr_states.has(StateMachine.State.IDLE)):
+		decel()
 
 	was_on_floor = is_on_floor()
 	

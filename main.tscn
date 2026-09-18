@@ -3,14 +3,22 @@
 [ext_resource type="PackedScene" uid="uid://wnyu5xqf1yeh" path="res://gameplay/player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://ci0mg4cw3htbo" path="res://levels/lobby.tscn" id="2_0xm2m"]
 
+[sub_resource type="Curve" id="Curve_0xm2m"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.32038835, 0.6631579), 1.0204334, 1.0204334, 0, 0, Vector2(0.5485437, 0.9157895), 0.59818506, 0.59818506, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_h2yge"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.17961165, 0.19999993), -2.3083189, -2.3083189, 0, 0, Vector2(0.4514563, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
 [node name="Main" type="Node2D" unique_id=587567638]
 
 [node name="World" type="Node2D" parent="." unique_id=921855491]
 
 [node name="Player" parent="World" unique_id=1561153767 instance=ExtResource("1_ig7tw")]
 position = Vector2(-13, -96)
-jump_speed = null
-move_speed = null
+accel_curve = SubResource("Curve_0xm2m")
+decel_curve = SubResource("Curve_h2yge")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="World/Player" unique_id=354228312]
 remote_path = NodePath("../../Camera2D")
