@@ -58,7 +58,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y = -(jump_curve.sample((curr_frame - jump_frame) / jump_duration)) * jump_speed;
 		
 	if (curr_states.has(StateMachine.State.FALLING)):
-		velocity.y = (1 - fall_curve.sample((curr_frame - fall_frame) / fall_duration)) * fall_speed;
+		velocity.y = (1 - (fall_curve.sample((curr_frame - fall_frame) / fall_duration))) * fall_speed;
+		print((curr_frame - fall_frame) / fall_duration, velocity.y)
 		
 	if (((curr_frame - jump_frame) >= jump_duration and curr_states.has(StateMachine.State.JUMPING)) or is_on_ceiling() or Input.is_action_just_released("move_jump")):
 		curr_states.erase(StateMachine.State.JUMPING)
