@@ -13,41 +13,55 @@ extends CharacterBody2D
 @onready var jump_frame = Time.get_unix_time_from_system()
 @onready var fall_frame = Time.get_unix_time_from_system()
 
-enum State {
-	IDLE, MOVING, JUMPING, FALLING
-}
-
 @onready var was_on_floor: bool = false
 
-@onready var curr_state: State = State.IDLE
+@onready var state_manager: StateManager
+@onready var curr_states: Array[StateMachine.State] = []
+@onready var state_machine : StateMachine = StateMachine.new()
+
+func _ready() -> void:
+	add_state(StateMachine.State.IDLE)
+
+func add_state(state: StateMachine.State):
+	if curr_states.has(state):
+		return
+	
+	if curr_states.has(StateMachine.State.FALLING) and state == StateMachine.State.JUMPING:
+		curr_states.erase(StateMachine.State.FALLING)
+	elif curr_states.has(StateMachine.State.JUMPING) and state == StateMachine.State.FALLING:
+		return
+	
+	curr_states.append(state)
 
 func jump():
-	curr_state = State.JUMPING
+	add_state(StateMachine.State.JUMPING)
 	jump_frame = Time.get_unix_time_from_system()
 	
 	velocity.y = -jump_speed
 	
 func fall():
-	curr_state = State.FALLING
+	add_state(StateMachine.State.FALLING)
 	fall_frame = Time.get_unix_time_from_system()
 	
 func _physics_process(delta: float) -> void:
 	var curr_frame: float = Time.get_unix_time_from_system()
 	
-	if not is_on_floor() and (curr_state != State.FALLING and curr_state != State.JUMPING):
+	if not is_on_floor() and (not curr_states.has(StateMachine.State.FALLING) or not curr_states.has(StateMachine.State.JUMPING)):
 		fall()
 	
 	if is_on_floor():
-		curr_state = State.IDLE
+		curr_states.clear()
+		add_state(StateMachine.State.IDLE)
 		velocity.y = 0
 		
-	if (curr_state == State.JUMPING):
+	if (curr_states.has(StateMachine.State.JUMPING)):
 		velocity.y = -(jump_curve.sample((curr_frame - jump_frame) / jump_duration)) * jump_speed;
 		
-	if (curr_state == State.FALLING):
+	if (curr_states.has(StateMachine.State.FALLING)):
 		velocity.y = (1 - fall_curve.sample((curr_frame - fall_frame) / fall_duration)) * fall_speed;
 		
-	if ((curr_frame - jump_frame) >= jump_duration and curr_state == State.JUMPING or is_on_ceiling() or Input.is_action_just_released("move_jump")):
+	if (((curr_frame - jump_frame) >= jump_duration and curr_states.has(StateMachine.State.JUMPING)) or is_on_ceiling() or Input.is_action_just_released("move_jump")):
+		curr_states.erase(StateMachine.State.JUMPING)
 		fall()
 
 	if Input.is_action_just_pressed("move_jump") and is_on_floor():
@@ -56,7 +70,16 @@ func _physics_process(delta: float) -> void:
 	var move_direction: float = Input.get_axis("move_left", "move_right")
 	
 	velocity.x = move_direction * move_speed
+	if abs(move_direction) > 0:
+		add_state(StateMachine.State.MOVING)
 
 	was_on_floor = is_on_floor()
 	
 	move_and_slide()
+	change_state(curr_states.back())
+
+func change_state(new_state: StateMachine.State):
+	if state_manager != null:
+		state_manager.queue_free()
+	state_manager = state_machine.get_state(new_state).new(self, change_state, $AnimatedSprite2D)
+	add_child(state_manager)
