@@ -18,7 +18,7 @@ extends CharacterBody2D
 @export var decel_curve: Curve
 @export var decel_duration: float = 0.5
 
-@export var max_speed: float = 400.0
+@export var max_speed: float = 300.0
 
 @onready var jump_frame = Time.get_unix_time_from_system()
 @onready var fall_frame = Time.get_unix_time_from_system()

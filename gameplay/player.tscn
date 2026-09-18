@@ -143,8 +143,8 @@ size = Vector2(5, 22)
 [node name="Player" type="CharacterBody2D" unique_id=1561153767]
 script = ExtResource("1_4flbx")
 jump_curve = SubResource("Curve_onrkg")
-fall_curve = SubResource("Curve_jriu6")
 jump_duration = 0.3
+fall_curve = SubResource("Curve_jriu6")
 fall_duration = 0.5
 fall_speed = 500.0
 
@@ -153,6 +153,7 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_710pl")
 animation = &"walk"
 frame_progress = 0.3426379
+speed_scale = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=741499986]
 position = Vector2(0, 4)
