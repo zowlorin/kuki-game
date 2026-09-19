@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://dumg06slku7go"]
+
+[ext_resource type="Texture2D" uid="uid://h7rr84dt7oml" path="res://assets/enemies/peppermint/peppermint_idlet.png" id="1_a4uu3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8s71e"]
+height = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4uu3"]
+atlas = ExtResource("1_a4uu3")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s71e"]
+atlas = ExtResource("1_a4uu3")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ellj3"]
+atlas = ExtResource("1_a4uu3")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8uig"]
+atlas = ExtResource("1_a4uu3")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fkm3"]
+atlas = ExtResource("1_a4uu3")
+region = Rect2(96, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3owqy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4uu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8s71e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ellj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8uig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fkm3")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PeppermintEnemy" type="CharacterBody2D" unique_id=1821056515]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1833951829]
+position = Vector2(0, -10)
+shape = SubResource("CapsuleShape2D_8s71e")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1978814190]
+texture_filter = 1
+position = Vector2(0, -14)
+sprite_frames = SubResource("SpriteFrames_3owqy")
+autoplay = "default"
+frame_progress = 0.5862487
