@@ -2,6 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://wnyu5xqf1yeh" path="res://gameplay/player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://ci0mg4cw3htbo" path="res://levels/lobby.tscn" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://mqf4pkjbyh0e" path="res://assets/parallaxbg/0_basesky.png" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://c70nqv3745imr" path="res://assets/parallaxbg/1_farclouds.png" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://bijj4bj2kdgd5" path="res://assets/parallaxbg/2_midclouds.png" id="5_lquwl"]
+[ext_resource type="Texture2D" uid="uid://de4kg2ijr5x1w" path="res://assets/parallaxbg/3_foreclouds.png" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://d1r0u8qt3nqeq" path="res://assets/parallaxbg/4_farground.png" id="7_272bh"]
 
 [sub_resource type="Curve" id="Curve_0xm2m"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.32038835, 0.6631579), 1.0204334, 1.0204334, 0, 0, Vector2(0.5485437, 0.9157895), 0.59818506, 0.59818506, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -31,5 +36,53 @@ remote_path = NodePath("../../Camera2D")
 position = Vector2(-13, -96)
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
+
+[node name="basesky" type="Parallax2D" parent="World" unique_id=926485316]
+scroll_scale = Vector2(0, 0.1)
+repeat_size = Vector2(480, 270)
+repeat_times = 6
+
+[node name="basesky" type="Sprite2D" parent="World/basesky" unique_id=150034131]
+z_index = -8
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("3_h2yge")
+
+[node name="farclouds" type="Parallax2D" parent="World" unique_id=321986252]
+scroll_scale = Vector2(0.2, 0.1)
+repeat_size = Vector2(480, 0)
+repeat_times = 2
+
+[node name="farclouds" type="Sprite2D" parent="World/farclouds" unique_id=307831852]
+z_index = -7
+texture = ExtResource("4_1bvp3")
+
+[node name="midclouds" type="Parallax2D" parent="World" unique_id=879666765]
+scroll_scale = Vector2(0.4, 0.1)
+repeat_size = Vector2(480, 0)
+repeat_times = 3
+
+[node name="midclouds" type="Sprite2D" parent="World/midclouds" unique_id=2132281651]
+z_index = -6
+texture_filter = 1
+texture = ExtResource("5_lquwl")
+
+[node name="foreclouds" type="Parallax2D" parent="World" unique_id=1846497851]
+scroll_scale = Vector2(0.5, 0.1)
+repeat_size = Vector2(480, 0)
+repeat_times = 3
+
+[node name="foreclouds" type="Sprite2D" parent="World/foreclouds" unique_id=961445276]
+z_index = -5
+texture = ExtResource("6_7mycd")
+
+[node name="farground" type="Parallax2D" parent="World" unique_id=99448815]
+scroll_scale = Vector2(0.6, 0.2)
+repeat_size = Vector2(480, 0)
+repeat_times = 2
+
+[node name="farground" type="Sprite2D" parent="World/farground" unique_id=1196021054]
+texture_filter = 1
+texture = ExtResource("7_272bh")
 
 [node name="Handlers" type="Node2D" parent="." unique_id=454277890]
