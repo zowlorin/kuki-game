@@ -52,14 +52,9 @@ dash={
 
 [layer_names]
 
-2d_physics/layer_1="World Collision"
-2d_physics/layer_2="Hazard Hitbox"
-2d_physics/layer_4="Player Collision"
-2d_physics/layer_5="Player Hitbox"
-2d_physics/layer_6="Player Hurtbox"
-2d_physics/layer_8="Enemy Collision"
-2d_physics/layer_9="Enemy Hitbox"
-2d_physics/layer_10="Enemy Hurtbox"
+2d_physics/layer_1="World"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Enemy"
 
 [physics]
 

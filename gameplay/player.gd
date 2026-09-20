@@ -29,6 +29,7 @@ extends CharacterBody2D
 @onready var dash_frame = Time.get_unix_time_from_system()
 
 @onready var was_on_floor: bool = false
+@onready var jumped_last_frame: bool = false
 @onready var jump_buffered: bool = false
 @onready var on_coyote: bool = false
 @onready var can_dash: bool = true
@@ -39,7 +40,7 @@ extends CharacterBody2D
 
 @onready var move_speed: float = 0.0
 @onready var move_dash: float = 0.0
-@onready var prev_direction: int = 1
+@onready var prev_direction: float = 1.0
 
 func _ready() -> void:
 	add_state(StateMachine.State.IDLE)
@@ -71,6 +72,7 @@ func jump():
 	add_state(StateMachine.State.JUMPING)
 	curr_states.erase(StateMachine.State.FALLING)
 	get_tree().call_group("JumpTimers", "stop")
+	jumped_last_frame = true
 	jump_buffered = false
 	on_coyote = false
 	
@@ -130,6 +132,7 @@ func _physics_process(delta: float) -> void:
 		move_dash = 0
 	
 	if (((curr_frame - jump_frame) >= jump_duration or is_on_ceiling() or Input.is_action_just_released("move_jump")) and curr_states.has(StateMachine.State.JUMPING)):
+		jumped_last_frame = false
 		fall()
 	
 	if (not is_on_floor() and !curr_states.has(StateMachine.State.JUMPING)):
@@ -163,7 +166,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-	if was_on_floor != is_on_floor() and $Helpers/CoyoteTimer.is_stopped():
+	if was_on_floor != is_on_floor() and not jumped_last_frame and $Helpers/CoyoteTimer.is_stopped():
 		$Helpers/CoyoteTimer.start()
 		on_coyote = true
 	
