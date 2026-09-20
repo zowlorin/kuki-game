@@ -9,8 +9,8 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.39320388, 1), 0.0, 0.0, 0, 0, 
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_jriu6"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.14965987, 1), 0.0, 0.0, 0, 0, Vector2(0.74829936, 0.50769234), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wfdkp"]
 atlas = ExtResource("2_ysoui")
@@ -141,13 +141,13 @@ animations = [{
 size = Vector2(5, 22)
 
 [node name="Player" type="CharacterBody2D" unique_id=1561153767]
-collision_layer = 2
+collision_layer = 8
 script = ExtResource("1_4flbx")
 jump_curve = SubResource("Curve_onrkg")
 jump_duration = 0.3
 fall_curve = SubResource("Curve_jriu6")
 fall_duration = 0.5
-fall_speed = 500.0
+max_speed = 200.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1204224882]
 texture_filter = 1
@@ -159,3 +159,39 @@ frame_progress = 0.760094
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=741499986]
 position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_ysoui")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=426756013]
+collision_layer = 32
+collision_mask = 258
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=713654505]
+position = Vector2(0, -11.5)
+shape = SubResource("RectangleShape2D_ysoui")
+
+[node name="Helpers" type="Node" parent="." unique_id=206144201]
+
+[node name="JumpBufferer" type="Timer" parent="Helpers" unique_id=1907309243 groups=["JumpTimers"]]
+process_callback = 0
+wait_time = 0.3
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="Helpers" unique_id=1162502535 groups=["JumpTimers"]]
+process_callback = 0
+wait_time = 0.15
+one_shot = true
+
+[node name="DashInvinciblity" type="Timer" parent="Helpers" unique_id=418403827]
+process_callback = 0
+wait_time = 0.3
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="Helpers" unique_id=878752131]
+process_callback = 0
+wait_time = 0.4
+one_shot = true
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="Helpers/JumpBufferer" to="." method="_on_jump_bufferer_timeout"]
+[connection signal="timeout" from="Helpers/CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="Helpers/DashInvinciblity" to="." method="_on_dash_invinciblity_timeout"]
+[connection signal="timeout" from="Helpers/DashCooldown" to="." method="_on_dash_cooldown_timeout"]
