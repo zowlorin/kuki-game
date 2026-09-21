@@ -115,7 +115,8 @@ texture = ExtResource("5_ymuiv")
 [node name="Foreclouds" type="Parallax2D" parent="Parallax/ParallaxBackground" unique_id=1609958281]
 scroll_scale = Vector2(0.5, 0.1)
 repeat_size = Vector2(480, 0)
-repeat_times = 3
+autoscroll = Vector2(10, 0)
+follow_viewport = false
 
 [node name="foreclouds" type="Sprite2D" parent="Parallax/ParallaxBackground/Foreclouds" unique_id=2021472390]
 z_index = -5
@@ -129,6 +130,10 @@ repeat_times = 2
 [node name="farground" type="Sprite2D" parent="Parallax/ParallaxBackground/Farground" unique_id=266853333]
 texture_filter = 1
 texture = ExtResource("7_fj1tp")
+
+[node name="Parallax2D" type="Parallax2D" parent="Parallax/ParallaxBackground" unique_id=903622168]
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/ParallaxBackground/Parallax2D" unique_id=1491059924]
 
 [node name="Labels" type="Node2D" parent="." unique_id=1649128655]
 

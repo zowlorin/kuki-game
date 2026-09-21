@@ -147,7 +147,6 @@ jump_curve = SubResource("Curve_onrkg")
 jump_duration = 0.3
 fall_curve = SubResource("Curve_jriu6")
 fall_duration = 0.5
-max_speed = 200.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1204224882]
 texture_filter = 1
@@ -155,6 +154,7 @@ position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_710pl")
 animation = &"walk"
 frame_progress = 0.760094
+speed_scale = 1.4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=741499986]
 position = Vector2(0, -11.5)

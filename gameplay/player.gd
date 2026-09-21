@@ -18,7 +18,7 @@ extends CharacterBody2D
 @export var decel_curve: Curve
 @export var decel_duration: float = 0.5
 
-@export var max_speed: float = 300.0
+@export var max_speed: float = 200.0
 @export var dash_speed: float = 500.0
 @export var dash_duration: float = 0.3
 
