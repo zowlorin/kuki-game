@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dumg06slku7go" path="res://enemies/peppermint_enemy.tscn" id="9_efxa6"]
 [ext_resource type="Texture2D" uid="uid://b21ohmeklkb66" path="res://assets/parallaxbg/7_nearground.png" id="10_dg77c"]
 [ext_resource type="Texture2D" uid="uid://be3g2rjv6ptud" path="res://assets/parallaxbg/8_forethestground.png" id="10_efxa6"]
-[ext_resource type="Script" uid="uid://cdndp3wkedx5u" path="res://camera_adjuster.gd" id="13_ycdy4"]
+[ext_resource type="Script" uid="uid://cdndp3wkedx5u" path="res://handlers/camera_adjuster.gd" id="13_ycdy4"]
 
 [sub_resource type="Curve" id="Curve_0xm2m"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.32038835, 0.6631579), 1.0204334, 1.0204334, 0, 0, Vector2(0.5485437, 0.9157895), 0.59818506, 0.59818506, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
