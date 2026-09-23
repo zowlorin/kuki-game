@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://d0b2ys7jcq6pr" path="res://states/player_states/dash_state.gd" id="7_iqb12"]
 [ext_resource type="Texture2D" uid="uid://fjyoetr8gb5u" path="res://assets/kuki/kukidash.png" id="8_1xfx0"]
 [ext_resource type="Texture2D" uid="uid://c0ofihnt2bfu4" path="res://assets/kuki/kukijump.png" id="9_ob5am"]
+[ext_resource type="Script" uid="uid://byhaipkgstwjb" path="res://states/player_states/stagger_state.gd" id="12_2wuqc"]
 [ext_resource type="Texture2D" uid="uid://c3nwumc35hlab" path="res://assets/kuki/kukifall.png" id="12_budjd"]
 [ext_resource type="Texture2D" uid="uid://dlvpcao17vsn8" path="res://assets/kuki/kukijump-old.png" id="13_86eyr"]
 
@@ -697,6 +698,10 @@ metadata/_custom_type_script = "uid://bejdybeknpawu"
 [node name="Dash" type="Node" parent="StateMachine" unique_id=72107836]
 script = ExtResource("7_iqb12")
 metadata/_custom_type_script = "uid://d0b2ys7jcq6pr"
+
+[node name="Stagger" type="Node" parent="StateMachine" unique_id=1491585109]
+script = ExtResource("12_2wuqc")
+metadata/_custom_type_script = "uid://byhaipkgstwjb"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1204224882]
 texture_filter = 1

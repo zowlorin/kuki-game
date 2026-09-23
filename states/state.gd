@@ -11,9 +11,9 @@ func exit() -> void:
 	pass
  
 # Called every physics frame while this state is active
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	pass
  
 # Called every frame while this state is active
-func update(delta: float) -> void:
+func update(_delta: float) -> void:
 	pass

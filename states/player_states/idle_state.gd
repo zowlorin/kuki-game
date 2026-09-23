@@ -18,7 +18,7 @@ func physics_update(_delta: float) -> void:
 	if (Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")) and move_direction != 0	:
 		state_machine.transition_to("Walk")
 	elif Input.is_action_just_pressed("move_jump"):
-		state_machine.transition_to("Jump")
+		state_machine.transition_to("Stagger")
 	elif Input.is_action_just_pressed("dash"):
 		state_machine.transition_to("Dash")
 	

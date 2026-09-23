@@ -6,21 +6,9 @@ class_name PlayerJump
 @onready var state_machine: StateMachine = get_parent()
 @onready var sprite : AnimatedSprite2D = player.get_node("AnimatedSprite2D")
 
-@onready var charging: bool = true
 
 func enter() -> void:
-	charging = true
-	self.name = "Stagger"
-	sprite.play_backwards("stagger")
-	if !(sprite.animation_finished.is_connected(_on_animation_finish)):
-		sprite.animation_finished.connect(_on_animation_finish)
-	
 	player.jump_frame = Time.get_unix_time_from_system()
-
-func exit() -> void:
-	self.name = "Jump"
-	if (sprite.animation_finished.is_connected(_on_animation_finish)):
-		sprite.animation_finished.disconnect(_on_animation_finish)
 
 func physics_update(_delta: float) -> void:
 	if Input.is_action_just_pressed("dash"):
@@ -40,8 +28,3 @@ func physics_update(_delta: float) -> void:
 
 func update(_delta: float) -> void:
 	sprite.flip_h = player.prev_direction < 0
-
-func _on_animation_finish() -> void:
-	self.name = "Jump"
-	sprite.play("jump")
-	charging = false
