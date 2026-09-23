@@ -1,13 +1,82 @@
 [gd_scene format=3 uid="uid://bywj7bc76q0ed"]
 
 [ext_resource type="Script" uid="uid://co4r8urg14ta2" path="res://menus/main_menu.gd" id="1_06t4h"]
+[ext_resource type="Texture2D" uid="uid://bafcug5me5pnl" path="res://assets/gui/ts_layers/kuki_ts_0_sky.png" id="2_yjgyn"]
+[ext_resource type="Texture2D" uid="uid://o1fvhhx8lbk6" path="res://assets/gui/ts_layers/kuki_ts_1_farcloud.png" id="3_oblsv"]
+[ext_resource type="Texture2D" uid="uid://co45d3x0r1wn5" path="res://assets/gui/ts_layers/kuki_ts_2_midcloud.png" id="4_a63lr"]
+[ext_resource type="Texture2D" uid="uid://ctxafme1egdj7" path="res://assets/gui/ts_layers/kuki_ts_3_forecloud.png" id="5_pwbes"]
+[ext_resource type="Texture2D" uid="uid://8o75wfgffqyk" path="res://assets/gui/ts_layers/kuki_ts_4_farthestground.png" id="6_a63lr"]
 
 [node name="MainMenu" type="Node2D" unique_id=927741731]
 script = ExtResource("1_06t4h")
 
+[node name="Parallax Background" type="CanvasLayer" parent="." unique_id=757515205]
+
+[node name="Parallax2D" type="Parallax2D" parent="Parallax Background" unique_id=1076574296]
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(1440, 0)
+autoscroll = Vector2(50, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax Background/Parallax2D" unique_id=966067170]
+position = Vector2(398, 375)
+scale = Vector2(3, 3)
+texture = ExtResource("2_yjgyn")
+
+[node name="Parallax2D2" type="Parallax2D" parent="Parallax Background" unique_id=1090894698]
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(1440, 0)
+autoscroll = Vector2(20, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax Background/Parallax2D2" unique_id=321736738]
+position = Vector2(480, 399)
+scale = Vector2(3, 3)
+texture = ExtResource("3_oblsv")
+
+[node name="Parallax2D3" type="Parallax2D" parent="Parallax Background" unique_id=1504373534]
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(1440, 0)
+autoscroll = Vector2(30, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax Background/Parallax2D3" unique_id=555525758]
+position = Vector2(474, 382)
+scale = Vector2(3, 3)
+texture = ExtResource("4_a63lr")
+
+[node name="Parallax2D4" type="Parallax2D" parent="Parallax Background" unique_id=1497319284]
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(1440, 0)
+autoscroll = Vector2(50, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax Background/Parallax2D4" unique_id=1177304587]
+position = Vector2(509, 392)
+scale = Vector2(3, 3)
+texture = ExtResource("5_pwbes")
+
+[node name="Parallax2D5" type="Parallax2D" parent="Parallax Background" unique_id=2119930173]
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(1440, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax Background/Parallax2D5" unique_id=1693637759]
+position = Vector2(480, 300)
+scale = Vector2(3, 3)
+texture = ExtResource("6_a63lr")
+
 [node name="UI" type="CanvasLayer" parent="." unique_id=1601525695]
 
-[node name="Label" type="Label" parent="UI" unique_id=1278344433]
+[node name="TextureRect2" type="TextureRect" parent="UI" unique_id=34287382]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/TextureRect2" unique_id=1278344433]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -22,8 +91,9 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "cookie monster game"
 
-[node name="Button" type="Button" parent="UI" unique_id=109606557]
+[node name="Button" type="Button" parent="UI/TextureRect2" unique_id=109606557]
 custom_minimum_size = Vector2(128, 0)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -39,4 +109,4 @@ theme_override_font_sizes/font_size = 24
 text = "play"
 icon_alignment = 1
 
-[connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UI/TextureRect2/Button" to="." method="_on_button_pressed"]
