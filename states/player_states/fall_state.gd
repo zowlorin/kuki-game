@@ -6,7 +6,7 @@ class_name PlayerFall
 @onready var state_machine: StateMachine = get_parent()
 
 func enter() -> void:
-	player.get_node("AnimatedSprite2D").play("idle")
+	player.get_node("AnimatedSprite2D").play("fall")
 	player.fall_frame = Time.get_unix_time_from_system()
 
 func physics_update(delta: float) -> void:

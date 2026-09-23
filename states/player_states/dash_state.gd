@@ -10,7 +10,7 @@ func enter() -> void:
 		state_machine.transition_to(state_machine.prev_state.name)
 		return
 	
-	player.get_node("AnimatedSprite2D").play("idle")
+	player.get_node("AnimatedSprite2D").play("dash")
 	player.dash_frame = Time.get_unix_time_from_system()
 
 func physics_update(delta: float) -> void:
