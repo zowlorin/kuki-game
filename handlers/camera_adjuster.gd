@@ -11,7 +11,7 @@ extends Node
 
 @onready var shift_buffered: bool
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var curr_frame: float = Time.get_unix_time_from_system()
 	
 	if Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down") or shift_buffered:
@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 		return_frame = Time.get_unix_time_from_system()
 		curr_shift = $"../../World/Camera2D".offset.y
 	
-	var shift_direction: float = Input.get_axis("up", "down")
+	shift_direction = Input.get_axis("up", "down")
 	
 	if abs(shift_direction) > 0 and not shift_buffered:
 		$"../../World/Camera2D".offset.y = shift_direction * shift_curve.sample((curr_frame - shift_frame)) * pixel_shift

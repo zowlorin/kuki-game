@@ -9,7 +9,7 @@ func enter() -> void:
 	player.get_node("AnimatedSprite2D").play("idle")
 	player.decel_frame = Time.get_unix_time_from_system()
 
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	var curr_frame = Time.get_unix_time_from_system()
 	var move_direction = Input.get_axis("move_left", "move_right")
 	
@@ -23,3 +23,6 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("Dash")
 	
 	player.velocity.y = (1 - (player.fall_curve.sample((curr_frame - player.fall_frame) / player.fall_duration))) * player.fall_speed
+
+func update(_delta: float) -> void:
+	player.get_node("AnimatedSprite2D").flip_h = player.prev_direction < 0

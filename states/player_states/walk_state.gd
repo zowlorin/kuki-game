@@ -14,7 +14,7 @@ func enter() -> void:
 	if abs(move_direction) <= 0:
 		player.accel_frame = Time.get_unix_time_from_system()
 
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	move_direction = Input.get_axis("move_left", "move_right")
 	
 	if not player.is_on_floor():
@@ -31,4 +31,4 @@ func physics_update(delta: float) -> void:
 	player.move_speed = player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed
 
 func update(_delta: float) -> void:
-	player.get_node("AnimatedSprite2D").flip_h = player.velocity.x < 0
+	player.get_node("AnimatedSprite2D").flip_h = move_direction < 0
