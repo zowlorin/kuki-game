@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://wnyu5xqf1yeh"]
 
 [ext_resource type="Script" uid="uid://s5orqn6p1mrb" path="res://gameplay/player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://q44pdu62kebi" path="res://buffering/input_buffer.gd" id="2_1g4q3"]
 [ext_resource type="Script" uid="uid://cwubmbexatqve" path="res://states/state_machine.gd" id="2_wfdkp"]
 [ext_resource type="Texture2D" uid="uid://kearqfjv7d3x" path="res://assets/kuki/kukiidle.png" id="2_ysoui"]
 [ext_resource type="Script" uid="uid://bvmwce10nlbbq" path="res://states/player_states/idle_state.gd" id="3_dxbr5"]
@@ -13,7 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://c0ofihnt2bfu4" path="res://assets/kuki/kukijump.png" id="9_ob5am"]
 [ext_resource type="Script" uid="uid://byhaipkgstwjb" path="res://states/player_states/stagger_state.gd" id="12_2wuqc"]
 [ext_resource type="Texture2D" uid="uid://c3nwumc35hlab" path="res://assets/kuki/kukifall.png" id="12_budjd"]
-[ext_resource type="Texture2D" uid="uid://dlvpcao17vsn8" path="res://assets/kuki/kukijump-old.png" id="13_86eyr"]
+[ext_resource type="Texture2D" uid="uid://dw1dnh5v5ikd3" path="res://assets/kuki/kukijumpkris.png" id="14_b2a7g"]
+[ext_resource type="Curve" uid="uid://b5qid14tkfrq5" path="res://gameplay/particle_curve.tres" id="15_b2a7g"]
 
 [sub_resource type="Curve" id="Curve_onrkg"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.39320388, 1), 0.0, 0.0, 0, 0, Vector2(0.97959197, 0), 0.0, 0.0, 0, 0]
@@ -420,10 +422,6 @@ region = Rect2(32, 0, 32, 32)
 atlas = ExtResource("12_budjd")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lvbka"]
-atlas = ExtResource("12_budjd")
-region = Rect2(96, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_wfdkp"]
 atlas = ExtResource("2_ysoui")
 region = Rect2(0, 0, 25, 32)
@@ -468,13 +466,29 @@ region = Rect2(32, 0, 32, 32)
 atlas = ExtResource("9_ob5am")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sjyi7"]
-atlas = ExtResource("13_86eyr")
-region = Rect2(32, 19, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvbka"]
+atlas = ExtResource("14_b2a7g")
+region = Rect2(224, 19, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qaaio"]
-atlas = ExtResource("13_86eyr")
+atlas = ExtResource("14_b2a7g")
 region = Rect2(256, 19, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjyi7"]
+atlas = ExtResource("14_b2a7g")
+region = Rect2(288, 19, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf4tb"]
+atlas = ExtResource("14_b2a7g")
+region = Rect2(320, 19, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbe86"]
+atlas = ExtResource("14_b2a7g")
+region = Rect2(352, 19, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ap2wl"]
+atlas = ExtResource("14_b2a7g")
+region = Rect2(384, 19, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ysoui"]
 atlas = ExtResource("3_jriu6")
@@ -539,9 +553,6 @@ animations = [{
 }, {
 "duration": 1.25,
 "texture": SubResource("AtlasTexture_he3mg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lvbka")
 }],
 "loop": 1,
 "name": &"fall",
@@ -591,11 +602,23 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_lvbka")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_qaaio")
+}, {
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_sjyi7")
 }, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_uf4tb")
+}, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qaaio")
+"texture": SubResource("AtlasTexture_xbe86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ap2wl")
 }],
 "loop": 0,
 "name": &"stagger",
@@ -633,10 +656,6 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysoui"]
 size = Vector2(5, 22)
-
-[sub_resource type="Curve" id="Curve_710pl"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7458333, 0.49230766), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
 
 [node name="Player" type="CharacterBody2D" unique_id=1561153767]
 collision_layer = 2
@@ -723,6 +742,10 @@ shape = SubResource("RectangleShape2D_ysoui")
 
 [node name="Helpers" type="Node" parent="." unique_id=206144201]
 
+[node name="InputBuffer" type="Node" parent="Helpers" unique_id=1934915055]
+script = ExtResource("2_1g4q3")
+metadata/_custom_type_script = "uid://q44pdu62kebi"
+
 [node name="InputBufferer" type="Timer" parent="Helpers" unique_id=1907309243]
 process_callback = 0
 wait_time = 0.3
@@ -754,7 +777,33 @@ emission_rect_extents = Vector2(1, 12)
 gravity = Vector2(-980, 0)
 scale_amount_min = 0.0
 scale_amount_max = 3.0
-scale_amount_curve = SubResource("Curve_710pl")
+scale_amount_curve = ExtResource("15_b2a7g")
+
+[node name="LLandParticles" type="CPUParticles2D" parent="Helpers" unique_id=1037373283]
+position = Vector2(-10, 0)
+emitting = false
+amount = 50
+lifetime = 0.1
+one_shot = true
+explosiveness = 0.1
+emission_shape = 3
+emission_rect_extents = Vector2(5, 1)
+gravity = Vector2(-1960, -980)
+scale_amount_max = 3.0
+scale_amount_curve = ExtResource("15_b2a7g")
+
+[node name="RLandParticles" type="CPUParticles2D" parent="Helpers" unique_id=41672981]
+position = Vector2(10, 0)
+emitting = false
+amount = 50
+lifetime = 0.1
+one_shot = true
+explosiveness = 0.1
+emission_shape = 3
+emission_rect_extents = Vector2(5, 1)
+gravity = Vector2(1960, -980)
+scale_amount_max = 3.0
+scale_amount_curve = ExtResource("15_b2a7g")
 
 [node name="Health" type="Node2D" parent="." unique_id=1261244864]
 

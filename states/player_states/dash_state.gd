@@ -9,10 +9,6 @@ class_name PlayerDash
 @onready var state_machine: StateMachine = get_parent()
 
 func enter() -> void:
-	if not player.can_dash:
-		state_machine.transition_to(state_machine.prev_state.name)
-		return
-	
 	player.helpers.get_node("DashParticles").global_position = player.global_position + emission_offset
 	player.helpers.get_node("DashParticles").emitting = true
 	

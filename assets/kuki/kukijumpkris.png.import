@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlvpcao17vsn8"
-path="res://.godot/imported/kukijump-old.png-42885dbbc867c4842313c7e441c708d5.ctex"
+uid="uid://dw1dnh5v5ikd3"
+path="res://.godot/imported/kukijumpkris.png-7a1b0c731fa2a9a66f090b4b74d688bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/kuki/kukijump-old.png"
-dest_files=["res://.godot/imported/kukijump-old.png-42885dbbc867c4842313c7e441c708d5.ctex"]
+source_file="res://assets/kuki/kukijumpkris.png"
+dest_files=["res://.godot/imported/kukijumpkris.png-7a1b0c731fa2a9a66f090b4b74d688bc.ctex"]
 
 [params]
 

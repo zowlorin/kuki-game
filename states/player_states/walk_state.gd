@@ -19,9 +19,9 @@ func physics_update(_delta: float) -> void:
 	
 	if not player.is_on_floor():
 		state_machine.transition_to("Fall")
-	elif Input.is_action_just_pressed("move_jump"):
-		state_machine.transition_to("Stagger")
-	elif Input.is_action_just_pressed("dash"):
+	elif Input.is_action_just_pressed("jump"):
+		state_machine.transition_to("Jump")
+	elif Input.is_action_just_pressed("dash") and player.can_dash:
 		state_machine.transition_to("Dash")
 	elif abs(move_direction) == 0:
 		state_machine.transition_to("Idle")

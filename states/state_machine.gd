@@ -7,9 +7,8 @@ extends Node
 
 var current_state: State
 var prev_state: State
- 
+
 func _ready() -> void:
-	# Wait for the owner (Player) to be ready
 	await owner.ready
  
 	if initial_state == null:
@@ -31,7 +30,8 @@ func _process(delta: float) -> void:
 	current_state.update(delta)
 	
 	$Label.text = current_state.name
- 
+
+
 func transition_to(target_state_name: String) -> void:
 	var target_state := get_node_or_null(target_state_name) as State
 	if target_state == null:

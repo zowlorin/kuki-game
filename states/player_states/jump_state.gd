@@ -8,17 +8,21 @@ class_name PlayerJump
 
 
 func enter() -> void:
+	sprite.play("jump")
 	player.jump_frame = Time.get_unix_time_from_system()
 
+func exit() -> void:
+	player.velocity.y = 0
+
 func physics_update(_delta: float) -> void:
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash") and player.can_dash:
 		state_machine.transition_to("Dash")
 	elif player.is_on_floor() and (Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right")):
 		state_machine.transition_to("Walk")
 	
 	var curr_frame = Time.get_unix_time_from_system()
 	
-	if (curr_frame - player.jump_frame) >= player.jump_duration or Input.is_action_just_released("move_jump"):
+	if (curr_frame - player.jump_frame) >= player.jump_duration or Input.is_action_just_released("jump"):
 		state_machine.transition_to("Fall")
 	
 	player.velocity.y = -(player.jump_curve.sample((curr_frame - player.jump_frame) / player.jump_duration)) * player.jump_speed

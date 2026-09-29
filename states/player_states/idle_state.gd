@@ -17,12 +17,10 @@ func physics_update(_delta: float) -> void:
 		state_machine.transition_to("Fall")
 	if (Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")) and move_direction != 0	:
 		state_machine.transition_to("Walk")
-	elif Input.is_action_just_pressed("move_jump"):
-		state_machine.transition_to("Stagger")
-	elif Input.is_action_just_pressed("dash"):
+	elif Input.is_action_just_pressed("jump"):
+		state_machine.transition_to("Jump")
+	elif Input.is_action_just_pressed("dash") and player.can_dash:
 		state_machine.transition_to("Dash")
-	
-	player.velocity.y = (1 - (player.fall_curve.sample((curr_frame - player.fall_frame) / player.fall_duration))) * player.fall_speed
 
 func update(_delta: float) -> void:
 	player.get_node("AnimatedSprite2D").flip_h = player.prev_direction < 0
