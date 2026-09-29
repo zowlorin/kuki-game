@@ -726,7 +726,7 @@ metadata/_custom_type_script = "uid://byhaipkgstwjb"
 texture_filter = 1
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_710pl")
-animation = &"stagger"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=741499986]
 position = Vector2(0, -11.5)
@@ -745,11 +745,6 @@ shape = SubResource("RectangleShape2D_ysoui")
 [node name="InputBuffer" type="Node" parent="Helpers" unique_id=1934915055]
 script = ExtResource("2_1g4q3")
 metadata/_custom_type_script = "uid://q44pdu62kebi"
-
-[node name="InputBufferer" type="Timer" parent="Helpers" unique_id=1907309243]
-process_callback = 0
-wait_time = 0.3
-one_shot = true
 
 [node name="CoyoteTimer" type="Timer" parent="Helpers" unique_id=1162502535]
 process_callback = 0
@@ -808,7 +803,6 @@ scale_amount_curve = ExtResource("15_b2a7g")
 [node name="Health" type="Node2D" parent="." unique_id=1261244864]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
-[connection signal="timeout" from="Helpers/InputBufferer" to="." method="_on_jump_bufferer_timeout"]
 [connection signal="timeout" from="Helpers/CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="Helpers/DashInvinciblity" to="." method="_on_dash_invinciblity_timeout"]
 [connection signal="timeout" from="Helpers/DashCooldown" to="." method="_on_dash_cooldown_timeout"]
