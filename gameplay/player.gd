@@ -21,6 +21,7 @@ extends CharacterBody2D
 @export var max_speed: float = 200.0
 @export var dash_speed: float = 500.0
 @export var dash_duration: float = 0.3
+@export var max_dash_cooldown : float = 0.4
 
 @onready var jump_frame = Time.get_unix_time_from_system()
 @onready var fall_frame = Time.get_unix_time_from_system()

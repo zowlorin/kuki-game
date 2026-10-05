@@ -4,22 +4,24 @@ class_name PlayerIdle
 
 @onready var player: CharacterBody2D = owner
 @onready var state_machine: StateMachine = get_parent()
+@onready var input_listener: InputListener = owner.get_node("InputListener")
 
 func enter() -> void:
 	player.get_node("AnimatedSprite2D").play("idle")
 	player.decel_frame = Time.get_unix_time_from_system()
 
 func physics_update(_delta: float) -> void:
-	var curr_frame = Time.get_unix_time_from_system()
-	var move_direction = Input.get_axis("move_left", "move_right")
-	
 	if not player.is_on_floor():
 		state_machine.transition_to("Fall")
-	if (Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")) and move_direction != 0	:
+	if player.is_on_floor() and (abs(Input.get_axis("move_left", "move_right")) > 0 or input_listener.get_buffer("MoveLeftBuffer").is_buffered() or input_listener.get_buffer("MoveRightBuffer").is_buffered()):
+		input_listener.get_buffer("MoveLeftBuffer").consume()
+		input_listener.get_buffer("MoveRightBuffer").consume()
 		state_machine.transition_to("Walk")
-	elif Input.is_action_just_pressed("jump"):
+	elif (player.is_on_floor() or player.on_coyote) and (Input.is_action_just_pressed("jump") or input_listener.get_buffer("JumpBuffer").is_buffered()):
+		input_listener.get_buffer("JumpBuffer").consume()
 		state_machine.transition_to("Jump")
-	elif Input.is_action_just_pressed("dash") and player.can_dash:
+	elif player.can_dash and (Input.is_action_just_pressed("dash") or input_listener.get_buffer("DashBuffer").is_buffered()):
+		input_listener.get_buffer("JumpBuffer").consume()
 		state_machine.transition_to("Dash")
 
 func update(_delta: float) -> void:

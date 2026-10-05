@@ -4,6 +4,7 @@ class_name PlayerWalk
 
 @onready var player: CharacterBody2D = owner
 @onready var state_machine: StateMachine = get_parent()
+@onready var input_listener: InputListener = owner.get_node("InputListener")
 
 @onready var move_direction: float = 0
 
@@ -17,12 +18,14 @@ func enter() -> void:
 func physics_update(_delta: float) -> void:
 	move_direction = Input.get_axis("move_left", "move_right")
 	
-	if not player.is_on_floor():
-		state_machine.transition_to("Fall")
-	elif Input.is_action_just_pressed("jump"):
+	if (player.is_on_floor() or player.on_coyote) and (Input.is_action_just_pressed("jump") or input_listener.get_buffer("JumpBuffer").is_buffered()):
+		input_listener.get_buffer("JumpBuffer").consume()
 		state_machine.transition_to("Jump")
-	elif Input.is_action_just_pressed("dash") and player.can_dash:
+	elif player.can_dash and (Input.is_action_just_pressed("dash") or input_listener.get_buffer("DashBuffer").is_buffered()):
+		input_listener.get_buffer("DashBuffer").consume()
 		state_machine.transition_to("Dash")
+	elif not player.is_on_floor():
+		state_machine.transition_to("Fall")
 	elif abs(move_direction) == 0:
 		state_machine.transition_to("Idle")
 	
