@@ -2,17 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4k7s8fpooxll"
-path="res://.godot/imported/dualgrid.svg-d7fecf488cf81e610b465d1aa42641c9.ctex"
+uid="uid://digffvqfi2iyq"
+path="res://.godot/imported/choco_bricks.png-cbbc6d7c977514fb03db7812d6cdf245.ctex"
 metadata={
-"has_editor_variant": true,
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/dualgrid/dualgrid.svg"
-dest_files=["res://.godot/imported/dualgrid.svg-d7fecf488cf81e610b465d1aa42641c9.ctex"]
+source_file="res://assets/tilesets/choco_bricks.png"
+dest_files=["res://.godot/imported/choco_bricks.png-cbbc6d7c977514fb03db7812d6cdf245.ctex"]
 
 [params]
 
@@ -39,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=true
-editor/convert_colors_with_editor_theme=true
