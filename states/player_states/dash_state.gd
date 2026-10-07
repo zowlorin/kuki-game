@@ -11,6 +11,7 @@ class_name PlayerDash
 @onready var state_machine: StateMachine = get_parent()
 
 func enter() -> void:
+	AudioManager.play("DashSFX")
 	if player.is_on_floor():
 		true_fx_offset = Vector2(player.prev_direction * fx_offset.x, fx_offset.y)
 		player.helpers.get_node("LandDashFX").flip_h = player.prev_direction < 0

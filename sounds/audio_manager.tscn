@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c30sw3fcdaaqa"]
+
+[ext_resource type="Script" uid="uid://cfvvvdwy6d4tq" path="res://sounds/audio_manager.gd" id="1_6aj3w"]
+[ext_resource type="AudioStream" uid="uid://cj66f5p70wh13" path="res://sounds/sfx/dash-2.wav" id="2_6aj3w"]
+[ext_resource type="AudioStream" uid="uid://c1xwierxiesl7" path="res://sounds/sfx/jump-4.wav" id="3_6aj3w"]
+
+[node name="AudioManager" type="Node" unique_id=892622769]
+script = ExtResource("1_6aj3w")
+
+[node name="DashSFX" type="AudioStreamPlayer" parent="." unique_id=870351820]
+stream = ExtResource("2_6aj3w")
+
+[node name="JumpSFX" type="AudioStreamPlayer" parent="." unique_id=182919991]
+stream = ExtResource("3_6aj3w")
+
+[node name="MusicDelay" type="Timer" parent="." unique_id=1064084986]
+one_shot = true
