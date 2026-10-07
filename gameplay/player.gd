@@ -23,6 +23,13 @@ extends CharacterBody2D
 @export var dash_duration: float = 0.3
 @export var max_dash_cooldown : float = 0.4
 
+
+
+@export_category("Miscellanous")
+@export var bounce_curve: Curve
+@export var bounce_speed: float = 300.0
+@export var bounce_duration: float = 0.4
+
 @onready var jump_frame = Time.get_unix_time_from_system()
 @onready var fall_frame = Time.get_unix_time_from_system()
 @onready var accel_frame = Time.get_unix_time_from_system()
@@ -35,8 +42,6 @@ extends CharacterBody2D
 @onready var on_coyote: bool = false
 @onready var can_dash: bool = true
 
-@onready var move_speed: float = 0.0
-@onready var move_dash: float = 0.0
 @onready var prev_direction: float = 1.0
 
 @onready var helpers: Node = $Helpers
@@ -44,11 +49,9 @@ extends CharacterBody2D
 
 func _physics_process(_delta: float) -> void:
 	var move_direction: float = Input.get_axis("move_left", "move_right")
-
+	
 	if abs(move_direction) > 0:
 		prev_direction = move_direction
-
-	velocity.x = move_direction * move_speed + move_dash
 	
 	was_on_floor = is_on_floor()
 	move_and_slide()

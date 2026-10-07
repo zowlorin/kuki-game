@@ -26,7 +26,11 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dualgrid/plugin.cfg")
+enabled=PackedStringArray()
+
+[global_group]
+
+Bouncy=""
 
 [input]
 
@@ -68,7 +72,7 @@ down={
 
 2d_physics/layer_1="World"
 2d_physics/layer_2="Player"
-2d_physics/layer_3="Enemy"
+2d_physics/layer_3="Hazard"
 
 [physics]
 

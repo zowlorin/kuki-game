@@ -7,8 +7,10 @@ class_name PlayerDash
 @export var fx_offset := Vector2(-22, -15)
 
 @onready var true_fx_offset : Vector2
+
 @onready var player: CharacterBody2D = owner
 @onready var state_machine: StateMachine = get_parent()
+@onready var input_listener: InputListener = owner.get_node("InputListener")
 
 func enter() -> void:
 	AudioManager.play("DashSFX")
@@ -25,13 +27,15 @@ func enter() -> void:
 	player.dash_frame = Time.get_unix_time_from_system()
 
 func exit() -> void:
+	player.velocity.x = 0
 	player.helpers.get_node("DashParticles").emitting = false
 
 func physics_update(_delta: float) -> void:
 	var curr_frame = Time.get_unix_time_from_system()
+	var bouncy_nodes = get_tree().get_nodes_in_group("Bouncy")
 	
 	player.get_node("Hurtbox").get_child(0).set_deferred("disabled", true)
-	player.move_dash = player.prev_direction * player.dash_speed
+	player.velocity.x = player.prev_direction * player.dash_speed
 	
 	player.helpers.get_node("DashCooldown").wait_time = player.max_dash_cooldown/8
 	if not player.is_on_floor():
@@ -42,9 +46,12 @@ func physics_update(_delta: float) -> void:
 	player.helpers.get_node("DashInvinciblity").start()
 	player.can_dash = false
 	
+	if player.get_last_slide_collision() != null:
+		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
+			state_machine.transition_to("Bounce")
+	
 	if (curr_frame - player.dash_frame) >= player.dash_duration:
 		state_machine.transition_to("Fall")
-		player.move_dash = 0
 	
 	player.fall_frame = player.dash_frame
 	player.velocity.y = (1 - (player.fall_curve.sample((curr_frame - player.dash_frame) / player.fall_duration))) * player.fall_speed

@@ -31,7 +31,6 @@ func _process(delta: float) -> void:
 	
 	$Label.text = current_state.name
 
-
 func transition_to(target_state_name: String) -> void:
 	var target_state := get_node_or_null(target_state_name) as State
 	if target_state == null:

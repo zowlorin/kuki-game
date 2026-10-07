@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3nwumc35hlab"
-path="res://.godot/imported/kukifall.png-1376ede49c68dacf8a192b63159cf30c.ctex"
+uid="uid://digffvqfi2iyq"
+path="res://.godot/imported/choco_bricks.png-cbbc6d7c977514fb03db7812d6cdf245.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/kuki/kukifall.png"
-dest_files=["res://.godot/imported/kukifall.png-1376ede49c68dacf8a192b63159cf30c.ctex"]
+source_file="res://assets/tilesets/choco_bricks.png"
+dest_files=["res://.godot/imported/choco_bricks.png-cbbc6d7c977514fb03db7812d6cdf245.ctex"]
 
 [params]
 

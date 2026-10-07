@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw1dnh5v5ikd3"
-path="res://.godot/imported/kukijumpkris.png-7a1b0c731fa2a9a66f090b4b74d688bc.ctex"
+uid="uid://brwm4ga41c4d0"
+path="res://.godot/imported/chudelectricfan.png-1641c395172f5a204725a3d296741c61.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/kuki/kukijumpkris.png"
-dest_files=["res://.godot/imported/kukijumpkris.png-7a1b0c731fa2a9a66f090b4b74d688bc.ctex"]
+source_file="res://assets/chud/chudelectricfan.png"
+dest_files=["res://.godot/imported/chudelectricfan.png-1641c395172f5a204725a3d296741c61.ctex"]
 
 [params]
 

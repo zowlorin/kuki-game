@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b8uj6i261r27l"]
 
 [ext_resource type="PackedScene" uid="uid://wnyu5xqf1yeh" path="res://gameplay/player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://hbonw2t7ej81" path="res://gameplay/chud.tscn" id="1_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://ci0mg4cw3htbo" path="res://levels/lobby.tscn" id="2_yaehf"]
 [ext_resource type="Texture2D" uid="uid://mqf4pkjbyh0e" path="res://assets/parallaxbg/0_basesky.png" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://c70nqv3745imr" path="res://assets/parallaxbg/1_farclouds.png" id="4_1bvp3"]
@@ -28,16 +29,6 @@ point_count = 3
 [node name="Main" type="Node2D" unique_id=587567638]
 
 [node name="World" type="Node2D" parent="." unique_id=921855491]
-
-[node name="Player" parent="World" unique_id=1561153767 instance=ExtResource("1_ig7tw")]
-position = Vector2(-210, -100)
-jump_speed = 325.0
-accel_curve = SubResource("Curve_0xm2m")
-decel_curve = SubResource("Curve_h2yge")
-max_speed = 150.0
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="World/Player" unique_id=354228312]
-remote_path = NodePath("../../Camera2D")
 
 [node name="LevelContainer" type="Node2D" parent="World" unique_id=1022913682]
 
@@ -160,6 +151,20 @@ script = ExtResource("10_ycdy4")
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="Chud" parent="World" unique_id=889230261 node_paths=PackedStringArray("target") instance=ExtResource("1_ycdy4")]
+position = Vector2(100, -100)
+target = NodePath("../Player")
+
+[node name="Player" parent="World" unique_id=1561153767 instance=ExtResource("1_ig7tw")]
+position = Vector2(-210, -100)
+jump_speed = 325.0
+accel_curve = SubResource("Curve_0xm2m")
+decel_curve = SubResource("Curve_h2yge")
+max_speed = 150.0
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="World/Player" unique_id=354228312]
+remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="World" unique_id=55301002]
 position = Vector2(-210, -100)

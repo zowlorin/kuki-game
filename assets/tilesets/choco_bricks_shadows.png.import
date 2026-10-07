@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw1dnh5v5ikd3"
-path="res://.godot/imported/kukijump.png-4311d0338815378311ed265e0981543a.ctex"
+uid="uid://bbkypf42o0s2h"
+path="res://.godot/imported/choco_bricks_shadows.png-767bad0005287aea365ffe38e5bfaf4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/kuki/kukijump.png"
-dest_files=["res://.godot/imported/kukijump.png-4311d0338815378311ed265e0981543a.ctex"]
+source_file="res://assets/tilesets/choco_bricks_shadows.png"
+dest_files=["res://.godot/imported/choco_bricks_shadows.png-767bad0005287aea365ffe38e5bfaf4d.ctex"]
 
 [params]
 
