@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://d0b2ys7jcq6pr" path="res://states/player_states/dash_state.gd" id="7_iqb12"]
 [ext_resource type="Texture2D" uid="uid://fjyoetr8gb5u" path="res://assets/kuki/kukidash.png" id="8_1xfx0"]
 [ext_resource type="Texture2D" uid="uid://c0ofihnt2bfu4" path="res://assets/kuki/kukijump.png" id="9_ob5am"]
+[ext_resource type="Script" uid="uid://ki816ac8cyw3" path="res://states/player_states/bounce_state.gd" id="10_0qvvg"]
 [ext_resource type="Script" uid="uid://byhaipkgstwjb" path="res://states/player_states/stagger_state.gd" id="12_2wuqc"]
 [ext_resource type="Texture2D" uid="uid://c3nwumc35hlab" path="res://assets/kuki/kukifall.png" id="12_budjd"]
 [ext_resource type="Texture2D" uid="uid://k3g6d6wmfmt2" path="res://assets/kuki/kukiairdash.png" id="13_s0fd6"]
@@ -26,6 +27,10 @@ point_count = 3
 [sub_resource type="Curve" id="Curve_jriu6"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Curve" id="Curve_0qvvg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2971888, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bpys0"]
 atlas = ExtResource("13_s0fd6")
@@ -384,12 +389,17 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" unique_id=1561153767]
 collision_layer = 2
+collision_mask = 9
 script = ExtResource("1_4flbx")
 jump_curve = SubResource("Curve_onrkg")
 jump_duration = 0.3
 fall_curve = SubResource("Curve_jriu6")
 fall_duration = 0.5
 dash_speed = 250.0
+bounce_curve = SubResource("Curve_0qvvg")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=353482727]
+target_position = Vector2(0, 100)
 
 [node name="InputListener" type="Node" parent="." unique_id=395743567]
 script = ExtResource("2_s0fd6")
@@ -435,6 +445,10 @@ metadata/_custom_type_script = "uid://d0b2ys7jcq6pr"
 script = ExtResource("12_2wuqc")
 metadata/_custom_type_script = "uid://byhaipkgstwjb"
 
+[node name="Bounce" type="Node" parent="StateMachine" unique_id=1006668677]
+script = ExtResource("10_0qvvg")
+metadata/_custom_type_script = "uid://ki816ac8cyw3"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1204224882]
 texture_filter = 1
 position = Vector2(0, -15)
@@ -445,8 +459,15 @@ animation = &"fall"
 position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_ysoui")
 
-[node name="Hurtbox" type="Area2D" parent="." unique_id=426756013]
+[node name="Bouncebox" type="Area2D" parent="." unique_id=901485959]
 collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bouncebox" unique_id=1059304708]
+position = Vector2(0, -11.5)
+shape = SubResource("RectangleShape2D_ysoui")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=426756013]
+collision_layer = 2
 collision_mask = 260
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=713654505]
@@ -516,6 +537,7 @@ scale_amount_curve = ExtResource("15_b2a7g")
 
 [node name="Health" type="Node2D" parent="." unique_id=1261244864]
 
+[connection signal="area_entered" from="Bouncebox" to="." method="_on_bouncebox_area_entered"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="Helpers/CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="Helpers/DashInvinciblity" to="." method="_on_dash_invinciblity_timeout"]

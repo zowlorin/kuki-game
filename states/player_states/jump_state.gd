@@ -15,6 +15,12 @@ func exit() -> void:
 	player.velocity.y = 0
 
 func physics_update(_delta: float) -> void:
+	var bouncy_nodes = get_tree().get_nodes_in_group("Bouncy")
+	
+	if player.get_last_slide_collision() != null:
+		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
+			state_machine.transition_to("Bounce")
+	
 	if player.can_dash and (Input.is_action_just_pressed("dash") or input_listener.get_buffer("DashBuffer").is_buffered()):
 		input_listener.get_buffer("DashBuffer").consume()
 		state_machine.transition_to("Dash")

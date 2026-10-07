@@ -16,7 +16,12 @@ func enter() -> void:
 		player.accel_frame = Time.get_unix_time_from_system()
 
 func physics_update(_delta: float) -> void:
+	var bouncy_nodes = get_tree().get_nodes_in_group("Bouncy")
 	move_direction = Input.get_axis("move_left", "move_right")
+	
+	if player.get_last_slide_collision() != null:
+		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
+			state_machine.transition_to("Bounce")
 	
 	if (player.is_on_floor() or player.on_coyote) and (Input.is_action_just_pressed("jump") or input_listener.get_buffer("JumpBuffer").is_buffered()):
 		input_listener.get_buffer("JumpBuffer").consume()

@@ -15,10 +15,15 @@ func enter() -> void:
 	player.fall_frame = Time.get_unix_time_from_system()
 
 func physics_update(_delta: float) -> void:
+	var bouncy_nodes = get_tree().get_nodes_in_group("Bouncy")
+	if player.get_last_slide_collision() != null:
+		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
+			state_machine.transition_to("Bounce")
+	
 	if player.is_on_floor():
 		emit_land_particles()
 		state_machine.transition_to("Stagger")
-	if player.is_on_floor() and (abs(Input.get_axis("move_left", "move_right")) > 0 or input_listener.get_buffer("MoveLeftBuffer").is_buffered() or input_listener.get_buffer("MoveRightBuffer").is_buffered()):
+	elif player.is_on_floor() and (abs(Input.get_axis("move_left", "move_right")) > 0 or input_listener.get_buffer("MoveLeftBuffer").is_buffered() or input_listener.get_buffer("MoveRightBuffer").is_buffered()):
 		input_listener.get_buffer("MoveLeftBuffer").consume()
 		input_listener.get_buffer("MoveRightBuffer").consume()
 		state_machine.transition_to("Walk")
@@ -38,8 +43,6 @@ func emit_land_particles() -> void:
 	player.helpers.get_node('RLandParticles').global_position = player.global_position + Vector2(10, 0)
 	player.helpers.get_node('LLandParticles').emitting = true
 	player.helpers.get_node('RLandParticles').emitting = true
-
-
 
 func update(_delta: float) -> void:
 	sprite.flip_h = player.prev_direction < 0
