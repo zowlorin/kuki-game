@@ -42,9 +42,6 @@ extends CharacterBody2D
 @onready var on_coyote: bool = false
 @onready var can_dash: bool = true
 
-@onready var horizontal_bounce: float = 0.0
-@onready var move_speed: float = 0.0
-@onready var move_dash: float = 0.0
 @onready var prev_direction: float = 1.0
 
 @onready var helpers: Node = $Helpers
@@ -55,8 +52,6 @@ func _physics_process(_delta: float) -> void:
 	
 	if abs(move_direction) > 0:
 		prev_direction = move_direction
-
-	velocity.x = move_direction * move_speed + move_dash + horizontal_bounce
 	
 	was_on_floor = is_on_floor()
 	move_and_slide()

@@ -15,13 +15,13 @@ func enter() -> void:
 	bounce_frame = Time.get_unix_time_from_system()
 
 func physics_update(_delta: float) -> void:
+	var move_direction = Input.get_axis("move_left", "move_right")
 	var curr_frame = Time.get_unix_time_from_system()
 	
 	if (curr_frame - bounce_frame) >= player.bounce_duration or collision == null:
 		state_machine.transition_to("Fall")
 	
-	var bounce_speed = collision.get_normal() * (player.bounce_curve.sample((curr_frame - bounce_frame) / player.bounce_duration)) * player.bounce_speed
-	var fall_speed = (1 - (player.fall_curve.sample((curr_frame - bounce_frame) / player.fall_duration))) * player.fall_speed
+	var bounce_vel = collision.get_normal() * (player.bounce_curve.sample((curr_frame - bounce_frame) / player.bounce_duration)) * player.bounce_speed
 	
-	player.horizontal_bounce = bounce_speed.x
-	player.velocity.y = bounce_speed.y
+	player.velocity.x = bounce_vel.x + move_direction * player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed
+	player.velocity.y = bounce_vel.y

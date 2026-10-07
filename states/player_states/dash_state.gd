@@ -24,22 +24,17 @@ func enter() -> void:
 		player.helpers.get_node("DashParticles").emitting = true
 		player.get_node("AnimatedSprite2D").play("air_dash")
 	player.dash_frame = Time.get_unix_time_from_system()
-	print("entered dash")
 
 func exit() -> void:
+	player.velocity.x = 0
 	player.helpers.get_node("DashParticles").emitting = false
 
 func physics_update(_delta: float) -> void:
 	var curr_frame = Time.get_unix_time_from_system()
 	var bouncy_nodes = get_tree().get_nodes_in_group("Bouncy")
 	
-	if player.get_last_slide_collision() != null:
-		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
-			player.move_dash = 0
-			state_machine.transition_to("Bounce")
-	
 	player.get_node("Hurtbox").get_child(0).set_deferred("disabled", true)
-	player.move_dash = player.prev_direction * player.dash_speed
+	player.velocity.x = player.prev_direction * player.dash_speed
 	
 	player.helpers.get_node("DashCooldown").wait_time = player.max_dash_cooldown/8
 	if not player.is_on_floor():
@@ -50,8 +45,11 @@ func physics_update(_delta: float) -> void:
 	player.helpers.get_node("DashInvinciblity").start()
 	player.can_dash = false
 	
+	if player.get_last_slide_collision() != null:
+		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
+			state_machine.transition_to("Bounce")
+	
 	if (curr_frame - player.dash_frame) >= player.dash_duration:
-		player.move_dash = 0
 		state_machine.transition_to("Fall")
 	
 	player.fall_frame = player.dash_frame
