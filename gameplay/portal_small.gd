@@ -12,7 +12,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if body in ignore_list:
 		return
 	var rel: Vector2 = body.global_position - global_position
-	print("gugu" + name)
 	portal_entered.emit(body, rel, target_portal)
 
 func _on_body_exited(body: Node2D) -> void:
