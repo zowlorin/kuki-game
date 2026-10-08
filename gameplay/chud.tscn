@@ -184,15 +184,101 @@ bounce = 0.6
 radius = 31.0
 height = 62.0
 
+[sub_resource type="Animation" id="Animation_b3a0b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"wake"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_v0pnj"]
+resource_name = "h_bounce"
+length = 0.3750125
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"wake"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 3]
+}
+
+[sub_resource type="Animation" id="Animation_ts62h"]
+resource_name = "v_bounce"
+length = 0.3750125
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"wake"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q1xlo"]
+_data = {
+&"RESET": SubResource("Animation_b3a0b"),
+&"h_bounce": SubResource("Animation_v0pnj"),
+&"v_bounce": SubResource("Animation_ts62h")
+}
+
 [node name="Chud" type="CharacterBody2D" unique_id=889230261]
 collision_layer = 0
 script = ExtResource("1_vvnt0")
-
-[node name="RayCast" type="RayCast2D" parent="." unique_id=1628304753]
-target_position = Vector2(100, 0)
-collision_mask = 2
-collide_with_areas = true
-collide_with_bodies = false
 
 [node name="StateMachine" type="Node" parent="." unique_id=1638820768 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_x7ym0")
@@ -228,11 +314,23 @@ frame = 4
 position = Vector2(7, 4)
 shape = SubResource("CapsuleShape2D_jxb28")
 
-[node name="Bouncy" type="StaticBody2D" parent="." unique_id=1108596489 groups=["Bouncy"]]
+[node name="RayCast" type="RayCast2D" parent="." unique_id=1628304753]
+target_position = Vector2(100, 0)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="ChudBody" type="StaticBody2D" parent="." unique_id=1108596489 groups=["Bouncy"]]
 collision_layer = 8
 collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_q0l2x")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bouncy" unique_id=70159028]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChudBody" unique_id=70159028]
 position = Vector2(3, 9)
 shape = SubResource("CapsuleShape2D_0qvvg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1992462994]
+root_node = NodePath("../Helpers")
+libraries/ = SubResource("AnimationLibrary_q1xlo")
+
+[node name="Helpers" type="Node" parent="." unique_id=622358832]
