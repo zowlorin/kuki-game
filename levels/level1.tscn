@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bkw1a51ob5sl4" path="res://gameplay/lever.tscn" id="14_f7u7y"]
 [ext_resource type="PackedScene" uid="uid://di8j2uaoyn0nr" path="res://gameplay/pressure_plate.tscn" id="15_a5s8o"]
 [ext_resource type="PackedScene" uid="uid://d8o7asq8gyif" path="res://gameplay/gate.tscn" id="16_a5s8o"]
+[ext_resource type="PackedScene" uid="uid://b83gms022hnxe" path="res://levels/box_container.tscn" id="16_tx362"]
 [ext_resource type="PackedScene" uid="uid://qwaaokt33dau" path="res://gameplay/moving_platform.tscn" id="17_ls4ot"]
 [ext_resource type="Script" uid="uid://bmdxml1isrn2k" path="res://handlers/safe_zones.gd" id="18_l7nqg"]
 [ext_resource type="PackedScene" uid="uid://btc8woaxqjc1l" path="res://gameplay/safe_zone.tscn" id="19_l7nqg"]
@@ -205,6 +206,9 @@ position = Vector2(297, 0)
 
 [node name="PressurePlate" parent="TriggerMechs" unique_id=2027544041 instance=ExtResource("15_a5s8o")]
 position = Vector2(440, 0)
+
+[node name="BoxContainer" parent="." unique_id=440766301 instance=ExtResource("16_tx362")]
+position = Vector2(343, -11)
 
 [node name="Gates" type="Node2D" parent="." unique_id=1286166510]
 

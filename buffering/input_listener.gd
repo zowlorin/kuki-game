@@ -6,7 +6,7 @@ class_name InputListener
 
 func _ready() -> void:
 	for input in InputMap.get_actions():
-		if input.contains("ui"):
+		if input.contains("ui_"):
 			continue
 		
 		var new_buffer = InputBuffer.new()

@@ -47,10 +47,8 @@ func physics_update(_delta: float) -> void:
 		input_listener.get_buffer("DashBuffer").consume()
 		state_machine.transition_to("Dash")
 	elif not player.is_on_floor():
-		
 		state_machine.transition_to("Fall")
 	elif abs(move_direction) == 0:
-		
 		state_machine.transition_to("Idle")
 
 func update(_delta: float) -> void:

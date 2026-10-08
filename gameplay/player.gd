@@ -31,9 +31,12 @@ signal safe_zone_requested
 @export var max_dash_cooldown : float = 0.4
 
 @export_category("Miscellanous")
+@export var push_force: float = 10
+@export var view_length: float = 25.0
 @export var bounce_curve: Curve
 @export var bounce_speed: float = 300.0
 @export var bounce_duration: float = 0.4
+
 
 @onready var jump_frame = Time.get_unix_time_from_system()
 @onready var fall_frame = Time.get_unix_time_from_system()
@@ -85,9 +88,19 @@ func _physics_process(_delta: float) -> void:
 	if abs(move_direction) > 0:
 		prev_direction = move_direction
 	
+	$View.target_position.x = prev_direction * view_length
+	
 	was_on_floor = is_on_floor()
 	move_and_slide()
-#
+	
+	for i in get_slide_collision_count():
+		var collision := get_slide_collision(i)
+		var collider := collision.get_collider()
+		
+		if collider is RigidBody2D:
+			collider.apply_central_impulse(-collision.get_normal() * push_force)
+			velocity.x = 0
+	
 	if was_on_floor != is_on_floor() and $Helpers/CoyoteTimer.is_stopped():
 		$Helpers/CoyoteTimer.start()
 		on_coyote = true

@@ -338,6 +338,9 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0fd6"]
+size = Vector2(10, 22)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysoui"]
 size = Vector2(5, 22)
 
@@ -398,7 +401,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" unique_id=1561153767]
 collision_layer = 2
-collision_mask = 9
+collision_mask = 25
 script = ExtResource("1_4flbx")
 jump_curve = SubResource("Curve_onrkg")
 jump_duration = 0.3
@@ -406,9 +409,12 @@ fall_curve = SubResource("Curve_jriu6")
 fall_duration = 0.5
 dash_speed = 250.0
 bounce_curve = SubResource("Curve_0qvvg")
+bounce_speed = 600.0
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=353482727]
-target_position = Vector2(0, 100)
+[node name="View" type="RayCast2D" parent="." unique_id=353482727]
+position = Vector2(0, -5)
+target_position = Vector2(25, 0)
+collision_mask = 17
 
 [node name="InputListener" type="Node" parent="." unique_id=395743567]
 script = ExtResource("2_s0fd6")
@@ -462,11 +468,11 @@ metadata/_custom_type_script = "uid://ki816ac8cyw3"
 texture_filter = 1
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_710pl")
-animation = &"stagger"
+animation = &"dash"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=741499986]
 position = Vector2(0, -11.5)
-shape = SubResource("RectangleShape2D_ysoui")
+shape = SubResource("RectangleShape2D_s0fd6")
 
 [node name="Bouncebox" type="Area2D" parent="." unique_id=901485959]
 collision_layer = 0

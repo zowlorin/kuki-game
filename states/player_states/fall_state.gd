@@ -17,8 +17,12 @@ func enter() -> void:
 	bouncing = false
 
 func physics_update(_delta: float) -> void:
+	var curr_frame = Time.get_unix_time_from_system()
 	var move_direction = Input.get_axis("move_left", "move_right")
 	var bouncy_nodes = get_tree().get_nodes_in_group("Bouncy")
+	
+	player.velocity.x = move_direction * player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed
+	player.velocity.y = (1 - (player.fall_curve.sample((curr_frame - player.fall_frame) / player.fall_duration))) * player.fall_speed
 	
 	if player.get_last_slide_collision() != null:
 		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
@@ -41,10 +45,6 @@ func physics_update(_delta: float) -> void:
 		input_listener.get_buffer("DashBuffer").consume()
 		state_machine.transition_to("Dash")
 	
-	var curr_frame = Time.get_unix_time_from_system()
-	
-	player.velocity.x = move_direction * player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed
-	player.velocity.y = (1 - (player.fall_curve.sample((curr_frame - player.fall_frame) / player.fall_duration))) * player.fall_speed
 
 func emit_land_particles() -> void:
 	player.helpers.get_node('LLandParticles').global_position = player.global_position + Vector2(-10, 0)
