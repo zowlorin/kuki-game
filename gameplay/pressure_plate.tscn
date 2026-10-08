@@ -10,6 +10,7 @@ size = Vector2(20, 8)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_xn212")
+hold_duration = 0.5
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1340287426]
 texture_filter = 1

@@ -1,6 +1,11 @@
 extends TriggerMech
 
+@export var hold_duration: float = 1.0
+
 @onready var prev_interacting: bool = false
+
+func _ready():
+	$Timer.wait_time = hold_duration
 
 func trigger():
 	active = player_interacting

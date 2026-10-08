@@ -1,5 +1,7 @@
 extends TriggerMech
 
+@onready var cooling: bool = false
+
 func trigger():
 	active = !active
 	
@@ -10,8 +12,14 @@ func trigger():
 func on_interact():
 	if (!player_interacting):
 		return
+	if (cooling):
+		return
+		
 	
 	trigger()
+	
+	cooling = true
+	$Timer.start()
 	
 func _input(event: InputEvent) -> void:
 	
@@ -27,3 +35,7 @@ func _input(event: InputEvent) -> void:
 		return
 		
 	on_interact()
+
+
+func _on_timer_timeout() -> void:
+	cooling = false
