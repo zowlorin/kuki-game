@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://d8o7asq8gyif"]
+
+[ext_resource type="Script" uid="uid://jb28tikeu73h" path="res://gameplay/gate.gd" id="1_2q2hm"]
+[ext_resource type="Texture2D" uid="uid://nvwk8lxrq0m1" path="res://assets/gate.png" id="1_nlfn1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlfn1"]
+size = Vector2(11, 48)
+
+[sub_resource type="Animation" id="Animation_g7xsq"]
+resource_name = "Close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -48), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2q2hm"]
+resource_name = "Open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -48)]
+}
+
+[sub_resource type="Animation" id="Animation_s8b2w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s8b2w"]
+_data = {
+&"Close": SubResource("Animation_g7xsq"),
+&"Open": SubResource("Animation_2q2hm"),
+&"RESET": SubResource("Animation_s8b2w")
+}
+
+[node name="Gate" type="StaticBody2D" unique_id=1371055051]
+script = ExtResource("1_2q2hm")
+
+[node name="Visual" type="Node2D" parent="." unique_id=1340765771]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" unique_id=1531870400]
+z_index = -2
+texture_filter = 1
+position = Vector2(0, -24)
+texture = ExtResource("1_nlfn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1620274879]
+position = Vector2(-0.5, -24)
+shape = SubResource("RectangleShape2D_nlfn1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1277355996]
+libraries/ = SubResource("AnimationLibrary_s8b2w")
