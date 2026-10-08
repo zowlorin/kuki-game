@@ -1,6 +1,6 @@
 extends TriggerMech
 
-@onready var box_scene = preload("res://gameplay/box.tscn")
+@onready var box_scene = preload("res://components/box.tscn")
 
 @onready var box: RigidBody2D
 
