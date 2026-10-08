@@ -148,7 +148,6 @@ script = ExtResource("10_ycdy4")
 [node name="Level" parent="World/LevelContainer/LevelHandler" unique_id=1638046035 instance=ExtResource("2_yaehf")]
 
 [node name="Timer" type="Timer" parent="World/LevelContainer/LevelHandler" unique_id=1091582630]
-wait_time = 3.0
 one_shot = true
 autostart = true
 

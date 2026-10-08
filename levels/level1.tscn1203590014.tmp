@@ -144,11 +144,11 @@ script = ExtResource("12_8bcou")
 
 [node name="P1" parent="SmallPortalHandler" unique_id=1141982792 node_paths=PackedStringArray("target_portal") instance=ExtResource("13_f7u7y")]
 position = Vector2(216, 0)
-target_portal = NodePath("../P2")
+target_portal = NodePath(".")
 
 [node name="P2" parent="SmallPortalHandler" unique_id=1013884350 node_paths=PackedStringArray("target_portal") instance=ExtResource("13_f7u7y")]
 position = Vector2(-112, 0)
-target_portal = NodePath("../P1")
+target_portal = NodePath(".")
 
 [connection signal="level_change_requested" from="PortalHandler" to="." method="_on_portal_handler_level_change_requested"]
 [connection signal="portal_entered" from="SmallPortalHandler/P1" to="SmallPortalHandler" method="_on_small_portal_portal_entered"]
