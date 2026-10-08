@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dpjohf78p2ctw" path="res://assets/parallaxbg/6_midground.png" id="14_2cqfq"]
 [ext_resource type="Script" uid="uid://beuw00yfutyim" path="res://game_handler.gd" id="14_w48qg"]
 [ext_resource type="Script" uid="uid://co7wfydwqlui6" path="res://ui/pause_menu.gd" id="15_vivmo"]
+[ext_resource type="Script" uid="uid://cajwf2ufg3ji3" path="res://ui/settings_menu.gd" id="16_2cqfq"]
 
 [sub_resource type="Curve" id="Curve_0xm2m"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.32038835, 0.6631579), 1.0204334, 1.0204334, 0, 0, Vector2(0.5485437, 0.9157895), 0.59818506, 0.59818506, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -247,10 +248,90 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "RESUME"
 
+[node name="SettingsMenu" type="Control" parent="UI" unique_id=505827051]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("16_2cqfq")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/SettingsMenu" unique_id=1330010077]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
+
+[node name="Panel" type="Panel" parent="UI/SettingsMenu/MarginContainer" unique_id=1648907401]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="UI/SettingsMenu/MarginContainer" unique_id=452499411]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsMenu/MarginContainer/Control" unique_id=70917410]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 19.0
+offset_right = 102.0
+offset_bottom = 42.0
+text = "SETTINGS"
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/SettingsMenu/MarginContainer/Control" unique_id=245493142]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 56
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/SettingsMenu/MarginContainer/Control/MarginContainer" unique_id=2056136704]
+layout_mode = 2
+
+[node name="MainVolumeSetting" type="Control" parent="UI/SettingsMenu/MarginContainer/Control/MarginContainer/VBoxContainer" unique_id=1294986357]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsMenu/MarginContainer/Control/MarginContainer/VBoxContainer/MainVolumeSetting" unique_id=627595390]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAIN VOLUME"
+
+[node name="MusicVolumeSetting" type="Control" parent="UI/SettingsMenu/MarginContainer/Control/MarginContainer/VBoxContainer" unique_id=2023021219]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsMenu/MarginContainer/Control/MarginContainer/VBoxContainer/MusicVolumeSetting" unique_id=411409155]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MUSIC VOLUME"
+
 [connection signal="timeout" from="World/LevelContainer/LevelHandler/Timer" to="World/LevelContainer/LevelHandler" method="_on_timer_timeout"]
 [connection signal="pause_state_changed" from="Handlers/GameHandler" to="UI/PauseMenu" method="_on_game_handler_pause_state_changed"]
+[connection signal="pause_state_changed" from="Handlers/GameHandler" to="UI/SettingsMenu" method="_on_game_handler_pause_state_changed"]
 [connection signal="game_quit_requested" from="UI/PauseMenu" to="Handlers/GameHandler" method="_on_pause_menu_game_quit_requested"]
 [connection signal="game_resume_requested" from="UI/PauseMenu" to="Handlers/GameHandler" method="_on_pause_menu_game_resume_requested"]
+[connection signal="menu_focused" from="UI/PauseMenu" to="Handlers/GameHandler" method="_on_pause_menu_menu_focused"]
+[connection signal="settings_requested" from="UI/PauseMenu" to="UI/SettingsMenu" method="_on_pause_menu_settings_requested"]
 [connection signal="pressed" from="UI/PauseMenu/ExitButton" to="UI/PauseMenu" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/SettingsButton" to="UI/PauseMenu" method="_on_settings_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/ResumeButton" to="UI/PauseMenu" method="_on_resume_button_pressed"]
+[connection signal="exit_requested" from="UI/SettingsMenu" to="UI/PauseMenu" method="_on_settings_menu_exit_requested"]

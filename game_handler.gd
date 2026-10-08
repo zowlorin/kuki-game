@@ -20,6 +20,8 @@ signal game_quit
 		if (!running):
 			game_quit.emit()
 
+@onready var pause_menu_focused: bool = false
+
 func request_main_menu():
 	running = false
 	paused = false
@@ -36,7 +38,8 @@ func on_escape():
 	if (!paused):
 		request_break()
 	else:
-		resume_world()
+		if (pause_menu_focused):
+			resume_world()
 
 func _input(event: InputEvent) -> void:
 	if (event is not InputEventKey):
@@ -50,9 +53,12 @@ func _input(event: InputEvent) -> void:
 	
 	on_escape()
 
-
 func _on_pause_menu_game_resume_requested() -> void:
 	resume_world()
 
 func _on_pause_menu_game_quit_requested() -> void:
 	request_main_menu()
+
+
+func _on_pause_menu_menu_focused(active: bool) -> void:
+	pause_menu_focused = active
