@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://57a2b2uegw0g"
-path="res://.godot/imported/pressure_plate.png-2de61bb804cd81e313f90dbbdea1dfb2.ctex"
+uid="uid://btv48cqxv6hyh"
+path="res://.godot/imported/lever.png-89c1d49f95bf865022505ee302d49ba8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pressure_plate.png"
-dest_files=["res://.godot/imported/pressure_plate.png-2de61bb804cd81e313f90dbbdea1dfb2.ctex"]
+source_file="res://assets/sprites/lever.png"
+dest_files=["res://.godot/imported/lever.png-89c1d49f95bf865022505ee302d49ba8.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://37ruhgser8wr"
-path="res://.godot/imported/portal_small.png-eb06cf930f4683fd47a9f90cd21cc702.ctex"
+uid="uid://57a2b2uegw0g"
+path="res://.godot/imported/pressure_plate.png-70c157510847c7ac524e7a249a04a240.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portal_small.png"
-dest_files=["res://.godot/imported/portal_small.png-eb06cf930f4683fd47a9f90cd21cc702.ctex"]
+source_file="res://assets/sprites/pressure_plate.png"
+dest_files=["res://.godot/imported/pressure_plate.png-70c157510847c7ac524e7a249a04a240.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgbkhrrektn71"
-path="res://.godot/imported/moving_platform.png-0809dc35791fc1676f912950d32326b7.ctex"
+uid="uid://nvwk8lxrq0m1"
+path="res://.godot/imported/gate.png-a0d7fdee8dad2cf4c92779dc2ab32fef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/moving_platform.png"
-dest_files=["res://.godot/imported/moving_platform.png-0809dc35791fc1676f912950d32326b7.ctex"]
+source_file="res://assets/sprites/gate.png"
+dest_files=["res://.godot/imported/gate.png-a0d7fdee8dad2cf4c92779dc2ab32fef.ctex"]
 
 [params]
 

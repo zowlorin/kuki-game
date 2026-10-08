@@ -4,8 +4,7 @@ signal zone_changed(zone: SafeZone)
 
 func on_zone_enter(zone: SafeZone):
 	zone_changed.emit(zone)
-	
-	print(zone)
+
 
 func _ready():
 	var placeholder_zone: SafeZone

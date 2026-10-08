@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d1cggey58xuwd"]
 
 [ext_resource type="Script" uid="uid://fyknb0uu7pb5" path="res://gameplay/door.gd" id="1_qi5gr"]
-[ext_resource type="Texture2D" uid="uid://37ruhgser8wr" path="res://assets/portal_small.png" id="2_18640"]
+[ext_resource type="Texture2D" uid="uid://37ruhgser8wr" path="res://assets/sprites/portal_small.png" id="2_18640"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8bcou"]
 radius = 20.0
