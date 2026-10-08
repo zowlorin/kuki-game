@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bgwov5atrspey"]
 
-[ext_resource type="Script" path="res://gameplay/portal_small.gd" id="1_my3k0"]
-[ext_resource type="Texture2D" uid="uid://37ruhgser8wr" path="res://assets/portal_small.png" id="1_piged"]
+[ext_resource type="Script" uid="uid://c0lqslwm8cbts" path="res://components/portal_small.gd" id="1_my3k0"]
+[ext_resource type="Texture2D" uid="uid://37ruhgser8wr" path="res://assets/sprites/portal_small.png" id="1_piged"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8bcou"]
 radius = 20.0

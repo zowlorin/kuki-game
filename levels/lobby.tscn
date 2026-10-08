@@ -9,13 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://b6btr6xegcrwj" path="res://assets/tilesets/carameltop.png" id="8_6htc0"]
 [ext_resource type="Script" uid="uid://02obta6p50c0" path="res://levels/portal_handler.gd" id="9_fj1tp"]
 [ext_resource type="Texture2D" uid="uid://bpupo1u5lydj6" path="res://assets/tilesets/caramelcenter.png" id="9_mip8o"]
-[ext_resource type="PackedScene" uid="uid://r82ip1jvly4x" path="res://gameplay/portal.tscn" id="9_ui1w4"]
+[ext_resource type="PackedScene" uid="uid://r82ip1jvly4x" path="res://components/portal.tscn" id="9_ui1w4"]
 [ext_resource type="Texture2D" uid="uid://digffvqfi2iyq" path="res://assets/tilesets/choco_bricks.png" id="10_7i7hg"]
 [ext_resource type="Texture2D" uid="uid://sx10eg47p3mk" path="res://assets/tilesets/red_crystals_hazard.png" id="10_mip8o"]
 [ext_resource type="Texture2D" uid="uid://bbkypf42o0s2h" path="res://assets/tilesets/choco_bricks_shadows.png" id="11_6htc0"]
 [ext_resource type="Texture2D" uid="uid://blvls26mx8m0f" path="res://assets/tilesets/kuki_ground.png" id="13_fqd37"]
 [ext_resource type="Script" uid="uid://bmdxml1isrn2k" path="res://handlers/safe_zones.gd" id="15_8rd0g"]
-[ext_resource type="PackedScene" uid="uid://btc8woaxqjc1l" path="res://gameplay/safe_zone.tscn" id="16_8rd0g"]
+[ext_resource type="PackedScene" uid="uid://btc8woaxqjc1l" path="res://components/safe_zone.tscn" id="16_8rd0g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mip8o"]
 texture = ExtResource("11_6htc0")

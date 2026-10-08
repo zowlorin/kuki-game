@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d8o7asq8gyif"]
 
-[ext_resource type="Script" uid="uid://jb28tikeu73h" path="res://gameplay/gate.gd" id="1_2q2hm"]
+[ext_resource type="Script" uid="uid://jb28tikeu73h" path="res://components/gate.gd" id="1_2q2hm"]
 [ext_resource type="Texture2D" uid="uid://nvwk8lxrq0m1" path="res://assets/sprites/gate.png" id="1_nlfn1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nlfn1"]
