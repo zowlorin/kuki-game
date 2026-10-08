@@ -8,6 +8,8 @@ class_name PlayerBounce
 @onready var bounce_frame = Time.get_unix_time_from_system()
 @onready var collision = player.get_last_slide_collision()
 
+@onready var input_frozen: bool = false
+
 func enter() -> void:
 	player.get_node("AnimatedSprite2D").play("jump")
 	
@@ -18,6 +20,9 @@ func physics_update(_delta: float) -> void:
 	var move_direction = Input.get_axis("move_left", "move_right")
 	var curr_frame = Time.get_unix_time_from_system()
 	
+	if input_frozen:
+		move_direction = 0
+	
 	if (curr_frame - bounce_frame) >= player.bounce_duration or collision == null:
 		state_machine.transition_to("Fall")
 	
@@ -25,3 +30,7 @@ func physics_update(_delta: float) -> void:
 	
 	player.velocity.x = bounce_vel.x + move_direction * player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed
 	player.velocity.y = bounce_vel.y
+
+
+func _on_player_input_freezed(active: bool) -> void:
+	input_frozen = active

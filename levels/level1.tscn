@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://d8o7asq8gyif" path="res://gameplay/gate.tscn" id="16_a5s8o"]
 [ext_resource type="PackedScene" uid="uid://qwaaokt33dau" path="res://gameplay/moving_platform.tscn" id="17_ls4ot"]
 [ext_resource type="Script" uid="uid://bmdxml1isrn2k" path="res://handlers/safe_zones.gd" id="18_l7nqg"]
-[ext_resource type="Script" uid="uid://ikddj1swksf5" path="res://gameplay/safe_zone.gd" id="18_tx362"]
+[ext_resource type="PackedScene" uid="uid://btc8woaxqjc1l" path="res://gameplay/safe_zone.tscn" id="19_l7nqg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ui1w4"]
 texture = ExtResource("7_ls4ot")
@@ -109,6 +109,9 @@ _data = {
 &"movement": SubResource("Animation_ls4ot")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3owqy"]
+size = Vector2(138, 20)
+
 [node name="Level" type="Node2D" unique_id=1638046035]
 script = ExtResource("1_yydhl")
 
@@ -181,6 +184,7 @@ layer_0/tile_data = PackedInt32Array(65501, 0, 0, 131037, 0, 0, 196573, 0, 0, 26
 script = ExtResource("10_w7ck5")
 
 [node name="Portal" parent="PortalHandler" unique_id=1857128004 instance=ExtResource("11_2nn5w")]
+position = Vector2(0, -33)
 target_level = "uid://ci0mg4cw3htbo"
 
 [node name="Doors" type="Node2D" parent="." unique_id=1030373650]
@@ -226,10 +230,12 @@ autoplay = &"movement"
 [node name="SafeZones" type="Node2D" parent="." unique_id=626739451]
 script = ExtResource("18_l7nqg")
 
-[node name="SafeZone" type="Area2D" parent="SafeZones" unique_id=2356192]
-script = ExtResource("18_tx362")
+[node name="SafeZone" parent="SafeZones" unique_id=1303144582 instance=ExtResource("19_l7nqg")]
+position = Vector2(92, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZones/SafeZone" unique_id=1831110680]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZones/SafeZone" unique_id=1588592576]
+position = Vector2(24, 0)
+shape = SubResource("RectangleShape2D_3owqy")
 
 [connection signal="level_change_requested" from="PortalHandler" to="." method="_on_portal_handler_level_change_requested"]
-[connection signal="body_entered" from="SafeZones/SafeZone" to="SafeZones/SafeZone" method="_on_body_entered"]
+[connection signal="zone_changed" from="SafeZones" to="." method="_on_safe_zones_zone_changed"]

@@ -7,6 +7,8 @@ class_name PlayerJump
 @onready var input_listener: InputListener = owner.get_node("InputListener")
 @onready var sprite : AnimatedSprite2D = player.get_node("AnimatedSprite2D")
 
+@onready var input_frozen: bool = false
+
 func enter() -> void:
 	sprite.play("jump")
 	AudioManager.play("JumpSFX")
@@ -30,7 +32,7 @@ func physics_update(_delta: float) -> void:
 		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
 			state_machine.transition_to("Bounce")
 	
-	if player.can_dash and (Input.is_action_just_pressed("dash") or input_listener.get_buffer("DashBuffer").is_buffered()):
+	if player.can_dash and not input_frozen and (Input.is_action_just_pressed("dash") or input_listener.get_buffer("DashBuffer").is_buffered()):
 		input_listener.get_buffer("DashBuffer").consume()
 		state_machine.transition_to("Dash")
 	
@@ -39,3 +41,7 @@ func physics_update(_delta: float) -> void:
 
 func update(_delta: float) -> void:
 	sprite.flip_h = player.prev_direction < 0
+
+
+func _on_player_input_freezed(active: bool) -> void:
+	input_frozen = active

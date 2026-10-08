@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://s5orqn6p1mrb" path="res://gameplay/player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://ds1pinghuc23o" path="res://buffering/input_listener.gd" id="2_s0fd6"]
-[ext_resource type="Script" uid="uid://cwubmbexatqve" path="res://states/state_machine.gd" id="2_wfdkp"]
 [ext_resource type="Texture2D" uid="uid://kearqfjv7d3x" path="res://assets/kuki/kukiidle.png" id="2_ysoui"]
 [ext_resource type="Script" uid="uid://bvmwce10nlbbq" path="res://states/player_states/idle_state.gd" id="3_dxbr5"]
 [ext_resource type="Texture2D" uid="uid://663tf5l2fynw" path="res://assets/kuki/kukirun.png" id="3_jriu6"]
 [ext_resource type="Script" uid="uid://b6veahyows23l" path="res://states/player_states/fall_state.gd" id="3_ua3nb"]
+[ext_resource type="Script" uid="uid://d3ndd3ah27l5r" path="res://gameplay/player_state_machine.gd" id="3_vuvcc"]
 [ext_resource type="Script" uid="uid://eeig41naa2on" path="res://states/player_states/walk_state.gd" id="4_dxbr5"]
 [ext_resource type="Script" uid="uid://bejdybeknpawu" path="res://states/player_states/jump_state.gd" id="5_0bayx"]
 [ext_resource type="Script" uid="uid://d0b2ys7jcq6pr" path="res://states/player_states/dash_state.gd" id="7_iqb12"]
@@ -16,7 +16,11 @@
 [ext_resource type="Texture2D" uid="uid://k3g6d6wmfmt2" path="res://assets/kuki/kukiairdash.png" id="13_s0fd6"]
 [ext_resource type="Texture2D" uid="uid://dw1dnh5v5ikd3" path="res://assets/kuki/kukijump.png" id="14_b2a7g"]
 [ext_resource type="Curve" uid="uid://b5qid14tkfrq5" path="res://gameplay/particle_curve.tres" id="15_b2a7g"]
+[ext_resource type="Script" uid="uid://cyq2n58d5qt3b" path="res://gameplay/coyote_timer.gd" id="16_jnkla"]
+[ext_resource type="Script" uid="uid://u5y8ex1si8ol" path="res://gameplay/hurtbox.gd" id="16_vuvcc"]
 [ext_resource type="Texture2D" uid="uid://bunpls0ibssdd" path="res://assets/kuki/kukidashfx.png" id="17_0qvvg"]
+[ext_resource type="Script" uid="uid://bdvm572ikn24u" path="res://gameplay/dash_invinciblity.gd" id="17_vuvcc"]
+[ext_resource type="Script" uid="uid://dqyd600g5hvuy" path="res://gameplay/dash_cooldown.gd" id="18_l1csw"]
 
 [sub_resource type="Curve" id="Curve_onrkg"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.39320388, 1), 0.0, 0.0, 0, 0, Vector2(0.97959197, 0), 0.0, 0.0, 0, 0]
@@ -411,7 +415,7 @@ script = ExtResource("2_s0fd6")
 metadata/_custom_type_script = "uid://ds1pinghuc23o"
 
 [node name="StateMachine" type="Node" parent="." unique_id=346210150 node_paths=PackedStringArray("initial_state")]
-script = ExtResource("2_wfdkp")
+script = ExtResource("3_vuvcc")
 initial_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://cwubmbexatqve"
 
@@ -473,7 +477,8 @@ shape = SubResource("RectangleShape2D_ysoui")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=426756013]
 collision_layer = 2
-collision_mask = 260
+collision_mask = 4
+script = ExtResource("16_vuvcc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=713654505]
 position = Vector2(0, -11.5)
@@ -485,16 +490,27 @@ shape = SubResource("RectangleShape2D_ysoui")
 process_callback = 0
 wait_time = 0.15
 one_shot = true
+script = ExtResource("16_jnkla")
+
+[node name="DeathTimer" type="Timer" parent="Helpers" unique_id=1892629423]
+process_callback = 0
+one_shot = true
+
+[node name="RespawnTimer" type="Timer" parent="Helpers" unique_id=716244998]
+process_callback = 0
+one_shot = true
 
 [node name="DashInvinciblity" type="Timer" parent="Helpers" unique_id=418403827]
 process_callback = 0
 wait_time = 0.3
 one_shot = true
+script = ExtResource("17_vuvcc")
 
 [node name="DashCooldown" type="Timer" parent="Helpers" unique_id=878752131]
 process_callback = 0
 wait_time = 0.4
 one_shot = true
+script = ExtResource("18_l1csw")
 
 [node name="LandDashFX" type="AnimatedSprite2D" parent="Helpers" unique_id=2073285770]
 texture_filter = 1
@@ -542,8 +558,25 @@ scale_amount_curve = ExtResource("15_b2a7g")
 
 [node name="Health" type="Node2D" parent="." unique_id=1261244864]
 
+[connection signal="died" from="." to="StateMachine" method="_on_player_died"]
+[connection signal="freezed" from="." to="StateMachine" method="_on_player_freezed"]
+[connection signal="freezed" from="." to="Helpers/CoyoteTimer" method="_on_player_freezed"]
+[connection signal="freezed" from="." to="Helpers/DashInvinciblity" method="_on_player_freezed"]
+[connection signal="freezed" from="." to="Helpers/DashCooldown" method="_on_player_freezed"]
+[connection signal="input_freezed" from="." to="StateMachine" method="_on_player_input_freezed"]
+[connection signal="input_freezed" from="." to="StateMachine/Fall" method="_on_player_input_freezed"]
+[connection signal="input_freezed" from="." to="StateMachine/Idle" method="_on_player_input_freezed"]
+[connection signal="input_freezed" from="." to="StateMachine/Walk" method="_on_player_input_freezed"]
+[connection signal="input_freezed" from="." to="StateMachine/Jump" method="_on_player_input_freezed"]
+[connection signal="input_freezed" from="." to="StateMachine/Dash" method="_on_player_input_freezed"]
+[connection signal="input_freezed" from="." to="StateMachine/Stagger" method="_on_player_input_freezed"]
+[connection signal="input_freezed" from="." to="StateMachine/Bounce" method="_on_player_input_freezed"]
+[connection signal="respawned" from="." to="StateMachine" method="_on_player_respawned"]
 [connection signal="area_entered" from="Bouncebox" to="." method="_on_bouncebox_area_entered"]
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="body_entered" from="Hurtbox" to="Hurtbox" method="_on_body_entered"]
+[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
 [connection signal="timeout" from="Helpers/CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="Helpers/DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="Helpers/RespawnTimer" to="." method="_on_respawn_timer_timeout"]
 [connection signal="timeout" from="Helpers/DashInvinciblity" to="." method="_on_dash_invinciblity_timeout"]
 [connection signal="timeout" from="Helpers/DashCooldown" to="." method="_on_dash_cooldown_timeout"]

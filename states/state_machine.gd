@@ -8,9 +8,9 @@ extends Node
 var current_state: State
 var prev_state: State
 
-func _ready() -> void:
-	await owner.ready
- 
+@onready var frozen: bool = false
+
+func on_start():
 	if initial_state == null:
 		push_error("StateMachine has no initial state assigned.")
 		return
@@ -20,13 +20,24 @@ func _ready() -> void:
 	
 	current_state = initial_state
 	current_state.enter()
+	
+func _ready() -> void:
+	await owner.ready
+	
+	on_start()
  
 func _physics_process(delta: float) -> void:
+	if (frozen):
+		return
+		
 	current_state.physics_update(delta)
 	
 	$Label.global_position = owner.global_position
  
 func _process(delta: float) -> void:
+	if (frozen):
+		return
+		
 	current_state.update(delta)
 	
 	$Label.text = current_state.name
@@ -43,3 +54,6 @@ func transition_to(target_state_name: String) -> void:
 	current_state.exit()
 	current_state = target_state
 	current_state.enter()
+	
+func set_freeze(active: bool):
+	frozen = active

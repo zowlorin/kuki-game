@@ -9,6 +9,8 @@ class_name PlayerStagger
 @onready var input_listener: InputListener = owner.get_node("InputListener")
 @onready var sprite : AnimatedSprite2D = player.get_node("AnimatedSprite2D")
 
+@onready var input_frozen: bool = false
+
 func enter() -> void:
 	sprite.play("stagger")
 	
@@ -21,18 +23,24 @@ func exit() -> void:
 
 func physics_update(_delta: float) -> void:
 	var bouncy_nodes = get_tree().get_nodes_in_group("Bouncy")
+	
+	if (input_frozen):
+		player.velocity.x = 0
+		state_machine.transition_to("Idle")
+		
+		
 	if player.get_last_slide_collision() != null:
 		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
 			state_machine.transition_to("Bounce")
 	
-	if player.is_on_floor() and (abs(Input.get_axis("move_left", "move_right")) > 0 or player.get_platform_velocity() != Vector2.ZERO or input_listener.get_buffer("MoveLeftBuffer").is_buffered() or input_listener.get_buffer("MoveRightBuffer").is_buffered()):
+	if player.is_on_floor() and not input_frozen and (abs(Input.get_axis("move_left", "move_right")) > 0 or player.get_platform_velocity() != Vector2.ZERO or input_listener.get_buffer("MoveLeftBuffer").is_buffered() or input_listener.get_buffer("MoveRightBuffer").is_buffered()):
 		input_listener.get_buffer("MoveLeftBuffer").consume()
 		input_listener.get_buffer("MoveRightBuffer").consume()
 		state_machine.transition_to("Walk")
-	elif (player.is_on_floor() or player.on_coyote) and (Input.is_action_just_pressed("jump") or input_listener.get_buffer("JumpBuffer").is_buffered()):
+	elif (player.is_on_floor() or player.on_coyote) and not input_frozen and (Input.is_action_just_pressed("jump") or input_listener.get_buffer("JumpBuffer").is_buffered()):
 		input_listener.get_buffer("JumpBuffer").consume()
 		state_machine.transition_to("Jump")
-	elif player.can_dash and (Input.is_action_just_pressed("dash") or input_listener.get_buffer("DashBuffer").is_buffered()):
+	elif player.can_dash and not input_frozen and (Input.is_action_just_pressed("dash") or input_listener.get_buffer("DashBuffer").is_buffered()):
 		input_listener.get_buffer("DashBuffer").consume()
 		state_machine.transition_to("Dash")
 
@@ -41,3 +49,7 @@ func update(_delta: float) -> void:
 
 func switch_state() -> void:
 	state_machine.transition_to("Idle")
+
+
+func _on_player_input_freezed(active: bool) -> void:
+	input_frozen = active

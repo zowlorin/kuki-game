@@ -1,5 +1,15 @@
 extends CharacterBody2D
 
+class_name Player
+
+signal freezed(active: bool)
+signal input_freezed(active: bool)
+
+signal respawned
+signal died
+
+signal safe_zone_requested
+
 @export_category("Vertical Motion")
 @export var jump_curve: Curve
 @export var jump_duration: float = 2.0
@@ -7,9 +17,6 @@ extends CharacterBody2D
 @export var fall_curve: Curve
 @export var fall_duration: float = 2.0
 @export var fall_speed: float = 400.0
-
-
-
 
 @export_category("Horizontal Motion")
 @export var accel_curve: Curve
@@ -22,8 +29,6 @@ extends CharacterBody2D
 @export var dash_speed: float = 500.0
 @export var dash_duration: float = 0.3
 @export var max_dash_cooldown : float = 0.4
-
-
 
 @export_category("Miscellanous")
 @export var bounce_curve: Curve
@@ -47,8 +52,35 @@ extends CharacterBody2D
 @onready var helpers: Node = $Helpers
 @onready var state_machine: StateMachine = $StateMachine
 
+@onready var velocity_snapshot: Vector2 = Vector2.ZERO
+
+@onready var frozen: bool = false:
+	set(x):
+		if (frozen == x):
+			return
+		frozen = x
+		if (frozen):
+			velocity_snapshot = velocity
+			velocity = Vector2.ZERO
+		else:
+			velocity = velocity_snapshot
+		freezed.emit(frozen)
+		
+@onready var input_frozen: bool = false:
+	set(x):
+		if (input_frozen == x):
+			return
+		input_frozen = x
+		input_freezed.emit(x)
+		
+@onready var respawn_target: SafeZone
+
+
 func _physics_process(_delta: float) -> void:
 	var move_direction: float = Input.get_axis("move_left", "move_right")
+	
+	if (input_frozen):
+		move_direction = 0
 	
 	if abs(move_direction) > 0:
 		prev_direction = move_direction
@@ -70,5 +102,38 @@ func _on_dash_invinciblity_timeout() -> void:
 func _on_dash_cooldown_timeout() -> void:
 	can_dash = true
 
-func _on_hurtbox_area_entered(area: Area2D) -> void:
-	print(area)
+func on_respawn():
+	input_frozen = false
+	
+	velocity = Vector2.ZERO
+
+func on_death():
+	input_frozen = true
+	
+	frozen = true
+	
+	velocity = Vector2.ZERO
+	
+	died.emit()
+	
+	$Helpers/DeathTimer.start()
+	
+func _on_hurtbox_hurt() -> void:
+	on_death()
+
+func _on_respawn_timer_timeout() -> void:
+	on_respawn()
+
+func _on_respawn_handler_safe_zone_granted(target: SafeZone) -> void:
+	respawn_target = target
+	
+	if respawn_target:
+		global_position = respawn_target.global_position
+	
+	velocity = Vector2.ZERO
+	frozen = false
+
+func _on_death_timer_timeout() -> void:
+	$Helpers/RespawnTimer.start()
+	
+	safe_zone_requested.emit()

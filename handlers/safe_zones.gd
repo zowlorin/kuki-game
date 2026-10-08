@@ -1,12 +1,23 @@
 extends Node2D
 
-@onready var stored_recall_position: Vector2 = Vector2.ZERO
+signal zone_changed(zone: SafeZone)
 
-func on_zone_enter(recall_position: Vector2):
-	stored_recall_position = recall_position
+func on_zone_enter(zone: SafeZone):
+	zone_changed.emit(zone)
+	
+	print(zone)
 
 func _ready():
+	var placeholder_zone: SafeZone
+	
 	for child in get_children():
 		if (child is not SafeZone):
 			continue
 		child.connect("player_entered", on_zone_enter)
+		placeholder_zone = child
+		
+	if not placeholder_zone:
+		printerr("No placeholder zone found?")
+		return
+		
+	zone_changed.emit(placeholder_zone)

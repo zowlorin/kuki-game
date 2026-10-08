@@ -1,13 +1,18 @@
 extends Node2D
 
+signal respawn_target_changed(target: SafeZone)
+
 @onready var curr_level = $Level
 
 @onready var level_change_available: bool = false
 
 @onready var level_queued: String
 
+func on_respawn_target_changed(target: SafeZone):
+	respawn_target_changed.emit(target)
 func connect_level(level: Level):
 	level.connect("level_change_requested",_receive_level_change_request)
+	level.connect("respawn_target_changed",on_respawn_target_changed)
 	
 func queue_level(level_path: String):
 	level_queued = level_path

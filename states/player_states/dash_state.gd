@@ -12,6 +12,8 @@ class_name PlayerDash
 @onready var state_machine: StateMachine = get_parent()
 @onready var input_listener: InputListener = owner.get_node("InputListener")
 
+@onready var input_frozen: bool = false
+
 func enter() -> void:
 	AudioManager.play("DashSFX")
 	if player.is_on_floor():
@@ -55,3 +57,7 @@ func physics_update(_delta: float) -> void:
 	
 	player.fall_frame = player.dash_frame
 	player.velocity.y = (1 - (player.fall_curve.sample((curr_frame - player.dash_frame) / player.fall_duration))) * player.fall_speed
+
+
+func _on_player_input_freezed(active: bool) -> void:
+	input_frozen = active
