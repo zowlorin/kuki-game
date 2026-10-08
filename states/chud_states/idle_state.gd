@@ -20,7 +20,6 @@ func physics_update(_delta: float) -> void:
 	raycast.look_at(target)
 	
 	if !raycast.is_colliding() and prev_proximity:
-		print("hey")
 		idle_frame = Time.get_unix_time_from_system()
 	
 	prev_proximity = raycast.is_colliding()
