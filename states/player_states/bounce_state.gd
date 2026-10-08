@@ -16,6 +16,11 @@ func enter() -> void:
 	collision = player.get_last_slide_collision()
 	bounce_frame = Time.get_unix_time_from_system()
 
+func exit() -> void:
+	if collision.get_collider().name == "ChudBody":
+		var body = collision.get_collider()
+		body.owner.get_node("AnimatedSprite2D").play("idle")
+
 func physics_update(_delta: float) -> void:
 	var move_direction = Input.get_axis("move_left", "move_right")
 	var curr_frame = Time.get_unix_time_from_system()

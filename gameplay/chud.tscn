@@ -185,40 +185,42 @@ radius = 31.0
 height = 62.0
 
 [sub_resource type="Animation" id="Animation_b3a0b"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"wake"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-
-[sub_resource type="Animation" id="Animation_v0pnj"]
-resource_name = "h_bounce"
-length = 0.3750125
+length = 0.2500125
+loop_mode = 1
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 1]
+}
+
+[sub_resource type="Animation" id="Animation_v0pnj"]
+resource_name = "h_bounce"
+length = 0.5000125
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -230,14 +232,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.125, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 3]
+"values": [2, 0, 3]
 }
 
 [sub_resource type="Animation" id="Animation_ts62h"]
@@ -247,7 +249,7 @@ step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -259,14 +261,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.125, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [1, 3]
+"values": [2, 1, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q1xlo"]
@@ -307,8 +309,8 @@ metadata/_custom_type_script = "uid://dd5avo1xroyk3"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=152524850]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_710pl")
-animation = &"wake"
-frame = 4
+animation = &"idle"
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1960142244]
 position = Vector2(7, 4)
@@ -329,8 +331,8 @@ physics_material_override = SubResource("PhysicsMaterial_q0l2x")
 position = Vector2(3, 9)
 shape = SubResource("CapsuleShape2D_0qvvg")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1992462994]
-root_node = NodePath("../Helpers")
-libraries/ = SubResource("AnimationLibrary_q1xlo")
+[node name="SleepTimer" type="Timer" parent="." unique_id=645689754]
+wait_time = 3.0
 
-[node name="Helpers" type="Node" parent="." unique_id=622358832]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1992462994]
+libraries/ = SubResource("AnimationLibrary_q1xlo")
