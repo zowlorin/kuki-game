@@ -1,18 +1,5 @@
-extends Area2D
+extends TriggerMech
 
-class_name TriggerMech
-
-signal on_triggered(active: bool)
-
-@onready var player_interacting: bool = false
-@onready var active: bool = false
-
-func _on_body_entered(body: Node2D) -> void:
-	player_interacting=true
-
-func _on_body_exited(body: Node2D) -> void:
-	player_interacting=false
-	
 func trigger():
 	active = !active
 	
@@ -38,7 +25,5 @@ func _input(event: InputEvent) -> void:
 	
 	if (!ev.keycode == Key.KEY_E):
 		return
-		
-		
 		
 	on_interact()

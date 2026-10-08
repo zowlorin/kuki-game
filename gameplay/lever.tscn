@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bkw1a51ob5sl4"]
 
 [ext_resource type="Texture2D" uid="uid://btv48cqxv6hyh" path="res://assets/lever.png" id="1_jrbd6"]
-[ext_resource type="Script" uid="uid://dryvspb4hkna0" path="res://gameplay/lever.gd" id="1_k3r01"]
+[ext_resource type="Script" uid="uid://chtdrt4a7f1y2" path="res://gameplay/lever.gd" id="1_k3r01"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k3r01"]
 radius = 14.0
