@@ -12,10 +12,12 @@
 [ext_resource type="Script" uid="uid://d0b2ys7jcq6pr" path="res://states/player_states/dash_state.gd" id="7_iqb12"]
 [ext_resource type="Texture2D" uid="uid://fjyoetr8gb5u" path="res://assets/kuki/kukidash.png" id="8_1xfx0"]
 [ext_resource type="Script" uid="uid://ki816ac8cyw3" path="res://states/player_states/bounce_state.gd" id="10_0qvvg"]
+[ext_resource type="Script" uid="uid://hsyefgfjiomf" path="res://states/player_states/push_state.gd" id="11_07ejr"]
 [ext_resource type="Script" uid="uid://byhaipkgstwjb" path="res://states/player_states/stagger_state.gd" id="12_2wuqc"]
 [ext_resource type="Texture2D" uid="uid://k3g6d6wmfmt2" path="res://assets/kuki/kukiairdash.png" id="13_s0fd6"]
 [ext_resource type="Texture2D" uid="uid://dw1dnh5v5ikd3" path="res://assets/kuki/kukijump.png" id="14_b2a7g"]
 [ext_resource type="Curve" uid="uid://b5qid14tkfrq5" path="res://assets/resources/particle_curve.tres" id="15_b2a7g"]
+[ext_resource type="Texture2D" uid="uid://4eud7o3t4ajh" path="res://assets/kuki/kukipush.png" id="15_l1csw"]
 [ext_resource type="Script" uid="uid://cyq2n58d5qt3b" path="res://gameplay/player_expansion/coyote_timer.gd" id="16_jnkla"]
 [ext_resource type="Script" uid="uid://u5y8ex1si8ol" path="res://gameplay/player_expansion/hurtbox.gd" id="16_vuvcc"]
 [ext_resource type="Texture2D" uid="uid://bunpls0ibssdd" path="res://assets/kuki/kukidashfx.png" id="17_0qvvg"]
@@ -129,6 +131,38 @@ region = Rect2(64, 19, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvbka"]
 atlas = ExtResource("14_b2a7g")
 region = Rect2(96, 19, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iofbv"]
+atlas = ExtResource("15_l1csw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnl71"]
+atlas = ExtResource("15_l1csw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x7b8"]
+atlas = ExtResource("15_l1csw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufjif"]
+atlas = ExtResource("15_l1csw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qumcx"]
+atlas = ExtResource("15_l1csw")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ep42"]
+atlas = ExtResource("15_l1csw")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4372"]
+atlas = ExtResource("15_l1csw")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba7ml"]
+atlas = ExtResource("15_l1csw")
+region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qaaio"]
 atlas = ExtResource("14_b2a7g")
@@ -287,6 +321,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_iofbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnl71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7x7b8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufjif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qumcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ep42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4372")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba7ml")
+}],
+"loop": 1,
+"name": &"push",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_qaaio")
 }, {
 "duration": 1.0,
@@ -411,11 +474,6 @@ dash_speed = 250.0
 bounce_curve = SubResource("Curve_0qvvg")
 bounce_speed = 600.0
 
-[node name="View" type="RayCast2D" parent="." unique_id=353482727]
-position = Vector2(0, -5)
-target_position = Vector2(25, 0)
-collision_mask = 17
-
 [node name="InputListener" type="Node" parent="." unique_id=395743567]
 script = ExtResource("2_s0fd6")
 metadata/_custom_type_script = "uid://ds1pinghuc23o"
@@ -464,11 +522,16 @@ metadata/_custom_type_script = "uid://byhaipkgstwjb"
 script = ExtResource("10_0qvvg")
 metadata/_custom_type_script = "uid://ki816ac8cyw3"
 
+[node name="Push" type="Node" parent="StateMachine" unique_id=2051050965]
+script = ExtResource("11_07ejr")
+metadata/_custom_type_script = "uid://hsyefgfjiomf"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1204224882]
 texture_filter = 1
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_710pl")
-animation = &"dash"
+animation = &"push"
+frame_progress = 0.7038449
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=741499986]
 position = Vector2(0, -11.5)

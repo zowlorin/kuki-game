@@ -17,4 +17,4 @@ func physics_update(_delta: float) -> void:
 	raycast.look_at(target)
 	
 	if raycast.is_colliding():
-		state_machine.transition_to("Idle")
+		state_machine.transition_to("Wake")

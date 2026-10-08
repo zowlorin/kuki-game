@@ -88,18 +88,8 @@ func _physics_process(_delta: float) -> void:
 	if abs(move_direction) > 0:
 		prev_direction = move_direction
 	
-	$View.target_position.x = prev_direction * view_length
-	
 	was_on_floor = is_on_floor()
 	move_and_slide()
-	
-	for i in get_slide_collision_count():
-		var collision := get_slide_collision(i)
-		var collider := collision.get_collider()
-		
-		if collider is RigidBody2D:
-			collider.apply_central_impulse(-collision.get_normal() * push_force)
-			velocity.x = 0
 	
 	if was_on_floor != is_on_floor() and $Helpers/CoyoteTimer.is_stopped():
 		$Helpers/CoyoteTimer.start()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5uiu2mt8mae7"
-path="res://.godot/imported/chudsnore.png-e064b5c7cb1ce92f687417b3bc964a2e.ctex"
+uid="uid://ct1efjqy50cuj"
+path="res://.godot/imported/chudlife.png-66310d4b0eb302c18d48351b139d9978.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/chud/chudsnore.png"
-dest_files=["res://.godot/imported/chudsnore.png-e064b5c7cb1ce92f687417b3bc964a2e.ctex"]
+source_file="res://assets/chud/chudlife.png"
+dest_files=["res://.godot/imported/chudlife.png-66310d4b0eb302c18d48351b139d9978.ctex"]
 
 [params]
 

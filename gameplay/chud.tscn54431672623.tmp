@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://cwubmbexatqve" path="res://states/state_machine.gd" id="2_x7ym0"]
 [ext_resource type="Script" uid="uid://ddb2mpjjmn4pw" path="res://states/chud_states/idle_state.gd" id="3_vfhmp"]
 [ext_resource type="Script" uid="uid://deipeelp2ta4r" path="res://states/chud_states/sleep_state.gd" id="4_b3a0b"]
-[ext_resource type="Script" uid="uid://dd5avo1xroyk3" path="res://states/chud_states/wake_state.gd" id="5_b3a0b"]
 [ext_resource type="Texture2D" uid="uid://ct1efjqy50cuj" path="res://assets/chud/chudlife.png" id="6_vfhmp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vfhmp"]
@@ -74,23 +73,23 @@ region = Rect2(1248, 28, 96, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mqdyr"]
 atlas = ExtResource("6_vfhmp")
-region = Rect2(1344, 3, 96, 105)
+region = Rect2(1344, 13, 96, 95)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uv10k"]
 atlas = ExtResource("6_vfhmp")
-region = Rect2(1440, 3, 96, 105)
+region = Rect2(1440, 13, 96, 95)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epn8k"]
 atlas = ExtResource("6_vfhmp")
-region = Rect2(1536, 3, 96, 105)
+region = Rect2(1536, 13, 96, 95)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oagbj"]
-atlas = ExtResource("1_eb0tk")
-region = Rect2(0, 0, 96, 80)
+atlas = ExtResource("6_vfhmp")
+region = Rect2(1632, 13, 96, 95)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wkn5v"]
-atlas = ExtResource("1_eb0tk")
-region = Rect2(96, 0, 96, 80)
+atlas = ExtResource("6_vfhmp")
+region = Rect2(1728, 13, 96, 95)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_710pl"]
 animations = [{
@@ -214,15 +213,10 @@ metadata/_custom_type_script = "uid://ddb2mpjjmn4pw"
 script = ExtResource("4_b3a0b")
 metadata/_custom_type_script = "uid://deipeelp2ta4r"
 
-[node name="Wake" type="Node" parent="StateMachine" unique_id=1856188450]
-script = ExtResource("5_b3a0b")
-metadata/_custom_type_script = "uid://dd5avo1xroyk3"
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=152524850]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_710pl")
 animation = &"wake"
-frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1960142244]
 position = Vector2(7, 4)
