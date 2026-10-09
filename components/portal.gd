@@ -12,7 +12,7 @@ signal level_change_requested(target_level: String, target_id: String)
 @export_file("*.tscn") var target_level: String
 
 func _ready() -> void:
-	if (!target_id|| !id || !target_level):
+	if ((!target_id|| !id || !target_level) && enabled):
 		enabled = false
 		visible = false
 		print("portal kinda cooked, disabling it")

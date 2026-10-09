@@ -21,6 +21,8 @@ class_name PlayerCap
 
 @export var max_hits: int = 2
 			
+			
+			
 func deactivate():
 	active = false
 	hits = 0
@@ -33,6 +35,7 @@ func deactivate():
 		
 func _ready():
 	active = false
+	visible = false
 
 func throw(position: Vector2, direction: float):
 	global_position = position
