@@ -11,7 +11,6 @@ signal on_triggered(active: bool)
 func _on_body_entered(body: Node2D) -> void:
 	target = body
 	player_interacting=true
-	print(body)
 
 func _on_body_exited(body: Node2D) -> void:
 	player_interacting=false
