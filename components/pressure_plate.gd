@@ -4,11 +4,13 @@ extends TriggerMech
 
 @onready var prev_interacting: bool = false
 
+@onready var pressed: bool = false
+
 func _ready():
 	$Timer.wait_time = hold_duration
 
 func trigger():
-	active = player_interacting
+	active = pressed
 	
 	$Sprite2D.frame = 1 if active else 0
 	
@@ -19,10 +21,11 @@ func _process(delta: float) -> void:
 		if (curr_interacting_size == 0):
 			$Timer.start()
 		else:
+			pressed = true
 			trigger()
 		
-	prev_interacting = player_interacting
-
+	prev_interacting_size = curr_interacting_size
 
 func _on_timer_timeout() -> void:
+	pressed = false
 	trigger()
