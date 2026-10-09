@@ -36,7 +36,7 @@ func physics_update(_delta: float) -> void:
 	if (input_frozen):
 		move_direction = 0
 	
-	player.velocity.x = move_direction * player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed
+	player.velocity.x = player.mirror_factor[int(player.mirrored)] * move_direction * player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed
 	if push_collision.get_collider() is RigidBody2D:
 		push_collision.get_collider().apply_central_impulse(-push_collision.get_normal() * player.push_force)
 	elif not player.is_on_wall():
@@ -48,7 +48,6 @@ func physics_update(_delta: float) -> void:
 	
 	if (player.is_on_floor() or player.on_coyote) and not input_frozen and (Input.is_action_just_pressed("jump") or input_listener.get_buffer("JumpBuffer").is_buffered()):
 		input_listener.get_buffer("JumpBuffer").consume()
-		
 		state_machine.transition_to("Jump")
 	elif player.can_dash and not input_frozen and (Input.is_action_just_pressed("dash") or input_listener.get_buffer("DashBuffer").is_buffered()):
 		input_listener.get_buffer("DashBuffer").consume()
@@ -59,7 +58,7 @@ func physics_update(_delta: float) -> void:
 		state_machine.transition_to("Idle")
 
 func update(_delta: float) -> void:
-	player.get_node("AnimatedSprite2D").flip_h = move_direction < 0
+	player.get_node("AnimatedSprite2D").flip_h = (player.mirror_factor[int(player.mirrored)] * move_direction) < 0
 
 func _on_player_input_freezed(active: bool) -> void:
 	input_frozen = active

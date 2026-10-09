@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dih38p5pyb4oi"
-path="res://.godot/imported/box.png-6c9dac774147e802a8693abc123c5533.ctex"
+uid="uid://ckhmod7d30nui"
+path="res://.godot/imported/mallow_pushbox_squish_stretch.png-c27495550e3764cec541465bab2bf4a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/box.png"
-dest_files=["res://.godot/imported/box.png-6c9dac774147e802a8693abc123c5533.ctex"]
+source_file="res://assets/sprites/mallow_pushbox_squish_stretch.png"
+dest_files=["res://.godot/imported/mallow_pushbox_squish_stretch.png-c27495550e3764cec541465bab2bf4a4.ctex"]
 
 [params]
 
