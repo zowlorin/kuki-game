@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b83gms022hnxe"]
 
-[ext_resource type="Script" uid="uid://bkfu3k6eg5ygk" path="res://levels/box_container.gd" id="1_gxq83"]
+[ext_resource type="Script" uid="uid://bkfu3k6eg5ygk" path="res://gameplay/box_container.gd" id="1_gxq83"]
 [ext_resource type="Texture2D" uid="uid://bgbkhrrektn71" path="res://assets/sprites/moving_platform.png" id="2_gxq83"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_710pl"]

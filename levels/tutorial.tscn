@@ -1,19 +1,19 @@
 [gd_scene format=4 uid="uid://ci0mg4cw3htbo"]
 
-[ext_resource type="Script" uid="uid://dtmevl4sjq1i6" path="res://levels/level.gd" id="1_fj1tp"]
+[ext_resource type="Script" uid="uid://dtmevl4sjq1i6" path="res://gameplay/level.gd" id="1_ud5cb"]
 [ext_resource type="Texture2D" uid="uid://mqf4pkjbyh0e" path="res://assets/parallaxbg/0_basesky.png" id="3_5h46i"]
 [ext_resource type="Texture2D" uid="uid://c70nqv3745imr" path="res://assets/parallaxbg/1_farclouds.png" id="4_gyuag"]
 [ext_resource type="Texture2D" uid="uid://bijj4bj2kdgd5" path="res://assets/parallaxbg/2_midclouds.png" id="5_ymuiv"]
 [ext_resource type="Texture2D" uid="uid://de4kg2ijr5x1w" path="res://assets/parallaxbg/3_foreclouds.png" id="6_ui1w4"]
 [ext_resource type="Texture2D" uid="uid://d1r0u8qt3nqeq" path="res://assets/parallaxbg/4_farground.png" id="7_fj1tp"]
 [ext_resource type="Texture2D" uid="uid://b6btr6xegcrwj" path="res://assets/tilesets/carameltop.png" id="8_6htc0"]
-[ext_resource type="Script" uid="uid://02obta6p50c0" path="res://levels/portal_handler.gd" id="9_fj1tp"]
 [ext_resource type="Texture2D" uid="uid://bpupo1u5lydj6" path="res://assets/tilesets/caramelcenter.png" id="9_mip8o"]
 [ext_resource type="PackedScene" uid="uid://r82ip1jvly4x" path="res://components/portal.tscn" id="9_ui1w4"]
 [ext_resource type="Texture2D" uid="uid://digffvqfi2iyq" path="res://assets/tilesets/choco_bricks.png" id="10_7i7hg"]
 [ext_resource type="Texture2D" uid="uid://sx10eg47p3mk" path="res://assets/tilesets/red_crystals_hazard.png" id="10_mip8o"]
 [ext_resource type="Texture2D" uid="uid://bbkypf42o0s2h" path="res://assets/tilesets/choco_bricks_shadows.png" id="11_6htc0"]
 [ext_resource type="Texture2D" uid="uid://blvls26mx8m0f" path="res://assets/tilesets/kuki_ground.png" id="13_fqd37"]
+[ext_resource type="Script" uid="uid://02obta6p50c0" path="res://handlers/portal_handler.gd" id="14_ud5cb"]
 [ext_resource type="Script" uid="uid://bmdxml1isrn2k" path="res://handlers/safe_zones.gd" id="15_8rd0g"]
 [ext_resource type="PackedScene" uid="uid://hbonw2t7ej81" path="res://gameplay/chud.tscn" id="15_wjdp3"]
 [ext_resource type="PackedScene" uid="uid://btc8woaxqjc1l" path="res://components/safe_zone.tscn" id="16_8rd0g"]
@@ -383,7 +383,7 @@ size = Vector2(129, 20)
 size = Vector2(129, 20)
 
 [node name="Level" type="Node2D" unique_id=1638046035]
-script = ExtResource("1_fj1tp")
+script = ExtResource("1_ud5cb")
 
 [node name="Parallax" type="Node2D" parent="." unique_id=1557407053]
 
@@ -471,22 +471,46 @@ tile_map_data = PackedByteArray("AAAsAAkAAAACAAEAAAAsAAgAAAACAAEAAAAsAAcAAAACAAE
 tile_set = SubResource("TileSet_hnnho")
 
 [node name="Chud" parent="." unique_id=889230261 instance=ExtResource("15_wjdp3")]
-position = Vector2(-120, -127)
+position = Vector2(-210, -110)
 
 [node name="PortalHandler" type="Node2D" parent="." unique_id=1647731445]
 position = Vector2(0, -41)
-script = ExtResource("9_fj1tp")
+script = ExtResource("14_ud5cb")
 
-[node name="Portal" parent="PortalHandler" unique_id=1857128004 instance=ExtResource("9_ui1w4")]
+[node name="SpawnPortal" parent="PortalHandler" unique_id=1857128004 instance=ExtResource("9_ui1w4")]
 position = Vector2(-606, -63)
 enabled = false
-id = "a1"
+id = "spawn"
 
-[node name="Portal2" parent="PortalHandler" unique_id=1907002062 instance=ExtResource("9_ui1w4")]
+[node name="Level1" parent="PortalHandler" unique_id=1907002062 instance=ExtResource("9_ui1w4")]
 position = Vector2(304, -63)
-id = "b1"
+id = "level1"
 target_id = "b1"
 target_level = "uid://dayg3cgphr1pb"
+
+[node name="Level2" parent="PortalHandler" unique_id=76948710 instance=ExtResource("9_ui1w4")]
+position = Vector2(215, -77)
+id = "level2"
+target_id = "b1"
+target_level = "uid://c3hbtx4k2avnr"
+
+[node name="Level3" parent="PortalHandler" unique_id=980408811 instance=ExtResource("9_ui1w4")]
+position = Vector2(142, -93)
+id = "level3"
+target_id = "b1"
+target_level = "uid://bh06prch1dkc2"
+
+[node name="Level4" parent="PortalHandler" unique_id=769586984 instance=ExtResource("9_ui1w4")]
+position = Vector2(58, -76)
+id = "level4"
+target_id = "b1"
+target_level = "uid://brb8gpiqa8lpd"
+
+[node name="Level5" parent="PortalHandler" unique_id=721253599 instance=ExtResource("9_ui1w4")]
+position = Vector2(-26, -75)
+id = "level5"
+target_id = "b1"
+target_level = "uid://b4v1p6c2bvct7"
 
 [node name="SafeZones" type="Node2D" parent="." unique_id=1484401673]
 script = ExtResource("15_8rd0g")
