@@ -44,6 +44,8 @@ func physics_update(_delta: float) -> void:
 	elif player.can_dash and not input_frozen and (Input.is_action_just_pressed("dash") or input_listener.get_buffer("DashBuffer").is_buffered()):
 		input_listener.get_buffer("DashBuffer").consume()
 		state_machine.transition_to("Dash")
+	elif not input_frozen and (Input.is_action_just_pressed("action_throw")):
+		state_machine.transition_to("Throw")
 	
 
 func emit_land_particles() -> void:

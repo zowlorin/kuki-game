@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://8sp7e5nq5cxt"]
+
+[ext_resource type="Texture2D" uid="uid://btv48cqxv6hyh" path="res://assets/sprites/lever.png" id="1_jrbd6"]
+[ext_resource type="Script" path="res://gameplay/lever.gd" id="1_k3r01"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k3r01"]
+radius = 14.0
+
+[node name="Lever" type="Area2D" unique_id=873827231]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_k3r01")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1340287426]
+texture_filter = 1
+position = Vector2(0, -24)
+texture = ExtResource("1_jrbd6")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=206730911]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_k3r01")
+
+[node name="Timer" type="Timer" parent="." unique_id=2091154509]
+wait_time = 2.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

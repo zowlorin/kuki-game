@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b21ohmeklkb66" path="res://assets/parallaxbg/7_nearground.png" id="10_dg77c"]
 [ext_resource type="PackedScene" uid="uid://dayg3cgphr1pb" path="res://levels/level1.tscn" id="10_w48qg"]
 [ext_resource type="Script" uid="uid://b8m8r183a68lv" path="res://handlers/level_handler.gd" id="10_ycdy4"]
+[ext_resource type="Script" uid="uid://e53vhcpcyd7s" path="res://projectiles.gd" id="13_cegan"]
 [ext_resource type="Script" uid="uid://cdndp3wkedx5u" path="res://handlers/camera_adjuster.gd" id="13_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://dpjohf78p2ctw" path="res://assets/parallaxbg/6_midground.png" id="14_2cqfq"]
 [ext_resource type="Script" uid="uid://beuw00yfutyim" path="res://handlers/game_handler.gd" id="14_w48qg"]
@@ -213,6 +214,9 @@ position = Vector2(-122, -106)
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 
+[node name="Projectiles" type="Node2D" parent="World" unique_id=1235037263]
+script = ExtResource("13_cegan")
+
 [node name="Handlers" type="Node2D" parent="." unique_id=454277890]
 
 [node name="CameraAdjuster" type="Node" parent="Handlers" unique_id=985854344]
@@ -385,6 +389,7 @@ libraries/ = SubResource("AnimationLibrary_82xsv")
 [connection signal="respawn_target_changed" from="World/LevelContainer/LevelHandler" to="Handlers/RespawnHandler" method="_on_level_handler_respawn_target_changed"]
 [connection signal="timeout" from="World/LevelContainer/LevelHandler/Timer" to="World/LevelContainer/LevelHandler" method="_on_timer_timeout"]
 [connection signal="died" from="World/Player" to="ScreenFX/DeathBlackout" method="_on_player_died"]
+[connection signal="request_projectile" from="World/Player" to="World/Projectiles" method="_on_player_request_projectile"]
 [connection signal="safe_zone_requested" from="World/Player" to="Handlers/RespawnHandler" method="_on_player_safe_zone_requested"]
 [connection signal="pause_state_changed" from="Handlers/GameHandler" to="UI/PauseMenu" method="_on_game_handler_pause_state_changed"]
 [connection signal="pause_state_changed" from="Handlers/GameHandler" to="UI/SettingsMenu" method="_on_game_handler_pause_state_changed"]

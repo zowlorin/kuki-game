@@ -4,6 +4,7 @@ class_name Player
 
 signal freezed(active: bool)
 signal input_freezed(active: bool)
+signal request_projectile(name: String, position: Vector2, extra: Dictionary)
 
 signal respawned
 signal died
@@ -36,6 +37,7 @@ signal safe_zone_requested
 @export var bounce_curve: Curve
 @export var bounce_speed: float = 300.0
 @export var bounce_duration: float = 0.4
+@export var throw_duration: float = 0.2
 
 
 @onready var jump_frame = Time.get_unix_time_from_system()
@@ -43,6 +45,7 @@ signal safe_zone_requested
 @onready var accel_frame = Time.get_unix_time_from_system()
 @onready var decel_frame = Time.get_unix_time_from_system()
 @onready var dash_frame = Time.get_unix_time_from_system()
+@onready var throw_frame = Time.get_unix_time_from_system()
 
 @onready var was_on_floor: bool = false
 @onready var jumped_last_frame: bool = false
@@ -140,3 +143,7 @@ func _on_death_timer_timeout() -> void:
 	$Helpers/RespawnTimer.start()
 	
 	safe_zone_requested.emit()
+
+
+func _on_throw_projectile_requested() -> void:
+	request_projectile.emit("player_cap", global_position, {})
