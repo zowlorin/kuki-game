@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bywj7bc76q0ed"]
 
 [ext_resource type="Script" uid="uid://co4r8urg14ta2" path="res://menus/main_menu.gd" id="1_06t4h"]
-[ext_resource type="Texture2D" uid="uid://ye10hp7r1u47" path="res://assets/gui/title screen edit scale-export.png" id="2_ij7vn"]
+[ext_resource type="Texture2D" uid="uid://dhm6iv76dtw83" path="res://assets/gui/keyart.png" id="2_ij7vn"]
+[ext_resource type="Texture2D" uid="uid://cr5l5jkkf45c2" path="res://assets/gui/titlescreen_title.png" id="3_yjgyn"]
 
 [sub_resource type="Animation" id="Animation_ij7vn"]
 resource_name = "Main"
@@ -9,7 +10,7 @@ length = 10.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI/TextureRect2/Button:position")
+tracks/0/path = NodePath("UI/Button:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -21,7 +22,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("UI/TextureRect2/Button:rotation")
+tracks/1/path = NodePath("UI/Button:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -54,13 +55,25 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/TextureRect3:self_modulate")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.1666666, 1.9333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_yjgyn"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI/TextureRect2/Button:position")
+tracks/0/path = NodePath("UI/Button:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -72,7 +85,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("UI/TextureRect2/Button:rotation")
+tracks/1/path = NodePath("UI/Button:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -105,6 +118,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/TextureRect3:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rqbgu"]
 _data = {
@@ -126,9 +151,18 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_ij7vn")
 
-[node name="Button" type="Button" parent="UI/TextureRect2" unique_id=109606557]
+[node name="TextureRect3" type="TextureRect" parent="UI" unique_id=715926844]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_yjgyn")
+
+[node name="Button" type="Button" parent="UI" unique_id=109606557]
 custom_minimum_size = Vector2(128, 0)
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -137,7 +171,7 @@ anchor_bottom = 0.5
 offset_left = 195.0
 offset_top = 80.0
 offset_right = 364.0
-offset_bottom = 122.00012
+offset_bottom = 122.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
@@ -159,4 +193,4 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[connection signal="pressed" from="UI/TextureRect2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]
