@@ -1,7 +1,7 @@
 extends Area2D
 class_name Portal
 
-
+@export var enabled: bool = true
 @export var id: String
 @export var target_id: String
 
@@ -10,6 +10,13 @@ signal level_change_requested(target_level: String, target_id: String)
 @onready var player_interacting: bool = false
 
 @export_file("*.tscn") var target_level: String
+
+func _ready() -> void:
+	if (!target_id|| !id || !target_level):
+		enabled = false
+		visible = false
+		print("portal kinda cooked, disabling it")
+
 func _on_body_entered(body: Node2D) -> void:
 	player_interacting=true
 
@@ -22,6 +29,9 @@ func load_target_level():
 	level_change_requested.emit(target_level, target_id)
 	
 func on_interact():
+	if (!enabled):
+		return
+		
 	if (!player_interacting):
 		return
 	
