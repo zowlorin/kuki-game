@@ -28,11 +28,11 @@ func enter() -> void:
 		player.helpers.get_node("LandDashFX").play("engage")
 		player.get_node("AnimatedSprite2D").play("dash")
 	else:
-		
 		player.helpers.get_node("DashParticles").global_position = player.global_position + emission_offset
 		player.helpers.get_node("DashParticles").emitting = true
 		player.get_node("AnimatedSprite2D").play("air_dash")
 	
+	player.get_node("AnimatedSprite2D").flip_h = true_direction < 0
 	AudioManager.play("DashSFX")
 
 func exit() -> void:
