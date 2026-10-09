@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var target: CharacterBody2D
+@onready var target: CharacterBody2D = get_tree().current_scene.get_node("World/Player")
 @export var buffer_frames = 3
 
 func _physics_process(delta: float) -> void:

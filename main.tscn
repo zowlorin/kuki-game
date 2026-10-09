@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://ci0mg4cw3htbo" path="res://levels/lobby.tscn" id="1_cegan"]
 [ext_resource type="PackedScene" uid="uid://wnyu5xqf1yeh" path="res://gameplay/player.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://hbonw2t7ej81" path="res://gameplay/chud.tscn" id="1_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://mqf4pkjbyh0e" path="res://assets/parallaxbg/0_basesky.png" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://c70nqv3745imr" path="res://assets/parallaxbg/1_farclouds.png" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bijj4bj2kdgd5" path="res://assets/parallaxbg/2_midclouds.png" id="5_lquwl"]
@@ -234,10 +233,6 @@ one_shot = true
 autostart = true
 
 [node name="Level" parent="World/LevelContainer/LevelHandler" unique_id=1638046035 instance=ExtResource("1_cegan")]
-
-[node name="Chud" parent="World" unique_id=889230261 node_paths=PackedStringArray("target") instance=ExtResource("1_ycdy4")]
-position = Vector2(100, -100)
-target = NodePath("../Player")
 
 [node name="Player" parent="World" unique_id=1561153767 instance=ExtResource("1_ig7tw")]
 position = Vector2(-122, -106)
