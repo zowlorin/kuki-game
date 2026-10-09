@@ -684,7 +684,7 @@ one_shot = true
 
 [node name="DashCooldown" type="Timer" parent="Helpers" unique_id=878752131]
 process_callback = 0
-wait_time = 0.4
+wait_time = 0.1
 one_shot = true
 script = ExtResource("18_l1csw")
 

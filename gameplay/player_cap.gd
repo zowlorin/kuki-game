@@ -18,7 +18,6 @@ class_name PlayerCap
 		visible = active
 		if not active:
 			velocity = Vector2.ZERO
-			print("killed!")
 
 @export var max_hits: int = 2
 			

@@ -186,6 +186,8 @@ script = ExtResource("10_w7ck5")
 
 [node name="Portal" parent="PortalHandler" unique_id=1857128004 instance=ExtResource("11_2nn5w")]
 position = Vector2(0, -33)
+id = "b1"
+target_id = "a1"
 target_level = "uid://ci0mg4cw3htbo"
 
 [node name="Doors" type="Node2D" parent="." unique_id=1030373650]

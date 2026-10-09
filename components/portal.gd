@@ -1,6 +1,11 @@
 extends Area2D
+class_name Portal
 
-signal level_change_requested
+
+@export var id: String
+@export var target_id: String
+
+signal level_change_requested(target_level: String, target_id: String)
 
 @onready var player_interacting: bool = false
 
@@ -14,7 +19,7 @@ func _on_body_exited(body: Node2D) -> void:
 func load_target_level():
 	if (!target_level):
 		return
-	level_change_requested.emit(target_level)
+	level_change_requested.emit(target_level, target_id)
 	
 func on_interact():
 	if (!player_interacting):
