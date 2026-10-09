@@ -1,5 +1,7 @@
 class_name StateMachine
 extends Node
+
+@export var auto_start: bool = true
  
 @export var state_limit: int = 2
 @export var initial_state: State
@@ -10,7 +12,11 @@ var prev_state: State
 
 @onready var frozen: bool = false
 
+@onready var started: bool = false
+
 func on_start():
+	started = true
+	
 	if initial_state == null:
 		push_error("StateMachine has no initial state assigned.")
 		return
@@ -24,9 +30,15 @@ func on_start():
 func _ready() -> void:
 	await owner.ready
 	
+	if (!auto_start):
+		return
+
 	on_start()
  
 func _physics_process(delta: float) -> void:
+	if not started:
+		return
+		
 	if (frozen):
 		return
 		
@@ -35,6 +47,9 @@ func _physics_process(delta: float) -> void:
 	$Label.global_position = owner.global_position
  
 func _process(delta: float) -> void:
+	if not started:
+		return
+		
 	if (frozen):
 		return
 		

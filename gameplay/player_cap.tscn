@@ -36,7 +36,7 @@ animations = [{
 radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7s2al"]
-radius = 5.0990195
+radius = 2.0
 
 [node name="PlayerCap" type="StaticBody2D" unique_id=706381077]
 collision_layer = 32
@@ -47,7 +47,7 @@ script = ExtResource("1_7s2al")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_3owqy")
 autoplay = "default"
-frame_progress = 0.29035583
+frame_progress = 0.5181552
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=425152126]
 shape = SubResource("CircleShape2D_yb31y")

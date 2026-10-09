@@ -66,7 +66,7 @@ signal safe_zone_requested
 
 @onready var velocity_snapshot: Vector2 = Vector2.ZERO
 
-@onready var frozen: bool = false:
+var frozen: bool = false:
 	set(x):
 		if (frozen == x):
 			return
@@ -78,7 +78,7 @@ signal safe_zone_requested
 			velocity = velocity_snapshot
 		freezed.emit(frozen)
 		
-@onready var input_frozen: bool = false:
+var input_frozen: bool = false:
 	set(x):
 		if (input_frozen == x):
 			return
@@ -87,6 +87,9 @@ signal safe_zone_requested
 		
 @onready var respawn_target: SafeZone
 
+func _ready() -> void:
+	frozen = true
+	input_frozen = true
 
 func _physics_process(_delta: float) -> void:
 	var move_direction: float = Input.get_axis("move_left", "move_right")
@@ -157,3 +160,10 @@ func _on_throw_projectile_requested() -> void:
 
 func _on_throw_cooldown_timeout() -> void:
 	can_throw = true
+
+
+func _on_level_handler_level_okay() -> void:
+	frozen = false
+	input_frozen = false
+func _on_level_handler_on_level_setup_done():
+	pass
