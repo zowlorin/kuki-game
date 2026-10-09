@@ -15,8 +15,8 @@ func trigger():
 	on_triggered.emit(active)
 
 func _process(delta: float) -> void:
-	if (prev_interacting != player_interacting):
-		if (!player_interacting):
+	if (prev_interacting_size != curr_interacting_size):
+		if (curr_interacting_size == 0):
 			$Timer.start()
 		else:
 			trigger()
