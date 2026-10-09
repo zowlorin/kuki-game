@@ -1,6 +1,6 @@
 extends Node
 
-@export var pixel_shift: float = 25
+@export var pixel_shift: float = 100
 @export var shift_curve: Curve
 
 @onready var shift_direction: float

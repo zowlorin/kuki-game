@@ -59,7 +59,7 @@ shape = SubResource("CircleShape2D_7o6kn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1280490084]
 sprite_frames = SubResource("SpriteFrames_hnnho")
 autoplay = "default"
-frame_progress = 0.46766838
+frame_progress = 0.14994696
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
