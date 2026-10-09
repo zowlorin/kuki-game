@@ -63,7 +63,7 @@ func physics_update(_delta: float) -> void:
 	if player.get_last_slide_collision() != null:
 		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
 			state_machine.transition_to("Bounce")
-		elif player.get_last_slide_collision().get_collider() is RigidBody2D or player.is_on_wall():
+		elif player.get_last_slide_collision().get_collider() is RigidBody2D:
 			player.get_last_slide_collision().get_collider().apply_central_impulse(2 * -player.get_last_slide_collision().get_normal() * player.push_force)
 	
 	if (curr_frame - player.dash_frame) >= player.dash_duration:
