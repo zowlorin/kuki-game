@@ -17,6 +17,8 @@
 [ext_resource type="Script" uid="uid://bmdxml1isrn2k" path="res://handlers/safe_zones.gd" id="15_8rd0g"]
 [ext_resource type="PackedScene" uid="uid://hbonw2t7ej81" path="res://gameplay/chud.tscn" id="15_wjdp3"]
 [ext_resource type="PackedScene" uid="uid://btc8woaxqjc1l" path="res://components/safe_zone.tscn" id="16_8rd0g"]
+[ext_resource type="Script" uid="uid://l076i8u4p0hn" path="res://handlers/golden_cookies.gd" id="18_fpvtr"]
+[ext_resource type="PackedScene" uid="uid://bcwt84x78xu6h" path="res://golden_cookie.tscn" id="18_obw5j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qx6dc"]
 texture = ExtResource("10_mip8o")
@@ -529,5 +531,13 @@ position = Vector2(-481, -18)
 position = Vector2(658, -78)
 shape = SubResource("RectangleShape2D_wjdp3")
 
+[node name="GoldenCookies" type="Node2D" parent="." unique_id=1862802138]
+script = ExtResource("18_fpvtr")
+
+[node name="GoldenCookie" parent="GoldenCookies" unique_id=1766023232 instance=ExtResource("18_obw5j")]
+position = Vector2(355, -100)
+id = 1
+
 [connection signal="level_change_requested" from="PortalHandler" to="." method="_on_portal_handler_level_change_requested"]
 [connection signal="zone_changed" from="SafeZones" to="." method="_on_safe_zones_zone_changed"]
+[connection signal="cookie_collected" from="GoldenCookies" to="." method="_on_golden_cookies_cookie_collected"]

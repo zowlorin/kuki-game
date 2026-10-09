@@ -4,6 +4,7 @@ signal level_okay
 signal level_setup_done
 
 signal respawn_target_changed(target: SafeZone)
+signal cookie_collected(id: int)
 
 @onready var curr_level: Level
 
@@ -21,9 +22,14 @@ signal respawn_target_changed(target: SafeZone)
 
 func on_respawn_target_changed(target: SafeZone):
 	respawn_target_changed.emit(target)
+
+func on_cookie_collected(id: int):
+	cookie_collected.emit(id)
+	
 func connect_level(level: Level):
 	level.connect("level_change_requested",_receive_level_change_request)
 	level.connect("respawn_target_changed",on_respawn_target_changed)
+	level.connect("cookie_collected",on_cookie_collected)
 	
 func queue_level(level_path: String, target_id: String):
 	level_queued = {"level": level_path, "target_id": target_id}
