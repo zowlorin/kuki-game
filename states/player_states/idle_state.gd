@@ -19,9 +19,11 @@ func physics_update(_delta: float) -> void:
 		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
 			state_machine.transition_to("Bounce")
 
-	if not player.is_on_floor():
+	if not input_frozen and player.can_throw and (Input.is_action_just_pressed("action_throw")):
+		state_machine.transition_to("Throw")
+	elif not player.is_on_floor():
 		state_machine.transition_to("Fall")
-	if player.is_on_floor() and not input_frozen and (abs(Input.get_axis("move_left", "move_right")) > 0 or input_listener.get_buffer("MoveLeftBuffer").is_buffered() or input_listener.get_buffer("MoveRightBuffer").is_buffered()):
+	elif player.is_on_floor() and not input_frozen and (abs(Input.get_axis("move_left", "move_right")) > 0 or input_listener.get_buffer("MoveLeftBuffer").is_buffered() or input_listener.get_buffer("MoveRightBuffer").is_buffered()):
 		input_listener.get_buffer("MoveLeftBuffer").consume()
 		input_listener.get_buffer("MoveRightBuffer").consume()
 		state_machine.transition_to("Walk")
@@ -31,6 +33,7 @@ func physics_update(_delta: float) -> void:
 	elif player.can_dash and not input_frozen and (Input.is_action_just_pressed("dash") or input_listener.get_buffer("DashBuffer").is_buffered()):
 		input_listener.get_buffer("JumpBuffer").consume()
 		state_machine.transition_to("Dash")
+	
 
 func update(_delta: float) -> void:
 	player.get_node("AnimatedSprite2D").flip_h = (player.mirror_factor[int(player.mirrored)] * player.prev_direction) < 0

@@ -52,6 +52,11 @@ signal safe_zone_requested
 @onready var jump_buffered: bool = false
 @onready var on_coyote: bool = false
 @onready var can_dash: bool = true
+@onready var can_throw: bool = true:
+	set(x):
+		can_throw = x
+		if (!can_throw):
+			$Helpers/ThrowCooldown.start()
 
 @onready var mirror_factor: Array[int] = [1, -1]
 @onready var prev_direction: float = 1.0
@@ -148,3 +153,7 @@ func _on_death_timer_timeout() -> void:
 
 func _on_throw_projectile_requested() -> void:
 	request_projectile.emit("player_cap", global_position, {})
+
+
+func _on_throw_cooldown_timeout() -> void:
+	can_throw = true

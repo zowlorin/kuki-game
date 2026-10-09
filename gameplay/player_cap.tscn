@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://br2fk1apb5rjt"]
+
+[ext_resource type="Texture2D" uid="uid://cgawktjnox855" path="res://assets/beretproj.png" id="1_4jgbm"]
+[ext_resource type="Script" uid="uid://brn20xy405ops" path="res://gameplay/player_cap.gd" id="1_7s2al"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7s2al"]
+atlas = ExtResource("1_4jgbm")
+region = Rect2(0, 0, 25, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2gpl"]
+atlas = ExtResource("1_4jgbm")
+region = Rect2(25, 0, 25, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kaiff"]
+atlas = ExtResource("1_4jgbm")
+region = Rect2(50, 0, 25, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3owqy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7s2al")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2gpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kaiff")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yb31y"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7s2al"]
+radius = 5.0990195
+
+[node name="PlayerCap" type="StaticBody2D" unique_id=706381077]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_7s2al")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1342779564]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_3owqy")
+autoplay = "default"
+frame_progress = 0.29035583
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=425152126]
+shape = SubResource("CircleShape2D_yb31y")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1807286223]
+collision_layer = 0
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=2099903922]
+shape = SubResource("CircleShape2D_7s2al")
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

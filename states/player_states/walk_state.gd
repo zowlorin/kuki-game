@@ -40,8 +40,9 @@ func physics_update(_delta: float) -> void:
 			state_machine.transition_to("Bounce")
 		elif player.get_last_slide_collision().get_collider() is RigidBody2D or player.is_on_wall():
 			state_machine.transition_to("Push")
-	
-	if (player.is_on_floor() or player.on_coyote) and not input_frozen and (Input.is_action_just_pressed("jump") or input_listener.get_buffer("JumpBuffer").is_buffered()):
+	if not input_frozen and player.can_throw and (Input.is_action_just_pressed("action_throw")):
+		state_machine.transition_to("Throw")
+	elif (player.is_on_floor() or player.on_coyote) and not input_frozen and (Input.is_action_just_pressed("jump") or input_listener.get_buffer("JumpBuffer").is_buffered()):
 		input_listener.get_buffer("JumpBuffer").consume()
 		
 		state_machine.transition_to("Jump")

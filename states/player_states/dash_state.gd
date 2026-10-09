@@ -60,6 +60,9 @@ func physics_update(_delta: float) -> void:
 	player.helpers.get_node("DashInvinciblity").start()
 	player.can_dash = false
 	
+	if not input_frozen and player.can_throw and (Input.is_action_just_pressed("action_throw")):
+		state_machine.transition_to("Throw")
+	
 	if player.get_last_slide_collision() != null:
 		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
 			state_machine.transition_to("Bounce")

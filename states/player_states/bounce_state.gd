@@ -27,6 +27,9 @@ func physics_update(_delta: float) -> void:
 	
 	if input_frozen:
 		move_direction = 0
+		
+	if not input_frozen  and player.can_throw and (Input.is_action_just_pressed("action_throw")):
+		state_machine.transition_to("Throw")
 	
 	if ((curr_frame - bounce_frame) >= player.bounce_duration or collision == null) and player.is_on_floor():
 		state_machine.transition_to("Idle")

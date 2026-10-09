@@ -201,10 +201,8 @@ target = NodePath("../Player")
 
 [node name="Player" parent="World" unique_id=1561153767 instance=ExtResource("1_ig7tw")]
 position = Vector2(-122, -106)
-jump_speed = 325.0
 accel_curve = SubResource("Curve_0xm2m")
 decel_curve = SubResource("Curve_h2yge")
-max_speed = 150.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="World/Player" unique_id=354228312]
 remote_path = NodePath("../../Camera2D")
