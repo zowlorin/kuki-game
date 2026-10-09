@@ -243,7 +243,7 @@ position = Vector2(24, 0)
 shape = SubResource("RectangleShape2D_3owqy")
 
 [node name="Mirror" parent="." unique_id=399049558 instance=ExtResource("21_2nn5w")]
-position = Vector2(700, -72)
+position = Vector2(-166, -24)
 
 [connection signal="level_change_requested" from="PortalHandler" to="." method="_on_portal_handler_level_change_requested"]
 [connection signal="zone_changed" from="SafeZones" to="." method="_on_safe_zones_zone_changed"]

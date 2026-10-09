@@ -1,9 +1,72 @@
 [gd_scene format=3 uid="uid://bln3ax8a0fbf6"]
 
-[ext_resource type="Texture2D" uid="uid://dih38p5pyb4oi" path="res://assets/sprites/box.png" id="1_70rp5"]
+[ext_resource type="Script" uid="uid://nyhb61nvbfmy" path="res://components/box.gd" id="1_2p30u"]
+[ext_resource type="Texture2D" uid="uid://ckhmod7d30nui" path="res://assets/sprites/mallow_pushbox_squish_stretch.png" id="2_jsbpn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_my3k0"]
 friction = 0.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve6ct"]
+atlas = ExtResource("2_jsbpn")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rp4u"]
+atlas = ExtResource("2_jsbpn")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uytp4"]
+atlas = ExtResource("2_jsbpn")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2o1r"]
+atlas = ExtResource("2_jsbpn")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njuak"]
+atlas = ExtResource("2_jsbpn")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2st77"]
+atlas = ExtResource("2_jsbpn")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c12ke"]
+atlas = ExtResource("2_jsbpn")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_710pl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ve6ct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rp4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uytp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2o1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njuak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2st77")
+}],
+"loop": 1,
+"name": &"moving",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c12ke")
+}],
+"loop": 1,
+"name": &"stationary",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_710pl"]
 size = Vector2(16, 16)
@@ -13,9 +76,13 @@ collision_layer = 16
 collision_mask = 11
 physics_material_override = SubResource("PhysicsMaterial_my3k0")
 lock_rotation = true
+script = ExtResource("1_2p30u")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2095469299]
-texture = ExtResource("1_70rp5")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=392206755]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_710pl")
+animation = &"moving"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1676008223]
 shape = SubResource("RectangleShape2D_710pl")
