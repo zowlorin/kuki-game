@@ -1,23 +1,65 @@
 [gd_scene format=3 uid="uid://r82ip1jvly4x"]
 
 [ext_resource type="Script" uid="uid://cxmg7h65r761" path="res://components/portal.gd" id="1_7o6kn"]
-[ext_resource type="Texture2D" uid="uid://bjuk76xbho06y" path="res://assets/sprites/portal.png" id="1_kkkmv"]
+[ext_resource type="Texture2D" uid="uid://bm66uk15bkm8s" path="res://assets/sprites/portal_animated.png" id="2_lbg6m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7o6kn"]
 radius = 27.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pbrv"]
+atlas = ExtResource("2_lbg6m")
+region = Rect2(0, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cab1"]
+atlas = ExtResource("2_lbg6m")
+region = Rect2(64, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mo8v"]
+atlas = ExtResource("2_lbg6m")
+region = Rect2(128, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6s3n"]
+atlas = ExtResource("2_lbg6m")
+region = Rect2(192, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paw3l"]
+atlas = ExtResource("2_lbg6m")
+region = Rect2(256, 0, 64, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hnnho"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pbrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cab1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mo8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6s3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paw3l")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Portal" type="Area2D" unique_id=1857128004]
 collision_mask = 10
 script = ExtResource("1_7o6kn")
 
-[node name="Portal" type="Sprite2D" parent="." unique_id=1143572132]
-z_index = -2
-texture_filter = 1
-position = Vector2(0, -3)
-texture = ExtResource("1_kkkmv")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=247567437]
 shape = SubResource("CircleShape2D_7o6kn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1280490084]
+sprite_frames = SubResource("SpriteFrames_hnnho")
+autoplay = "default"
+frame_progress = 0.46766838
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
