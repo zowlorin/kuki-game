@@ -33,7 +33,7 @@ func physics_update(_delta: float) -> void:
 		state_machine.transition_to("Dash")
 
 func update(_delta: float) -> void:
-	player.get_node("AnimatedSprite2D").flip_h = player.prev_direction < 0
+	player.get_node("AnimatedSprite2D").flip_h = (player.mirror_factor[int(player.mirrored)] * player.prev_direction) < 0
 
 
 func _on_player_input_freezed(active: bool) -> void:

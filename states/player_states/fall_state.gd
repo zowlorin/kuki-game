@@ -21,7 +21,7 @@ func physics_update(_delta: float) -> void:
 	var move_direction = Input.get_axis("move_left", "move_right")
 	var bouncy_nodes = get_tree().get_nodes_in_group("Bouncy")
 	
-	player.velocity.x = move_direction * player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed
+	player.velocity.x = player.mirror_factor[int(player.mirrored)] * move_direction * player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed
 	player.velocity.y = (1 - (player.fall_curve.sample((curr_frame - player.fall_frame) / player.fall_duration))) * player.fall_speed
 	
 	if player.get_last_slide_collision() != null:
@@ -53,7 +53,7 @@ func emit_land_particles() -> void:
 	player.helpers.get_node('RLandParticles').emitting = true
 
 func update(_delta: float) -> void:
-	sprite.flip_h = player.prev_direction < 0
+	sprite.flip_h = (player.mirror_factor[int(player.mirrored)] * player.prev_direction) < 0
 
 
 func _on_player_input_freezed(active: bool) -> void:

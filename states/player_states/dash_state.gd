@@ -18,7 +18,7 @@ class_name PlayerDash
 @onready var going_down: bool = false
 
 func enter() -> void:
-	true_direction = player.prev_direction
+	true_direction = player.mirror_factor[int(player.mirrored)] * player.prev_direction
 	player.dash_frame = Time.get_unix_time_from_system()
 	
 	if player.is_on_floor():
@@ -37,12 +37,16 @@ func enter() -> void:
 
 func exit() -> void:
 	player.velocity.x = 0
+	player.set_collision_mask_value(2, true)
+	player.set_collision_mask_value(4, true)
 	player.helpers.get_node("DashParticles").emitting = false
 
 func physics_update(_delta: float) -> void:
 	var curr_frame = Time.get_unix_time_from_system()
 	var bouncy_nodes = get_tree().get_nodes_in_group("Bouncy")
 	
+	player.set_collision_mask_value(2, false)
+	player.set_collision_mask_value(4, false)
 	player.get_node("Hurtbox").get_child(0).set_deferred("disabled", true)
 	
 	player.velocity.x = true_direction * player.dash_speed
@@ -59,6 +63,8 @@ func physics_update(_delta: float) -> void:
 	if player.get_last_slide_collision() != null:
 		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
 			state_machine.transition_to("Bounce")
+		elif player.get_last_slide_collision().get_collider() is RigidBody2D or player.is_on_wall():
+			player.get_last_slide_collision().get_collider().apply_central_impulse(2 * -player.get_last_slide_collision().get_normal() * player.push_force)
 	
 	if (curr_frame - player.dash_frame) >= player.dash_duration:
 		state_machine.transition_to("Fall")

@@ -41,7 +41,7 @@ func physics_update(_delta: float) -> void:
 		else:
 			body.owner.play_animation("v_bounce")
 	
-	player.velocity.x = bounce_vel.x + move_direction * player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed
+	player.velocity.x = bounce_vel.x + player.mirror_factor[int(player.mirrored)] * move_direction * player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed
 	player.velocity.y = bounce_vel.y + bounciness * (1 - (player.fall_curve.sample((curr_frame - player.fall_frame) / player.fall_duration))) * player.fall_speed
 
 func _on_player_input_freezed(active: bool) -> void:
