@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+
+
 @export var trigger_mech: TriggerMech
 
 @onready var blocked: bool = true:
