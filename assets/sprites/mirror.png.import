@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dih38p5pyb4oi"
-path="res://.godot/imported/box.png-6c9dac774147e802a8693abc123c5533.ctex"
+uid="uid://clpku7dmv5ya5"
+path="res://.godot/imported/mirror.png-186b39ebe0db99d91fd6bc427ed2e420.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/box.png"
-dest_files=["res://.godot/imported/box.png-6c9dac774147e802a8693abc123c5533.ctex"]
+source_file="res://assets/sprites/mirror.png"
+dest_files=["res://.godot/imported/mirror.png-186b39ebe0db99d91fd6bc427ed2e420.ctex"]
 
 [params]
 

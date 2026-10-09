@@ -32,8 +32,8 @@ signal safe_zone_requested
 @export var max_dash_cooldown : float = 0.4
 
 @export_category("Miscellanous")
+@export var mirrored: bool = false
 @export var push_force: float = 10
-@export var view_length: float = 25.0
 @export var bounce_curve: Curve
 @export var bounce_speed: float = 300.0
 @export var bounce_duration: float = 0.4
@@ -53,6 +53,7 @@ signal safe_zone_requested
 @onready var on_coyote: bool = false
 @onready var can_dash: bool = true
 
+@onready var mirror_factor: Array[int] = [1, -1]
 @onready var prev_direction: float = 1.0
 
 @onready var helpers: Node = $Helpers

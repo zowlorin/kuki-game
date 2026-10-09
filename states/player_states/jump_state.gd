@@ -23,7 +23,7 @@ func physics_update(_delta: float) -> void:
 	var bouncy_nodes = get_tree().get_nodes_in_group("Bouncy")
 	
 	player.velocity.y = -(player.jump_curve.sample((curr_frame - player.jump_frame) / player.jump_duration)) * player.jump_speed
-	player.velocity.x = move_direction * player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed
+	player.velocity.x = player.mirror_factor[int(player.mirrored)] * move_direction * player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed
 	
 	player.on_coyote = false
 	player.helpers.get_node("CoyoteTimer").stop()
@@ -40,7 +40,7 @@ func physics_update(_delta: float) -> void:
 		state_machine.transition_to("Fall")
 
 func update(_delta: float) -> void:
-	sprite.flip_h = player.prev_direction < 0
+	sprite.flip_h = (player.mirror_factor[int(player.mirrored)] * player.prev_direction) < 0
 
 
 func _on_player_input_freezed(active: bool) -> void:

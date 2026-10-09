@@ -8,7 +8,7 @@ radius = 20.0
 
 [node name="SmallPortal" type="Area2D" unique_id=1141982792]
 collision_layer = 0
-collision_mask = 18
+collision_mask = 26
 script = ExtResource("1_my3k0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=476253183]

@@ -45,7 +45,7 @@ func physics_update(_delta: float) -> void:
 		state_machine.transition_to("Dash")
 
 func update(_delta: float) -> void:
-	sprite.flip_h = player.prev_direction < 0
+	sprite.flip_h = player.mirror_factor[int(player.mirrored)] * player.prev_direction < 0
 
 func switch_state() -> void:
 	state_machine.transition_to("Idle")

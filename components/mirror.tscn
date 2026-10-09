@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ck6cyuhlwhne7"]
+
+[ext_resource type="Script" uid="uid://c021nllnupv73" path="res://components/mirror.gd" id="1_33mh7"]
+[ext_resource type="Texture2D" uid="uid://clpku7dmv5ya5" path="res://assets/sprites/mirror.png" id="2_5mq65"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_710pl"]
+size = Vector2(48, 48)
+
+[node name="Mirror" type="Area2D" unique_id=399049558]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_33mh7")
+metadata/_custom_type_script = "uid://c021nllnupv73"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1476866821]
+texture_filter = 1
+texture = ExtResource("2_5mq65")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=530357928]
+shape = SubResource("RectangleShape2D_710pl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

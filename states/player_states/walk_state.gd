@@ -33,7 +33,7 @@ func physics_update(_delta: float) -> void:
 	if (input_frozen):
 		move_direction = 0
 	
-	player.velocity.x = move_direction * player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed
+	player.velocity.x = player.mirror_factor[int(player.mirrored)] * move_direction * player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed
 	
 	if player.get_last_slide_collision() != null:
 		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
@@ -54,7 +54,7 @@ func physics_update(_delta: float) -> void:
 		state_machine.transition_to("Idle")
 
 func update(_delta: float) -> void:
-	player.get_node("AnimatedSprite2D").flip_h = move_direction < 0
+	player.get_node("AnimatedSprite2D").flip_h = (player.mirror_factor[int(player.mirrored)] * move_direction) < 0
 
 func _on_player_input_freezed(active: bool) -> void:
 	input_frozen = active
