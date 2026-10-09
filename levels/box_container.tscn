@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b83gms022hnxe"]
 
 [ext_resource type="Script" uid="uid://bkfu3k6eg5ygk" path="res://levels/box_container.gd" id="1_gxq83"]
-[ext_resource type="Texture2D" uid="uid://dih38p5pyb4oi" path="res://assets/sprites/box.png" id="2_kq62n"]
+[ext_resource type="Texture2D" uid="uid://bgbkhrrektn71" path="res://assets/sprites/moving_platform.png" id="2_gxq83"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_710pl"]
 size = Vector2(22, 22.25)
@@ -13,9 +13,9 @@ script = ExtResource("1_gxq83")
 metadata/_custom_type_script = "uid://dryvspb4hkna0"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1822170110]
-position = Vector2(0, 9.875)
-scale = Vector2(1.375, 0.14062494)
-texture = ExtResource("2_kq62n")
+texture_filter = 1
+position = Vector2(0, 17)
+texture = ExtResource("2_gxq83")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=210538375]
 position = Vector2(0, 0.125)
