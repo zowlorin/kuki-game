@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://wkbpy211s0d8" path="res://effects/wind_particles.tscn" id="27_we2w3"]
 [ext_resource type="Script" uid="uid://5tclep32w5hw" path="res://gameplay/camera_area.gd" id="29_rxgvf"]
 [ext_resource type="Script" uid="uid://u7cugm6oaic6" path="res://gameplay/camera_areas.gd" id="29_wfa2t"]
+[ext_resource type="PackedScene" uid="uid://c3a18hx64j05t" path="res://gameplay/dash_replenish.tscn" id="30_wfa2t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xwxsl"]
 texture = ExtResource("10_mip8o")
@@ -975,6 +976,26 @@ shape = SubResource("RectangleShape2D_wfa2t")
 
 [node name="Focus" type="Node2D" parent="CameraAreas/CameraArea2" unique_id=1813747706]
 position = Vector2(143, 77)
+
+[node name="Pickups" type="Node2D" parent="." unique_id=634277778]
+
+[node name="DashReplenish" parent="Pickups" unique_id=643126448 instance=ExtResource("30_wfa2t")]
+position = Vector2(0, -120)
+
+[node name="DashReplenish2" parent="Pickups" unique_id=1675422760 instance=ExtResource("30_wfa2t")]
+position = Vector2(52, -136)
+
+[node name="DashReplenish3" parent="Pickups" unique_id=592371391 instance=ExtResource("30_wfa2t")]
+position = Vector2(107, -157)
+
+[node name="DashReplenish4" parent="Pickups" unique_id=1366030056 instance=ExtResource("30_wfa2t")]
+position = Vector2(155, -163)
+
+[node name="DashReplenish5" parent="Pickups" unique_id=49354583 instance=ExtResource("30_wfa2t")]
+position = Vector2(214, -163)
+
+[node name="DashReplenish6" parent="Pickups" unique_id=725945730 instance=ExtResource("30_wfa2t")]
+position = Vector2(274, -163)
 
 [connection signal="level_change_requested" from="PortalHandler" to="." method="_on_portal_handler_level_change_requested"]
 [connection signal="zone_changed" from="SafeZones" to="." method="_on_safe_zones_zone_changed"]

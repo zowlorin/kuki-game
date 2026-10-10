@@ -74,3 +74,4 @@ func _on_end_screen_main_menu_requested() -> void:
 func _on_cookie_collect_handler_necessary_cookies_collected() -> void:
 	ended = true
 	game_end.emit()
+	print('yeah')

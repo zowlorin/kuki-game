@@ -556,6 +556,9 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_x4nr5"]
+radius = 10.198039
+
 [node name="Player" type="CharacterBody2D" unique_id=1561153767]
 collision_layer = 2
 collision_mask = 27
@@ -752,6 +755,14 @@ top_level = true
 position = Vector2(12, -12)
 speed = 500.0
 
+[node name="PickupBox" type="Area2D" parent="." unique_id=706223201]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupBox" unique_id=670276635]
+position = Vector2(0, -12)
+shape = SubResource("CircleShape2D_x4nr5")
+
 [connection signal="died" from="." to="StateMachine" method="_on_player_died"]
 [connection signal="freezed" from="." to="StateMachine" method="_on_player_freezed"]
 [connection signal="freezed" from="." to="Helpers/CoyoteTimer" method="_on_player_freezed"]
@@ -775,3 +786,4 @@ speed = 500.0
 [connection signal="timeout" from="Helpers/DashInvinciblity" to="." method="_on_dash_invinciblity_timeout"]
 [connection signal="timeout" from="Helpers/ThrowCooldown" to="." method="_on_throw_cooldown_timeout"]
 [connection signal="timeout" from="Helpers/DashCooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="area_entered" from="PickupBox" to="." method="_on_pickup_box_area_entered"]

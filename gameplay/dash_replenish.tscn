@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c3a18hx64j05t"]
+
+[ext_resource type="Script" uid="uid://btgjrc0jbuqvo" path="res://dash_replenish.gd" id="1_bqdbq"]
+[ext_resource type="Texture2D" uid="uid://djfad4nlbn4xo" path="res://assets/dash_replenish.png" id="2_6qx45"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wfa2t"]
+radius = 12.0
+
+[node name="DashReplenish" type="Area2D" unique_id=643126448]
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("1_bqdbq")
+
+[node name="Timer" type="Timer" parent="." unique_id=1970016814]
+wait_time = 3.0
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1827308478]
+shape = SubResource("CircleShape2D_wfa2t")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=976673501]
+texture_filter = 1
+texture = ExtResource("2_6qx45")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
