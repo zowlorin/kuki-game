@@ -929,7 +929,7 @@ shape = SubResource("RectangleShape2D_8rd0g")
 script = ExtResource("18_fpvtr")
 
 [node name="GoldenCookie" parent="GoldenCookies" unique_id=1766023232 instance=ExtResource("18_obw5j")]
-position = Vector2(355, -100)
+position = Vector2(115, -109)
 id = 1
 
 [node name="wind particles" parent="." unique_id=182577858 instance=ExtResource("27_we2w3")]
