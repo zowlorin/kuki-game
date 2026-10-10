@@ -23,9 +23,11 @@ script = ExtResource("1_6aj3w")
 
 [node name="TitleMusic" type="AudioStreamPlayer" parent="." unique_id=476633027]
 stream = ExtResource("2_do75d")
+volume_db = -5.0
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="." unique_id=824982977]
 stream = ExtResource("3_on3wc")
+volume_db = -5.0
 
 [node name="StartSFX" type="AudioStreamPlayer" parent="." unique_id=2049984553]
 stream = ExtResource("2_ngqnk")
@@ -41,47 +43,47 @@ volume_db = 5.0
 
 [node name="LandSFX" type="AudioStreamPlayer" parent="." unique_id=1187082036]
 stream = ExtResource("2_8bfp5")
-volume_db = -10.0
+volume_db = -5.0
 
 [node name="DashSFX" type="AudioStreamPlayer" parent="." unique_id=870351820]
 stream = ExtResource("2_6aj3w")
-volume_db = -10.0
+volume_db = -5.0
 
 [node name="JumpSFX" type="AudioStreamPlayer" parent="." unique_id=182919991]
 stream = ExtResource("3_8bfp5")
-volume_db = -10.0
+volume_db = -5.0
 
 [node name="PushSFX" type="AudioStreamPlayer" parent="." unique_id=612174261]
 stream = ExtResource("5_6n5tw")
-volume_db = -10.0
+volume_db = -5.0
 
 [node name="ThrowSFX" type="AudioStreamPlayer" parent="." unique_id=1161619987]
 stream = ExtResource("11_f8jcy")
-volume_db = -10.0
+volume_db = -5.0
 
 [node name="DeathSFX" type="AudioStreamPlayer" parent="." unique_id=115812165]
 stream = ExtResource("12_r2lgn")
-volume_db = -10.0
+volume_db = -5.0
 
 [node name="DoorSFX" type="AudioStreamPlayer" parent="." unique_id=876846493]
 stream = ExtResource("6_76xm7")
-volume_db = -10.0
+volume_db = -5.0
 
 [node name="LeverSFX" type="AudioStreamPlayer" parent="." unique_id=904279426]
 stream = ExtResource("7_k6bw1")
-volume_db = -10.0
+volume_db = -5.0
 
 [node name="PortalSFX" type="AudioStreamPlayer" parent="." unique_id=15309196]
 stream = ExtResource("6_vwu7p")
-volume_db = -10.0
+volume_db = -5.0
 
 [node name="PressurePlateSFX" type="AudioStreamPlayer" parent="." unique_id=58419476]
 stream = ExtResource("7_5ap4w")
-volume_db = -10.0
+volume_db = -5.0
 
 [node name="MirrorSFX" type="AudioStreamPlayer" parent="." unique_id=2053865835]
 stream = ExtResource("10_ww2nj")
-volume_db = -10.0
+volume_db = -5.0
 
 [node name="MusicDelay" type="Timer" parent="." unique_id=1064084986]
 wait_time = 3.0

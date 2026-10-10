@@ -123,7 +123,10 @@ func _on_dash_cooldown_timeout() -> void:
 	can_dash = true
 
 func on_respawn():
+	$AnimatedSprite2D.play("respawn")
 	input_frozen = false
+	
+	await $AnimatedSprite2D.animation_finished
 	state_machine.transition_to("Idle")
 
 func on_death():

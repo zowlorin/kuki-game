@@ -6,11 +6,8 @@ class_name PlayerDeath
 @onready var state_machine: StateMachine = get_parent()
 
 func enter() -> void:
-	AudioManager.play("DeathSFX")
-	player.get_node("AnimatedSprite2D").play("stagger")
 	player.died.emit()
+	AudioManager.play("DeathSFX")
+	player.get_node("AnimatedSprite2D").play("death")
 	player.helpers.get_node("DeathTimer").start()
- 
-# Called once when this state is replaced by another
-func exit() -> void:
-	player.get_node("AnimatedSprite2D").play("idle")
+	
