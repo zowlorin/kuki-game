@@ -45,6 +45,7 @@ func _on_interact_area_body_exited(body: Node2D) -> void:
 func on_interact():
 	if (not cookie_handler.can_feed_cookies()):
 		return
+	cookie_handler.on_cookie_fed()
 	state_machine.transition_to("Eating")
 	
 func _input(event: InputEvent) -> void:
