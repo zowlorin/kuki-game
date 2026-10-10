@@ -213,9 +213,6 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75exu"]
 size = Vector2(55, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hfi3b"]
-size = Vector2(145, 20)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sr7fn"]
 size = Vector2(96, 20)
 
@@ -241,7 +238,6 @@ position = Vector2(-23, 56)
 curve = SubResource("Curve2D_7a6c5")
 
 [node name="Parallax" type="Node2D" parent="." unique_id=1557407053]
-visible = false
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Parallax" unique_id=1191526354]
 visible = false
@@ -357,16 +353,12 @@ position = Vector2(725, -96)
 libraries/ = SubResource("AnimationLibrary_hfi3b")
 autoplay = &"LeftToRight_1"
 
-[node name="MovingPlatform" parent="MovingPlatforms/PlatformHolder" unique_id=62694855]
-
 [node name="PlatformHolder2" type="Node2D" parent="MovingPlatforms" unique_id=1812820888]
 position = Vector2(650, -216)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatforms/PlatformHolder2" unique_id=1572914008]
 libraries/ = SubResource("AnimationLibrary_hfi3b")
 autoplay = &"RightToLeft_1"
-
-[node name="MovingPlatform" parent="MovingPlatforms/PlatformHolder2" unique_id=336409712]
 
 [node name="SafeZones" type="Node2D" parent="." unique_id=1130962872]
 script = ExtResource("19_pi0ug")
@@ -375,20 +367,6 @@ script = ExtResource("19_pi0ug")
 position = Vector2(603, -122)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZones/SafeZone" unique_id=1816575556]
-position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_75exu")
-
-[node name="SafeZone5" parent="SafeZones" unique_id=1304759197 instance=ExtResource("20_8men3")]
-position = Vector2(0, 7)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZones/SafeZone5" unique_id=1911579590]
-position = Vector2(7.5, 0)
-shape = SubResource("RectangleShape2D_hfi3b")
-
-[node name="SafeZone4" parent="SafeZones" unique_id=1287562555 instance=ExtResource("20_8men3")]
-position = Vector2(603, -122)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZones/SafeZone4" unique_id=368590635]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_75exu")
 
