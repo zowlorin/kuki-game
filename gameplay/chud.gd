@@ -49,5 +49,5 @@ func on_interact():
 	state_machine.transition_to("Eating")
 	
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed("interact") and player_interacting:
 		on_interact()
