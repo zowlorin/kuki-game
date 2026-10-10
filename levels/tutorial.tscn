@@ -940,7 +940,6 @@ id = 1
 [node name="wind particles" parent="." unique_id=182577858 instance=ExtResource("27_we2w3")]
 
 [node name="CameraAreas" type="Node2D" parent="." unique_id=1798566316]
-visible = false
 script = ExtResource("29_wfa2t")
 
 [node name="CameraArea" type="Area2D" parent="CameraAreas" unique_id=1844507748]
