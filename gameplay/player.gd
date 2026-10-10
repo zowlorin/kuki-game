@@ -177,7 +177,6 @@ func teleport(target_position: Vector2):
 	camera.position_smoothing_enabled = false
 	
 	global_position = target_position
-	print("teleported")
 	camera.global_position = target_position + initial_rel
 	await get_tree().process_frame
 	camera.position_smoothing_enabled = true
