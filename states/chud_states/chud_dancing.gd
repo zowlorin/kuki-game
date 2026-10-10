@@ -9,7 +9,9 @@ class_name ChudDancing
 
 func enter() -> void:
 	chud.get_node("AnimatedSprite2D").play("dancing")
+	chud.get_node("SingSFX").play()
 	$Timer.start()
+
 func exit() -> void:
 	pass
 

@@ -186,4 +186,5 @@ func _on_game_handler_game_end() -> void:
 
 func _on_pickup_box_area_entered(area: Area2D) -> void:
 	$Helpers/DashCooldown.stop()
+	AudioManager.play("ReplenishSFX")
 	can_dash = true

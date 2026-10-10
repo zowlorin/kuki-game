@@ -17,6 +17,8 @@
 [ext_resource type="AudioStream" uid="uid://bcf8qannk2yo4" path="res://assets/sounds/SFX/Environment/mirror.wav" id="10_ww2nj"]
 [ext_resource type="AudioStream" uid="uid://hk0ov45pq8vm" path="res://assets/sounds/SFX/Character/kuki-beret-throw.wav" id="11_f8jcy"]
 [ext_resource type="AudioStream" uid="uid://bpktnxtb4exm8" path="res://assets/sounds/SFX/Character/kuki-death.wav" id="12_r2lgn"]
+[ext_resource type="AudioStream" uid="uid://ct3pqkmoyk8q7" path="res://assets/sounds/SFX/Character/kuki-collect.wav" id="13_r2lgn"]
+[ext_resource type="AudioStream" uid="uid://dg0vu3rbu01e" path="res://assets/sounds/SFX/Character/kuki-dash-replenish.wav" id="13_vikcq"]
 
 [node name="AudioManager" type="Node" unique_id=892622769]
 script = ExtResource("1_6aj3w")
@@ -63,6 +65,14 @@ volume_db = -5.0
 
 [node name="DeathSFX" type="AudioStreamPlayer" parent="." unique_id=115812165]
 stream = ExtResource("12_r2lgn")
+volume_db = -5.0
+
+[node name="ReplenishSFX" type="AudioStreamPlayer" parent="." unique_id=752849372]
+stream = ExtResource("13_vikcq")
+volume_db = -5.0
+
+[node name="CollectSFX" type="AudioStreamPlayer" parent="." unique_id=1263462590]
+stream = ExtResource("13_r2lgn")
 volume_db = -5.0
 
 [node name="DoorSFX" type="AudioStreamPlayer" parent="." unique_id=876846493]

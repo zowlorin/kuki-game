@@ -8,10 +8,11 @@ class_name ChudEating
 
 func enter() -> void:
 	chud.get_node("AnimatedSprite2D").play("eating")
+	chud.get_node("EatSFX").play()
 	$Timer.start()
 	
 func exit() -> void:
-	pass
+	chud.get_node("EatSFX").stop()
 
 func physics_update(_delta: float) -> void:
 	pass

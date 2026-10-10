@@ -23,6 +23,7 @@ func _ready():
 func on_collect():
 	if cookie_handler.is_collected(id):
 		return
+	AudioManager.play("CollectSFX", 0.9, 1.1)
 	collected.emit(id)
 	enabled = false
 	visible = false
