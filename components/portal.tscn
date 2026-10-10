@@ -57,6 +57,7 @@ script = ExtResource("1_7o6kn")
 shape = SubResource("CircleShape2D_7o6kn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1280490084]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_hnnho")
 autoplay = "default"
 frame_progress = 0.14994696
