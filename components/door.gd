@@ -19,6 +19,8 @@ func on_enter(body: Node2D):
 		
 	var rel: Vector2 = body.global_position - global_position
 	
+	print('ogeiiii')
+	
 	door_entered.emit(body, rel, target_door)
 
 func _on_body_entered(body: Node2D) -> void:

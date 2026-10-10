@@ -20,7 +20,6 @@
 [ext_resource type="Script" uid="uid://l076i8u4p0hn" path="res://handlers/golden_cookies.gd" id="16_s0tuf"]
 [ext_resource type="PackedScene" uid="uid://d8o7asq8gyif" path="res://components/gate.tscn" id="17_e8ahx"]
 [ext_resource type="PackedScene" uid="uid://bcwt84x78xu6h" path="res://components/golden_cookie.tscn" id="17_hfi3b"]
-[ext_resource type="PackedScene" uid="uid://g236muxvb3eb" path="res://components/moving_platform.tscn" id="18_3noyy"]
 [ext_resource type="Script" uid="uid://bmdxml1isrn2k" path="res://handlers/safe_zones.gd" id="19_pi0ug"]
 [ext_resource type="PackedScene" uid="uid://btc8woaxqjc1l" path="res://components/safe_zone.tscn" id="20_8men3"]
 
@@ -357,7 +356,7 @@ position = Vector2(725, -96)
 libraries/ = SubResource("AnimationLibrary_hfi3b")
 autoplay = &"LeftToRight_1"
 
-[node name="MovingPlatform" parent="MovingPlatforms/PlatformHolder" unique_id=62694855 instance=ExtResource("18_3noyy")]
+[node name="MovingPlatform" parent="MovingPlatforms/PlatformHolder" unique_id=62694855]
 
 [node name="PlatformHolder2" type="Node2D" parent="MovingPlatforms" unique_id=1812820888]
 position = Vector2(650, -216)
@@ -366,7 +365,7 @@ position = Vector2(650, -216)
 libraries/ = SubResource("AnimationLibrary_hfi3b")
 autoplay = &"RightToLeft_1"
 
-[node name="MovingPlatform" parent="MovingPlatforms/PlatformHolder2" unique_id=336409712 instance=ExtResource("18_3noyy")]
+[node name="MovingPlatform" parent="MovingPlatforms/PlatformHolder2" unique_id=336409712]
 
 [node name="SafeZones" type="Node2D" parent="." unique_id=1130962872]
 script = ExtResource("19_pi0ug")

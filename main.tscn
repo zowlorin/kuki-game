@@ -277,6 +277,11 @@ position = Vector2(-122, -106)
 accel_curve = SubResource("Curve_0xm2m")
 decel_curve = SubResource("Curve_h2yge")
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="World/Player" unique_id=483153044]
+remote_path = NodePath("../../Camera2D")
+update_rotation = false
+update_scale = false
+
 [node name="Camera2D" type="Camera2D" parent="World" unique_id=55301002]
 position = Vector2(-122, -106)
 zoom = Vector2(2, 2)

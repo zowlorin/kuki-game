@@ -10,6 +10,8 @@ signal exited(focus: Node2D)
 
 @onready var player: Player = get_parent().get_node("Player")
 
+@onready var rtransform: RemoteTransform2D = player.get_node("RemoteTransform2D")
+
 func refresh_relevant():
 	var cleaned: Array[Node2D] = []
 	for node in relevant:
@@ -19,7 +21,11 @@ func refresh_relevant():
 	
 func _process(delta: float) -> void:
 	if not current_focus:
+		rtransform.update_position = true
+		
 		return
+		
+	rtransform.update_position = false
 		
 	if (current_focus is Path2D):
 		var focus_path: Path2D = current_focus
