@@ -24,6 +24,7 @@ func enter() -> void:
 	
 	player.can_throw = false
 	
+	AudioManager.play("ThrowSFX")
 	
 	velocity_snapshot = player.velocity
 	player.velocity = Vector2.ZERO

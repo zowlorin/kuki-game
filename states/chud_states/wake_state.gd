@@ -8,6 +8,8 @@ class_name ChudWake
 @onready var sprite : AnimatedSprite2D = chud.get_node("AnimatedSprite2D")
 
 func enter() -> void:
+	chud.get_node("SleepSFX").stop()
+	chud.get_node("WakeSFX").play()
 	sprite.play("wake")
 
 func physics_update(_delta: float) -> void:

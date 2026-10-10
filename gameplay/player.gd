@@ -33,6 +33,7 @@ signal safe_zone_requested
 
 @export_category("Miscellanous")
 @export var mirrored: bool = false
+@export var push_range: float = 10
 @export var push_force: float = 10
 @export var bounce_curve: Curve
 @export var bounce_speed: float = 300.0
@@ -96,6 +97,8 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	var move_direction: float = Input.get_axis("move_left", "move_right")
 	
+	$RayCast2D.target_position.x = mirror_factor[int(mirrored)] * move_direction * push_range
+	
 	if (input_frozen):
 		move_direction = 0
 	
@@ -131,6 +134,7 @@ func on_death():
 	
 	velocity = Vector2.ZERO
 	
+	AudioManager.play("DeathSFX")
 	died.emit()
 	
 	$Helpers/DeathTimer.start()

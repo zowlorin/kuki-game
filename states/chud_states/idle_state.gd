@@ -11,7 +11,8 @@ class_name ChudIdle
 func enter() -> void:
 	chud.get_node("AnimatedSprite2D").play("idle")
 	idle_frame = Time.get_unix_time_from_system()
- 
+	chud.get_node("IdleSFX").play()
+
 func physics_update(_delta: float) -> void:
 	var curr_frame = Time.get_unix_time_from_system()
 	var raycast : RayCast2D = chud.get_node("RayCast")
@@ -24,5 +25,5 @@ func physics_update(_delta: float) -> void:
 	
 	prev_proximity = raycast.is_colliding()
 	
-	if (curr_frame - idle_frame) > chud.buffer_frames and !raycast.is_colliding():
+	if (curr_frame - idle_frame) > chud.buffer_frames and !raycast.is_colliding() and not chud.get_node("IdleSFX").is_playing():
 		state_machine.transition_to("Sleep")

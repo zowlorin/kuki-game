@@ -9,6 +9,10 @@ class_name ChudSleep
 
 func enter() -> void:
 	chud.get_node("AnimatedSprite2D").play("sleep")
+	chud.get_node("SleepSFX").play()
+
+func exit() -> void:
+	chud.get_node("SleepSFX").stop()
 
 func physics_update(_delta: float) -> void:
 	var raycast : RayCast2D = chud.get_node("RayCast")

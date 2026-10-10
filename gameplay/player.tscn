@@ -572,6 +572,11 @@ dash_speed = 250.0
 bounce_curve = SubResource("Curve_0qvvg")
 bounce_speed = 600.0
 
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1136324206]
+position = Vector2(0, -5)
+target_position = Vector2(0, 0)
+collision_mask = 16
+
 [node name="InputListener" type="Node" parent="." unique_id=395743567]
 script = ExtResource("2_s0fd6")
 metadata/_custom_type_script = "uid://ds1pinghuc23o"

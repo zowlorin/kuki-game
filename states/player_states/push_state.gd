@@ -5,6 +5,7 @@ class_name PlayerPush
 @onready var player: CharacterBody2D = owner
 @onready var state_machine: StateMachine = get_parent()
 @onready var input_listener: InputListener = owner.get_node("InputListener")
+@onready var audio_manager: AudioManager
 
 @onready var push_collision : KinematicCollision2D
 @onready var move_direction: float = 0
@@ -12,6 +13,7 @@ class_name PlayerPush
 @onready var input_frozen: bool = false
 
 func enter() -> void:
+	AudioManager.play("PushSFX")
 	push_collision = player.get_last_slide_collision()
 	
 	player.get_node("AnimatedSprite2D").play("push")
@@ -37,17 +39,20 @@ func physics_update(_delta: float) -> void:
 		move_direction = 0
 	
 	player.velocity.x = player.mirror_factor[int(player.mirrored)] * move_direction * player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed
+	
 	if push_collision.get_collider() is RigidBody2D:
 		push_collision.get_collider().apply_central_impulse(-push_collision.get_normal() * player.push_force)
-	elif not player.is_on_wall():
-		state_machine.transition_to("Walk")
+	#elif not player.is_on_wall():
+		#state_machine.transition_to("Walk")
 	
 	if player.get_last_slide_collision() != null:
 		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
 			state_machine.transition_to("Bounce")
-		elif player.get_last_slide_collision().get_collider() is not RigidBody2D:
-			state_machine.transition_to("Walk")
-	if not input_frozen  and player.can_throw and (Input.is_action_just_pressed("action_throw")):
+		#elif player.get_last_slide_collision().get_collider() is not RigidBody2D:
+		
+	if not player.get_node("RayCast2D").is_colliding():
+		state_machine.transition_to("Walk")
+	elif not input_frozen  and player.can_throw and (Input.is_action_just_pressed("action_throw")):
 		state_machine.transition_to("Throw")
 	elif (player.is_on_floor() or player.on_coyote) and not input_frozen and (Input.is_action_just_pressed("jump") or input_listener.get_buffer("JumpBuffer").is_buffered()):
 		input_listener.get_buffer("JumpBuffer").consume()

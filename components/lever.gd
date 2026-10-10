@@ -5,6 +5,7 @@ extends TriggerMech
 func trigger():
 	active = !active
 	
+	AudioManager.play("LeverSFX")
 	$Sprite2D.frame = 1 if active else 0
 	
 	on_triggered.emit(active)

@@ -10,10 +10,12 @@ extends StaticBody2D
 		$CollisionShape2D.disabled = !blocked
 
 func on_open():
+	AudioManager.play("DoorSFX")
 	$AnimationPlayer.play("Open")
 	blocked = false
 
 func on_close():
+	AudioManager.play("DoorSFX")
 	$AnimationPlayer.play("Close")
 	blocked = true
 	
