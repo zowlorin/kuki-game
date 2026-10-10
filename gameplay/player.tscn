@@ -568,7 +568,8 @@ fall_duration = 0.5
 accel_curve = SubResource("Curve_07ejr")
 decel_curve = SubResource("Curve_he3mg")
 max_speed = 150.0
-dash_speed = 250.0
+dash_speed = 400.0
+dash_duration = 0.2
 bounce_curve = SubResource("Curve_0qvvg")
 bounce_speed = 600.0
 
@@ -587,7 +588,6 @@ initial_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://cwubmbexatqve"
 
 [node name="Label" type="Label" parent="StateMachine" unique_id=472813867]
-visible = false
 texture_filter = 1
 offset_right = 40.0
 offset_bottom = 23.0

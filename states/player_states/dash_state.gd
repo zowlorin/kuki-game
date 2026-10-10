@@ -33,6 +33,8 @@ func enter() -> void:
 	
 	player.get_node("AnimatedSprite2D").flip_h = true_direction < 0
 	AudioManager.play("DashSFX")
+	
+	player.velocity.y = 0
 
 func exit() -> void:
 	player.velocity.x = 0
@@ -82,7 +84,7 @@ func physics_update(_delta: float) -> void:
 		else:
 			state_machine.transition_to("Fall")
 
-	player.velocity.y = (1 - (player.fall_curve.sample((curr_frame - player.dash_frame) / player.fall_duration))) * player.fall_speed
+	#player.velocity.y = (1 - (player.fall_curve.sample((curr_frame - player.dash_frame) / player.fall_duration))) * player.fall_speed
 
 func _on_player_input_freezed(active: bool) -> void:
 	input_frozen = active
