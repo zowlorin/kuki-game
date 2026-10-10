@@ -46,7 +46,7 @@ volume_db = 5.0
 
 [node name="LandSFX" type="AudioStreamPlayer" parent="." unique_id=1187082036]
 stream = ExtResource("2_8bfp5")
-volume_db = -5.0
+volume_db = -7.0
 
 [node name="DashSFX" type="AudioStreamPlayer" parent="." unique_id=870351820]
 stream = ExtResource("2_6aj3w")
@@ -54,7 +54,7 @@ volume_db = -5.0
 
 [node name="JumpSFX" type="AudioStreamPlayer" parent="." unique_id=182919991]
 stream = ExtResource("3_8bfp5")
-volume_db = -5.0
+volume_db = -2.0
 
 [node name="PushSFX" type="AudioStreamPlayer" parent="." unique_id=612174261]
 stream = ExtResource("5_6n5tw")
