@@ -582,6 +582,7 @@ initial_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://cwubmbexatqve"
 
 [node name="Label" type="Label" parent="StateMachine" unique_id=472813867]
+visible = false
 texture_filter = 1
 offset_right = 40.0
 offset_bottom = 23.0

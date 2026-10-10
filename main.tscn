@@ -310,6 +310,7 @@ script = ExtResource("16_getpj")
 process_mode = 3
 
 [node name="HUD" type="Control" parent="UI" unique_id=3191764]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
