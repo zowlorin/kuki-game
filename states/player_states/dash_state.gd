@@ -15,7 +15,6 @@ class_name PlayerDash
 
 @onready var input_frozen: bool = false
 @onready var true_direction: float
-@onready var going_down: bool = false
 
 func enter() -> void:
 	true_direction = player.mirror_factor[int(player.mirrored)] * player.prev_direction
