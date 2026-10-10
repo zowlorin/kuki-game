@@ -409,7 +409,7 @@ script = ExtResource("16_s0tuf")
 
 [node name="GoldenCookie" parent="GoldenCookies" unique_id=1766023232 instance=ExtResource("17_hfi3b")]
 position = Vector2(47, -263)
-id = 2
+id = 5
 
 [connection signal="player_entered" from="CameraAreas" to="." method="_on_camera_areas_player_entered"]
 [connection signal="player_exited" from="CameraAreas" to="." method="_on_camera_areas_player_exited"]

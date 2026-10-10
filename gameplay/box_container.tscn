@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b83gms022hnxe"]
 
 [ext_resource type="Script" uid="uid://bkfu3k6eg5ygk" path="res://gameplay/box_container.gd" id="1_gxq83"]
-[ext_resource type="Texture2D" uid="uid://bgbkhrrektn71" path="res://assets/sprites/moving_platform.png" id="2_gxq83"]
+[ext_resource type="Texture2D" uid="uid://cvellfqwgwhv5" path="res://assets/sprites/movingplatform.png" id="2_pfpxs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_710pl"]
 size = Vector2(22, 22.25)
@@ -15,7 +15,7 @@ metadata/_custom_type_script = "uid://dryvspb4hkna0"
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1822170110]
 texture_filter = 1
 position = Vector2(0, 17)
-texture = ExtResource("2_gxq83")
+texture = ExtResource("2_pfpxs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=210538375]
 position = Vector2(0, 0.125)
