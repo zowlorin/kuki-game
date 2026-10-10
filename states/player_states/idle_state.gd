@@ -2,7 +2,7 @@ extends State
 
 class_name PlayerIdle
 
-@onready var player: CharacterBody2D = get_parent().get_parent()
+@onready var player: CharacterBody2D = owner
 @onready var state_machine: StateMachine = get_parent()
 @onready var input_listener: InputListener = owner.get_node("InputListener")
 

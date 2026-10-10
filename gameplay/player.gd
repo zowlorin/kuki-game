@@ -124,22 +124,13 @@ func _on_dash_cooldown_timeout() -> void:
 
 func on_respawn():
 	input_frozen = false
-	
-	velocity = Vector2.ZERO
+	state_machine.transition_to("Idle")
 
 func on_death():
-	input_frozen = true
-	
-	frozen = true
-	
 	velocity = Vector2.ZERO
-	
-	AudioManager.play("DeathSFX")
-	died.emit()
-	
-	$Helpers/DeathTimer.start()
-	
-	state_machine.transition_to("Idle")
+	input_frozen = true
+	frozen = true
+	state_machine.transition_to("Death")
 	
 func _on_hurtbox_hurt() -> void:
 	on_death()
@@ -160,7 +151,6 @@ func _on_death_timer_timeout() -> void:
 	$Helpers/RespawnTimer.start()
 	
 	safe_zone_requested.emit()
-
 
 func _on_throw_projectile_requested() -> void:
 	request_projectile.emit("player_cap", global_position, {})

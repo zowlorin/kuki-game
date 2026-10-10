@@ -20,22 +20,8 @@ func on_interact():
 	$Timer.start()
 	
 func _input(event: InputEvent) -> void:
-	
-	if not event is InputEventKey:
-		return
-		
-	var ev: InputEventKey = event
-
-	if (!ev.pressed):
-		return
-	
-	if (!ev.keycode == Key.KEY_F):
-		return
-		
-	if (!player_interacting):
-		return
-		
-	on_interact()
+	if event.is_action_pressed("interact") and player_interacting:
+		on_interact()
 
 func _on_timer_timeout() -> void:
 	cooling = false

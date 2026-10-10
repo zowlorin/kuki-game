@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://hsyefgfjiomf" path="res://states/player_states/push_state.gd" id="11_07ejr"]
 [ext_resource type="Script" uid="uid://byhaipkgstwjb" path="res://states/player_states/stagger_state.gd" id="12_2wuqc"]
 [ext_resource type="Script" uid="uid://vsxlbu81y40j" path="res://states/player_states/cap_throw.gd" id="12_lvbka"]
+[ext_resource type="Script" uid="uid://brvsglrht3k4s" path="res://states/player_states/death_state.gd" id="13_dmp65"]
 [ext_resource type="Texture2D" uid="uid://k3g6d6wmfmt2" path="res://assets/kuki/kukiairdash.png" id="13_s0fd6"]
 [ext_resource type="Texture2D" uid="uid://dw1dnh5v5ikd3" path="res://assets/kuki/kukijump.png" id="14_b2a7g"]
 [ext_resource type="Curve" uid="uid://b5qid14tkfrq5" path="res://assets/resources/particle_curve.tres" id="15_b2a7g"]
@@ -638,6 +639,10 @@ metadata/_custom_type_script = "uid://hsyefgfjiomf"
 [node name="Throw" type="Node" parent="StateMachine" unique_id=919186754]
 script = ExtResource("12_lvbka")
 metadata/_custom_type_script = "uid://vsxlbu81y40j"
+
+[node name="Death" type="Node" parent="StateMachine" unique_id=1684040911]
+script = ExtResource("13_dmp65")
+metadata/_custom_type_script = "uid://brvsglrht3k4s"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1204224882]
 texture_filter = 1
