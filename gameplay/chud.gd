@@ -49,18 +49,5 @@ func on_interact():
 	state_machine.transition_to("Eating")
 	
 func _input(event: InputEvent) -> void:
-	if not event is InputEventKey:
-		return
-			
-	var ev: InputEventKey = event
-
-	if (!ev.pressed):
-		return
-		
-	if (!ev.keycode == Key.KEY_F):
-		return
-			
-	if (!player_interacting):
-		return
-			
-	on_interact()
+	if event.is_action_pressed("interact"):
+		on_interact()
