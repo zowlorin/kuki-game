@@ -582,6 +582,7 @@ initial_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://cwubmbexatqve"
 
 [node name="Label" type="Label" parent="StateMachine" unique_id=472813867]
+visible = false
 texture_filter = 1
 offset_right = 40.0
 offset_bottom = 23.0
@@ -656,6 +657,7 @@ position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_ysoui")
 
 [node name="Helpers" type="Node2D" parent="." unique_id=858637468]
+top_level = true
 
 [node name="CoyoteTimer" type="Timer" parent="Helpers" unique_id=1162502535]
 process_callback = 0

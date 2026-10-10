@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://l076i8u4p0hn" path="res://handlers/golden_cookies.gd" id="18_fpvtr"]
 [ext_resource type="PackedScene" uid="uid://bcwt84x78xu6h" path="res://golden_cookie.tscn" id="18_obw5j"]
 [ext_resource type="Texture2D" uid="uid://d2rhmdllap05o" path="res://assets/sprites/trashpile.png" id="26_8bi7p"]
+[ext_resource type="PackedScene" uid="uid://wkbpy211s0d8" path="res://effects/wind_particles.tscn" id="27_we2w3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xwxsl"]
 texture = ExtResource("10_mip8o")
@@ -912,6 +913,8 @@ self_modulate = Color(0.6550534, 0.6550533, 0.65505326, 1)
 texture_filter = 1
 position = Vector2(165, -130)
 texture = ExtResource("26_8bi7p")
+
+[node name="wind particles" parent="." unique_id=182577858 instance=ExtResource("27_we2w3")]
 
 [connection signal="level_change_requested" from="PortalHandler" to="." method="_on_portal_handler_level_change_requested"]
 [connection signal="zone_changed" from="SafeZones" to="." method="_on_safe_zones_zone_changed"]

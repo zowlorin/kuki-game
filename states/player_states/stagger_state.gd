@@ -16,6 +16,8 @@ func enter() -> void:
 	
 	if !(sprite.animation_finished.is_connected(switch_state)):
 		sprite.animation_finished.connect(switch_state)
+		
+	player.decel_frame = Time.get_unix_time_from_system()
 
 func exit() -> void:
 	if (sprite.animation_finished.is_connected(switch_state)):
@@ -37,7 +39,11 @@ func physics_update(_delta: float) -> void:
 		state_machine.transition_to("Throw")
 			
 	
-	elif player.is_on_floor() and not input_frozen and (abs(Input.get_axis("move_left", "move_right")) > 0 or player.get_platform_velocity() != Vector2.ZERO or input_listener.get_buffer("MoveLeftBuffer").is_buffered() or input_listener.get_buffer("MoveRightBuffer").is_buffered()):
+	if not input_frozen and player.can_throw and (Input.is_action_just_pressed("action_throw")):
+		state_machine.transition_to("Throw")
+	elif not player.is_on_floor():
+		state_machine.transition_to("Fall")
+	elif player.is_on_floor() and not input_frozen and (abs(Input.get_axis("move_left", "move_right")) > 0 or input_listener.get_buffer("MoveLeftBuffer").is_buffered() or input_listener.get_buffer("MoveRightBuffer").is_buffered()):
 		input_listener.get_buffer("MoveLeftBuffer").consume()
 		input_listener.get_buffer("MoveRightBuffer").consume()
 		state_machine.transition_to("Walk")
@@ -45,7 +51,7 @@ func physics_update(_delta: float) -> void:
 		input_listener.get_buffer("JumpBuffer").consume()
 		state_machine.transition_to("Jump")
 	elif player.can_dash and not input_frozen and (Input.is_action_just_pressed("dash") or input_listener.get_buffer("DashBuffer").is_buffered()):
-		input_listener.get_buffer("DashBuffer").consume()
+		input_listener.get_buffer("JumpBuffer").consume()
 		state_machine.transition_to("Dash")
 
 func update(_delta: float) -> void:

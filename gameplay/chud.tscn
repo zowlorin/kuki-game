@@ -281,6 +281,7 @@ initial_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://cwubmbexatqve"
 
 [node name="Label" type="Label" parent="StateMachine" unique_id=738783601]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 offset_transform_enabled = true
