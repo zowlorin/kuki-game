@@ -32,7 +32,7 @@ func enter() -> void:
 		player.get_node("AnimatedSprite2D").play("air_dash")
 	
 	player.get_node("AnimatedSprite2D").flip_h = true_direction < 0
-	AudioManager.play("DashSFX")
+	AudioManager.play("DashSFX", 0.9, 1.1)
 	
 	player.velocity.y = 0
 

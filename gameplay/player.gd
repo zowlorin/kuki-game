@@ -38,7 +38,7 @@ signal safe_zone_requested
 @export var bounce_curve: Curve
 @export var bounce_speed: float = 300.0
 @export var bounce_duration: float = 0.4
-@export var throw_duration: float = 0.2
+@export var throw_duration: float = 0.6
 
 
 @onready var jump_frame = Time.get_unix_time_from_system()

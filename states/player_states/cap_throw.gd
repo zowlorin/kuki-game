@@ -17,14 +17,7 @@ signal projectile_requested
 
 func enter() -> void:
 	player.throw_frame = Time.get_unix_time_from_system()
-	
 	player.get_node("AnimatedSprite2D").play("throw")
-	
-	player_cap.throw(player_cap_origin.global_position, player.prev_direction)
-	
-	player.can_throw = false
-	
-	AudioManager.play("ThrowSFX")
 	
 	velocity_snapshot = player.velocity
 	player.velocity = Vector2.ZERO
@@ -37,6 +30,11 @@ func physics_update(_delta: float) -> void:
 	var bouncy_nodes = get_tree().get_nodes_in_group("Bouncy")
 	
 	player.get_node("Hurtbox").get_child(0).set_deferred("disabled", true)
+	
+	if player.get_node("AnimatedSprite2D").frame == 2:
+		player_cap.throw(player_cap_origin.global_position, player.prev_direction)
+		AudioManager.play("ThrowSFX", 0.9, 1.1)
+		player.can_throw = false
 	
 	if player.can_dash and not input_frozen and (Input.is_action_just_pressed("dash") or input_listener.get_buffer("DashBuffer").is_buffered()):
 		input_listener.get_buffer("DashBuffer").consume()

@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://r82ip1jvly4x" path="res://components/portal.tscn" id="11_08mxr"]
 [ext_resource type="PackedScene" uid="uid://bkw1a51ob5sl4" path="res://components/lever.tscn" id="13_sg85d"]
 [ext_resource type="PackedScene" uid="uid://di8j2uaoyn0nr" path="res://components/pressure_plate.tscn" id="15_hieke"]
-[ext_resource type="PackedScene" uid="uid://b83gms022hnxe" path="res://gameplay/box_container.tscn" id="16_nvdtl"]
+[ext_resource type="PackedScene" uid="uid://b83gms022hnxe" path="res://components/box_container.tscn" id="16_nvdtl"]
 [ext_resource type="Script" uid="uid://l076i8u4p0hn" path="res://handlers/golden_cookies.gd" id="16_s0tuf"]
 [ext_resource type="PackedScene" uid="uid://d8o7asq8gyif" path="res://components/gate.tscn" id="17_e8ahx"]
 [ext_resource type="PackedScene" uid="uid://bcwt84x78xu6h" path="res://golden_cookie.tscn" id="17_hfi3b"]

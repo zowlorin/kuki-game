@@ -9,7 +9,7 @@ class_name Mirror
 
 func _physics_process(delta: float) -> void:
 	if player_interacting and Input.is_action_just_pressed("interact"):
-		AudioManager.play("MirrorSFX")
+		AudioManager.play("MirrorSFX", 0.9, 1.1)
 		if mirrors.size() >= mirrored_limit:
 			var mirror = mirrors.pop_back()
 			mirror.call_deferred("queue_free")

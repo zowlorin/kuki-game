@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://d1cggey58xuwd" path="res://components/door.tscn" id="13_1qwqs"]
 [ext_resource type="PackedScene" uid="uid://bkw1a51ob5sl4" path="res://components/lever.tscn" id="14_6rnnv"]
 [ext_resource type="PackedScene" uid="uid://di8j2uaoyn0nr" path="res://components/pressure_plate.tscn" id="15_05uw5"]
-[ext_resource type="PackedScene" uid="uid://b83gms022hnxe" path="res://gameplay/box_container.tscn" id="16_eavc2"]
+[ext_resource type="PackedScene" uid="uid://b83gms022hnxe" path="res://components/box_container.tscn" id="16_eavc2"]
 [ext_resource type="PackedScene" uid="uid://d8o7asq8gyif" path="res://components/gate.tscn" id="17_ydqpf"]
 [ext_resource type="PackedScene" uid="uid://qwaaokt33dau" path="res://components/moving_platform.tscn" id="18_meuhv"]
 [ext_resource type="Script" uid="uid://bmdxml1isrn2k" path="res://handlers/safe_zones.gd" id="19_a81au"]
