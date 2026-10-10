@@ -10,11 +10,8 @@ func trigger():
 	on_triggered.emit(active)
 
 func on_interact():
-	if (!player_interacting):
-		return
 	if (cooling):
 		return
-		
 	
 	trigger()
 	
@@ -34,8 +31,18 @@ func _input(event: InputEvent) -> void:
 	if (!ev.keycode == Key.KEY_E):
 		return
 		
+	if (!player_interacting):
+		return
+		
 	on_interact()
 
 
 func _on_timer_timeout() -> void:
 	cooling = false
+
+
+func _on_hit() -> void:
+	pass
+
+func _on_area_entered(area: Area2D) -> void:
+	on_interact()
