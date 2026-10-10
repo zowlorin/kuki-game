@@ -17,7 +17,7 @@ func enter() -> void:
 	bouncing = false
 
 func exit() -> void:
-	AudioManager.play("LandSFX")
+	AudioManager.play("LandSFX", 0.9, 1.1)
 
 func physics_update(_delta: float) -> void:
 	var curr_frame = Time.get_unix_time_from_system()

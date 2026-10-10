@@ -3,7 +3,7 @@ extends Node2D
 signal level_change_requested(scene_path: String, target_id: String)
 
 func _level_change_requested(scene_path: String, target_id: String):
-	AudioManager.play("PortalSFX")
+	AudioManager.play("PortalSFX", 0.9, 1.1)
 	level_change_requested.emit(scene_path, target_id)
 	
 func _ready() -> void:

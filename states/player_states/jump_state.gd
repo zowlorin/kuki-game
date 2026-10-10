@@ -11,7 +11,7 @@ class_name PlayerJump
 
 func enter() -> void:
 	sprite.play("jump")
-	AudioManager.play("JumpSFX")
+	AudioManager.play("JumpSFX", 0.9, 1.1)
 	player.jump_frame = Time.get_unix_time_from_system()
 
 func exit() -> void:

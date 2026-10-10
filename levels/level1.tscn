@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://b6btr6xegcrwj" path="res://assets/tilesets/carameltop.png" id="15_2nn5w"]
 [ext_resource type="Script" uid="uid://bmdxml1isrn2k" path="res://handlers/safe_zones.gd" id="18_l7nqg"]
 [ext_resource type="Script" uid="uid://l076i8u4p0hn" path="res://handlers/golden_cookies.gd" id="18_w7ck5"]
-[ext_resource type="PackedScene" uid="uid://bcwt84x78xu6h" path="res://golden_cookie.tscn" id="19_2nn5w"]
+[ext_resource type="PackedScene" uid="uid://bcwt84x78xu6h" path="res://components/golden_cookie.tscn" id="19_2nn5w"]
 [ext_resource type="PackedScene" uid="uid://btc8woaxqjc1l" path="res://components/safe_zone.tscn" id="19_l7nqg"]
 [ext_resource type="Texture2D" uid="uid://digffvqfi2iyq" path="res://assets/tilesets/choco_bricks.png" id="22_mxqdg"]
 [ext_resource type="Texture2D" uid="uid://bldswt24b4d17" path="res://assets/tilesets/chocastledecorations.png" id="23_tv7bq"]

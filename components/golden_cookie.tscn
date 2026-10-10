@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bcwt84x78xu6h"]
 
 [ext_resource type="Texture2D" uid="uid://xjuim5mbgtst" path="res://assets/cookie.png" id="1_gvy4a"]
-[ext_resource type="Script" uid="uid://cpjcem37gkp1h" path="res://gameplay/golden_cookie.gd" id="1_xw0pt"]
+[ext_resource type="Script" uid="uid://cpjcem37gkp1h" path="res://components/golden_cookie.gd" id="1_xw0pt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1r0vv"]
 radius = 15.0

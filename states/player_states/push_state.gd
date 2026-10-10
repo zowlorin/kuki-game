@@ -13,7 +13,7 @@ class_name PlayerPush
 @onready var input_frozen: bool = false
 
 func enter() -> void:
-	AudioManager.play("PushSFX")
+	AudioManager.play("PushSFX", 0.9, 1.1)
 	push_collision = player.get_last_slide_collision()
 	
 	player.get_node("AnimatedSprite2D").play("push")
@@ -42,13 +42,10 @@ func physics_update(_delta: float) -> void:
 	
 	if push_collision.get_collider() is RigidBody2D:
 		push_collision.get_collider().apply_central_impulse(-push_collision.get_normal() * player.push_force)
-	#elif not player.is_on_wall():
-		#state_machine.transition_to("Walk")
 	
 	if player.get_last_slide_collision() != null:
 		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
 			state_machine.transition_to("Bounce")
-		#elif player.get_last_slide_collision().get_collider() is not RigidBody2D:
 		
 	if not player.get_node("RayCast2D").is_colliding():
 		state_machine.transition_to("Walk")

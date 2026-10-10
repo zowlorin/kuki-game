@@ -34,6 +34,9 @@ func play(key: String, min_pitch: float = 1.0, max_pitch: float = 1.0) -> void:
 	if not sound:
 		push_warning("AudioManager: Sound key '%s' not found." % key)
 		return
+	
+	if key.contains("Music"):
+		_current_music = sound
 
 	sound.pitch_scale = randf_range(min_pitch, max_pitch)
 	sound.play()
@@ -81,18 +84,13 @@ func change_volume(key: String, linear_volume: float, duration: float) -> void:
 
 
 # called with delay to loop music
-func on_music_finished(key: String, min_delay: float = 3.0, max_delay: float = 10.0) -> void:
-	_queued_music = _sounds.get(key)
-	if not _queued_music or not music_delay:
-		return
-
-	music_delay.wait_time = randf_range(min_delay, max_delay)
+func _on_music_finished() -> void:
+	music_delay.wait_time = randf_range(3.0, 10.0)
 	music_delay.start()
 
 
 func _on_music_delay_timeout() -> void:
-	if _queued_music:
-		_queued_music.play()
+	play(_current_music.name)
 
 
 # stops tween to start a new one
