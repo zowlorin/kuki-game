@@ -49,6 +49,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_lbg6m"]
+offsets = PackedFloat32Array(0, 0.69170403, 0.9988789)
+colors = PackedColorArray(0.98039216, 0.96862745, 0.34509805, 0, 1, 1, 0.7764706, 1, 1, 1, 0.7764706, 0)
+
 [node name="Portal" type="Area2D" unique_id=1857128004]
 collision_mask = 10
 script = ExtResource("1_7o6kn")
@@ -61,6 +65,22 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_hnnho")
 autoplay = "default"
 frame_progress = 0.14994696
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1226188477]
+amount = 150
+lifetime = 1.2
+emission_shape = 6
+emission_ring_inner_radius = 10.0
+emission_ring_radius = 40.0
+gravity = Vector2(0, 0)
+radial_accel_min = -60.99
+radial_accel_max = 38.04
+tangential_accel_min = -10.49
+tangential_accel_max = 10.48
+scale_amount_min = 0.2
+scale_amount_max = 2.0
+color = Color(0.9814169, 0.9500957, 0.82061803, 1)
+color_ramp = SubResource("Gradient_lbg6m")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
