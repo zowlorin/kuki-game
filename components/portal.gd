@@ -38,18 +38,5 @@ func on_interact():
 	load_target_level()
 	
 func _input(event: InputEvent) -> void:
-	
-	if not event is InputEventKey:
-		return
-		
-	var ev: InputEventKey = event
-
-	if (!ev.pressed):
-		return
-	
-	if (!ev.keycode == Key.KEY_F):
-		return
-		
-
-		
-	on_interact()
+	if event.is_action_pressed("interact"):
+		on_interact()
