@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 class_name Door
 
@@ -19,14 +19,13 @@ func on_enter(body: Node2D):
 		
 	var rel: Vector2 = body.global_position - global_position
 	
-	print('ogeiiii')
-	
 	door_entered.emit(body, rel, target_door)
 
 func _on_body_entered(body: Node2D) -> void:
-	if (body is Player):
+	if (body is Player and !automatic):
 		player = body
 		player_interacting = true
+		return
 	
 	if (!automatic):
 		return
@@ -51,11 +50,9 @@ func _on_body_exited(body: Node2D) -> void:
 func teleport(body: Node2D, relative: Vector2) -> void:
 	body.global_position = global_position + relative
 	
-func receive_body_teleport_request(body: Node2D, relative: Vector2) -> void:
-	if (automatic):
-		ignore_list.append(body)
-	
-	teleport(body, relative)
+func receive_body_teleport_request(body: Node2D, relative: Vector2, target: Node2D) -> void:
+	target.ignore_list.append(body)
+	target.teleport(body, relative)
 	
 func on_interact():
 	if (automatic):
@@ -67,16 +64,5 @@ func on_interact():
 	on_enter(player)
 	
 func _input(event: InputEvent) -> void:
-	
-	if not event is InputEventKey:
-		return
-		
-	var ev: InputEventKey = event
-
-	if (!ev.pressed):
-		return
-	
-	if (!ev.keycode == Key.KEY_E):
-		return
-		
-	on_interact()
+	if event.is_action_pressed("interact") and player_interacting:
+		on_interact()
