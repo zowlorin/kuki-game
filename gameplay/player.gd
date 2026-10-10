@@ -66,6 +66,8 @@ signal safe_zone_requested
 
 @onready var velocity_snapshot: Vector2 = Vector2.ZERO
 
+@onready var camera: Camera2D = get_parent().get_node("Camera2D")
+
 var frozen: bool = false:
 	set(x):
 		if (frozen == x):
@@ -145,7 +147,7 @@ func _on_respawn_handler_safe_zone_granted(target: SafeZone) -> void:
 	respawn_target = target
 	
 	if respawn_target:
-		global_position = respawn_target.global_position
+		teleport(respawn_target.global_position)
 	
 	velocity = Vector2.ZERO
 	frozen = false
@@ -169,3 +171,13 @@ func _on_level_handler_level_okay() -> void:
 	input_frozen = false
 func _on_level_handler_on_level_setup_done():
 	pass
+
+func teleport(target_position: Vector2):
+	var initial_rel: Vector2 = camera.global_position - global_position
+	camera.position_smoothing_enabled = false
+	
+	global_position = target_position
+	print("teleported")
+	camera.global_position = target_position + initial_rel
+	await get_tree().process_frame
+	camera.position_smoothing_enabled = true

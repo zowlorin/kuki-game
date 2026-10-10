@@ -17,6 +17,7 @@ signal cookie_collected(id: int)
 @onready var level_queued: Dictionary
 
 @onready var player: Player = get_parent().get_parent().get_node("Player")
+@onready var camera: Camera2D = get_parent().get_parent().get_node("Camera2D")
 
 @onready var cold_start_done: bool = false
 
@@ -66,8 +67,8 @@ func change_level(level_path: String, target_id: String):
 	if not target_portal:
 		print("wtf u didnt set it correctly")
 		return
-	
-	player.global_position = target_portal.global_position
+
+	player.teleport(target_portal.global_position)
 	level_setup_done.emit()
 
 func handle_queued_level():
