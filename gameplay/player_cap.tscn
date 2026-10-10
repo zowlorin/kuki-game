@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cgawktjnox855" path="res://assets/beretproj.png" id="1_4jgbm"]
 [ext_resource type="Script" uid="uid://brn20xy405ops" path="res://gameplay/player_cap.gd" id="1_7s2al"]
+[ext_resource type="Script" uid="uid://b2hi7r2v1hf7w" path="res://gameplay/marker.gd" id="3_o2gpl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7s2al"]
 atlas = ExtResource("1_4jgbm")
@@ -66,6 +67,7 @@ shape = SubResource("CircleShape2D_7s2al")
 [node name="Marker" type="Area2D" parent="." unique_id=1360352868]
 collision_layer = 32
 collision_mask = 0
+script = ExtResource("3_o2gpl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker" unique_id=772939717]
 shape = SubResource("CircleShape2D_3owqy")

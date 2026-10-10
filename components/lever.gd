@@ -40,9 +40,9 @@ func _input(event: InputEvent) -> void:
 func _on_timer_timeout() -> void:
 	cooling = false
 
-
 func _on_hit() -> void:
 	pass
 
 func _on_area_entered(area: Area2D) -> void:
-	on_interact()
+	if (area is CapMarker):
+		on_interact()

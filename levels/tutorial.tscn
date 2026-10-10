@@ -28,6 +28,8 @@
 [ext_resource type="Texture2D" uid="uid://d2rhmdllap05o" path="res://assets/sprites/trashpile.png" id="26_8bi7p"]
 [ext_resource type="PackedScene" uid="uid://wkbpy211s0d8" path="res://effects/wind_particles.tscn" id="27_we2w3"]
 [ext_resource type="PackedScene" uid="uid://bkw1a51ob5sl4" path="res://components/lever.tscn" id="28_4kisa"]
+[ext_resource type="Script" uid="uid://5tclep32w5hw" path="res://gameplay/camera_area.gd" id="29_rxgvf"]
+[ext_resource type="Script" uid="uid://u7cugm6oaic6" path="res://gameplay/camera_areas.gd" id="29_wfa2t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xwxsl"]
 texture = ExtResource("10_mip8o")
@@ -740,8 +742,20 @@ sources/2 = SubResource("TileSetAtlasSource_we2w3")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rd0g"]
 size = Vector2(129, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjdp3"]
-size = Vector2(129, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbcni"]
+size = Vector2(725.5, 202.5)
+
+[sub_resource type="Curve2D" id="Curve2D_wfa2t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 40, 28, 0, 0, 0, 0, 354, 29, 0, 0, 0, 0, 802, 35, 0, 0, 0, 0, 1282, 30, 0, 0, 0, 0, 1553, 29, 0, 0, 0, 0, 1801, 34, 0, 0, 0, 0, 1986, 34, 0, 0, 0, 0, 2052, 34)
+}
+point_count = 8
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46tuc"]
+size = Vector2(1035.5, 202.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfa2t"]
+size = Vector2(458.5, 202.5)
 
 [node name="Level" type="Node2D" unique_id=1638046035]
 script = ExtResource("1_ud5cb")
@@ -895,13 +909,6 @@ position = Vector2(-97, -18)
 position = Vector2(-292, -94)
 shape = SubResource("RectangleShape2D_8rd0g")
 
-[node name="SafeZone2" parent="SafeZones" unique_id=1858394563 instance=ExtResource("16_8rd0g")]
-position = Vector2(-481, -18)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZones/SafeZone2" unique_id=259613059]
-position = Vector2(450, -220)
-shape = SubResource("RectangleShape2D_wjdp3")
-
 [node name="GoldenCookies" type="Node2D" parent="." unique_id=1862802138]
 script = ExtResource("18_fpvtr")
 
@@ -920,6 +927,64 @@ texture = ExtResource("26_8bi7p")
 [node name="Lever" parent="." unique_id=873827231 instance=ExtResource("28_4kisa")]
 position = Vector2(-478, -104)
 
+[node name="CameraAreas" type="Node2D" parent="." unique_id=1798566316]
+script = ExtResource("29_wfa2t")
+
+[node name="CameraArea" type="Area2D" parent="CameraAreas" unique_id=1844507748]
+position = Vector2(-653, -230)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("29_rxgvf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAreas/CameraArea" unique_id=796303502]
+position = Vector2(276.25, 65)
+shape = SubResource("RectangleShape2D_vbcni")
+
+[node name="Focus" type="Path2D" parent="CameraAreas/CameraArea" unique_id=1848573527]
+position = Vector2(-23, 56)
+curve = SubResource("Curve2D_wfa2t")
+
+[node name="CameraArea3" type="Area2D" parent="CameraAreas" unique_id=1239874477]
+position = Vector2(484, -232)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("29_rxgvf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAreas/CameraArea3" unique_id=2083571619]
+position = Vector2(431.25, 65)
+shape = SubResource("RectangleShape2D_46tuc")
+
+[node name="Focus" type="Path2D" parent="CameraAreas/CameraArea3" unique_id=2082413085]
+position = Vector2(-23, 56)
+curve = SubResource("Curve2D_wfa2t")
+
+[node name="CameraArea2" type="Area2D" parent="CameraAreas" unique_id=1932780741]
+position = Vector2(32, -235)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("29_rxgvf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAreas/CameraArea2" unique_id=512786730]
+position = Vector2(142.75, 65)
+shape = SubResource("RectangleShape2D_wfa2t")
+
+[node name="Focus" type="Node2D" parent="CameraAreas/CameraArea2" unique_id=1813747706]
+position = Vector2(143, 77)
+
 [connection signal="level_change_requested" from="PortalHandler" to="." method="_on_portal_handler_level_change_requested"]
 [connection signal="zone_changed" from="SafeZones" to="." method="_on_safe_zones_zone_changed"]
 [connection signal="cookie_collected" from="GoldenCookies" to="." method="_on_golden_cookies_cookie_collected"]
+[connection signal="player_entered" from="CameraAreas" to="." method="_on_camera_areas_player_entered"]
+[connection signal="player_exited" from="CameraAreas" to="." method="_on_camera_areas_player_exited"]
+[connection signal="body_entered" from="CameraAreas/CameraArea" to="CameraAreas/CameraArea" method="_on_body_entered"]
+[connection signal="body_exited" from="CameraAreas/CameraArea" to="CameraAreas/CameraArea" method="_on_body_exited"]
+[connection signal="entered" from="CameraAreas/CameraArea" to="CameraAreas" method="_on_camera_area_entered"]
+[connection signal="exited" from="CameraAreas/CameraArea" to="CameraAreas" method="_on_camera_area_exited"]
+[connection signal="body_entered" from="CameraAreas/CameraArea3" to="CameraAreas/CameraArea3" method="_on_body_entered"]
+[connection signal="body_exited" from="CameraAreas/CameraArea3" to="CameraAreas/CameraArea3" method="_on_body_exited"]
+[connection signal="entered" from="CameraAreas/CameraArea3" to="CameraAreas" method="_on_camera_area_entered"]
+[connection signal="exited" from="CameraAreas/CameraArea3" to="CameraAreas" method="_on_camera_area_exited"]
+[connection signal="body_entered" from="CameraAreas/CameraArea2" to="CameraAreas/CameraArea2" method="_on_body_entered"]
+[connection signal="body_exited" from="CameraAreas/CameraArea2" to="CameraAreas/CameraArea2" method="_on_body_exited"]
+[connection signal="entered" from="CameraAreas/CameraArea2" to="CameraAreas" method="_on_camera_area_entered"]
+[connection signal="exited" from="CameraAreas/CameraArea2" to="CameraAreas" method="_on_camera_area_exited"]

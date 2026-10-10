@@ -5,6 +5,8 @@ signal level_setup_done
 
 signal respawn_target_changed(target: SafeZone)
 signal cookie_collected(id: int)
+signal camera_area_entered(focus: Node2D)
+signal camera_area_exited(focus: Node2D)
 
 @onready var curr_level: Level
 
@@ -27,10 +29,17 @@ func on_respawn_target_changed(target: SafeZone):
 func on_cookie_collected(id: int):
 	cookie_collected.emit(id)
 	
+func on_camera_area_entered(focus: Node2D):
+	camera_area_entered.emit(focus)
+func on_camera_area_exited(focus: Node2D):
+	camera_area_exited.emit(focus)
+	
 func connect_level(level: Level):
 	level.connect("level_change_requested",_receive_level_change_request)
 	level.connect("respawn_target_changed",on_respawn_target_changed)
 	level.connect("cookie_collected",on_cookie_collected)
+	level.connect("camera_area_entered",on_camera_area_entered)
+	level.connect("camera_area_exited",on_camera_area_exited)
 	
 func queue_level(level_path: String, target_id: String):
 	level_queued = {"level": level_path, "target_id": target_id}
