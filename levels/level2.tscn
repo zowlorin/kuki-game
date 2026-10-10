@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dtmevl4sjq1i6" path="res://gameplay/level.gd" id="1_s0tuf"]
 [ext_resource type="Texture2D" uid="uid://mqf4pkjbyh0e" path="res://assets/parallaxbg/0_basesky.png" id="2_hfi3b"]
+[ext_resource type="Script" uid="uid://u7cugm6oaic6" path="res://gameplay/camera_areas.gd" id="2_sr7fn"]
 [ext_resource type="Texture2D" uid="uid://c70nqv3745imr" path="res://assets/parallaxbg/1_farclouds.png" id="3_75exu"]
+[ext_resource type="Script" uid="uid://5tclep32w5hw" path="res://gameplay/camera_area.gd" id="3_giimr"]
 [ext_resource type="Texture2D" uid="uid://bijj4bj2kdgd5" path="res://assets/parallaxbg/2_midclouds.png" id="4_sr7fn"]
 [ext_resource type="Texture2D" uid="uid://de4kg2ijr5x1w" path="res://assets/parallaxbg/3_foreclouds.png" id="5_giimr"]
 [ext_resource type="Texture2D" uid="uid://d1r0u8qt3nqeq" path="res://assets/parallaxbg/4_farground.png" id="6_vuw6k"]
@@ -21,6 +23,15 @@
 [ext_resource type="PackedScene" uid="uid://qwaaokt33dau" path="res://components/moving_platform.tscn" id="18_3noyy"]
 [ext_resource type="Script" uid="uid://bmdxml1isrn2k" path="res://handlers/safe_zones.gd" id="19_pi0ug"]
 [ext_resource type="PackedScene" uid="uid://btc8woaxqjc1l" path="res://components/safe_zone.tscn" id="20_8men3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vuw6k"]
+size = Vector2(1047, 399.25)
+
+[sub_resource type="Curve2D" id="Curve2D_7a6c5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -46, 239, 0, 0, 0, 0, 1, 184, 0, 0, 0, 0, 78, 181, 0, 0, 0, 0, 244, 172, 0, 0, 0, 0, 361, 167, 0, 0, 0, 0, 454, 169, 0, 0, 0, 0, 517, 139, 0, 0, 0, 0, 679, 109, 0, 0, 0, 0, 684, 9, 0, 0, 0, 0, 601, 14, 0, 0, 0, 0, 492, 23, 0, 0, 0, 0, 363, 26, 0, 0, 0, 0, 233, 31, 0, 0, 0, 0, 140, 7, 0, 0, 0, 0, 13, 7, 0, 0, 0, 0, -19, 6, 0, 0, 0, 0, 189, 20, 0, 0, 0, 0, 189, 49, 0, 0, 0, 0, 186, 81, 0, 0, 0, 0, 177, 128, 0, 0, 0, 0, 168, 148)
+}
+point_count = 21
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ui1w4"]
 texture = ExtResource("7_erhed")
@@ -202,11 +213,32 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75exu"]
 size = Vector2(55, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hfi3b"]
+size = Vector2(145, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sr7fn"]
 size = Vector2(96, 20)
 
 [node name="Level" type="Node2D" unique_id=1638046035]
 script = ExtResource("1_s0tuf")
+
+[node name="CameraAreas" type="Node2D" parent="." unique_id=1917631324]
+position = Vector2(725, -96)
+script = ExtResource("2_sr7fn")
+
+[node name="CameraArea" type="Area2D" parent="CameraAreas" unique_id=696541310]
+position = Vector2(-653, -230)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_giimr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAreas/CameraArea" unique_id=937840113]
+position = Vector2(365.5, 163.375)
+shape = SubResource("RectangleShape2D_vuw6k")
+
+[node name="Focus" type="Path2D" parent="CameraAreas/CameraArea" unique_id=1558561148]
+position = Vector2(-23, 56)
+curve = SubResource("Curve2D_7a6c5")
 
 [node name="Parallax" type="Node2D" parent="." unique_id=1557407053]
 visible = false
@@ -301,7 +333,7 @@ target_level = "uid://ci0mg4cw3htbo"
 position = Vector2(296, -48)
 
 [node name="PressurePlate" parent="TriggerMechs" unique_id=872378210 instance=ExtResource("15_hieke")]
-position = Vector2(226, 16)
+position = Vector2(296, -207)
 
 [node name="Gates" type="Node2D" parent="." unique_id=1916378961]
 
@@ -346,6 +378,20 @@ position = Vector2(603, -122)
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_75exu")
 
+[node name="SafeZone5" parent="SafeZones" unique_id=1304759197 instance=ExtResource("20_8men3")]
+position = Vector2(0, 7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZones/SafeZone5" unique_id=1911579590]
+position = Vector2(7.5, 0)
+shape = SubResource("RectangleShape2D_hfi3b")
+
+[node name="SafeZone4" parent="SafeZones" unique_id=1287562555 instance=ExtResource("20_8men3")]
+position = Vector2(603, -122)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZones/SafeZone4" unique_id=368590635]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_75exu")
+
 [node name="SafeZone2" parent="SafeZones" unique_id=1637150020 instance=ExtResource("20_8men3")]
 position = Vector2(128, -57)
 
@@ -363,6 +409,14 @@ script = ExtResource("16_s0tuf")
 
 [node name="GoldenCookie" parent="GoldenCookies" unique_id=1766023232 instance=ExtResource("17_hfi3b")]
 position = Vector2(47, -263)
-id = 1
+id = 2
 
+[connection signal="player_entered" from="CameraAreas" to="." method="_on_camera_areas_player_entered"]
+[connection signal="player_exited" from="CameraAreas" to="." method="_on_camera_areas_player_exited"]
+[connection signal="body_entered" from="CameraAreas/CameraArea" to="CameraAreas/CameraArea" method="_on_body_entered"]
+[connection signal="body_exited" from="CameraAreas/CameraArea" to="CameraAreas/CameraArea" method="_on_body_exited"]
+[connection signal="entered" from="CameraAreas/CameraArea" to="CameraAreas" method="_on_camera_area_entered"]
+[connection signal="exited" from="CameraAreas/CameraArea" to="CameraAreas" method="_on_camera_area_exited"]
 [connection signal="level_change_requested" from="PortalHandler" to="." method="_on_portal_handler_level_change_requested"]
+[connection signal="zone_changed" from="SafeZones" to="." method="_on_safe_zones_zone_changed"]
+[connection signal="cookie_collected" from="GoldenCookies" to="." method="_on_golden_cookies_cookie_collected"]
