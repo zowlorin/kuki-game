@@ -8,3 +8,4 @@ func _on_player_died() -> void:
 
 func _on_player_respawned() -> void:
 	on_start()
+	

@@ -548,7 +548,7 @@ sources/1 = SubResource("TileSetAtlasSource_53hnx")
 sources/2 = SubResource("TileSetAtlasSource_mxqdg")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3owqy"]
-size = Vector2(138, 20)
+size = Vector2(138, 32)
 
 [node name="Level" type="Node2D" unique_id=1638046035]
 script = ExtResource("1_yydhl")
@@ -666,10 +666,10 @@ target_level = "uid://ci0mg4cw3htbo"
 script = ExtResource("18_l7nqg")
 
 [node name="SafeZone" parent="SafeZones" unique_id=1303144582 instance=ExtResource("19_l7nqg")]
-position = Vector2(92, -13)
+position = Vector2(92, -23)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZones/SafeZone" unique_id=1588592576]
-position = Vector2(-17, 0)
+position = Vector2(-17, 6)
 shape = SubResource("RectangleShape2D_3owqy")
 
 [node name="GoldenCookies" type="Node2D" parent="." unique_id=1684750843]
@@ -681,3 +681,4 @@ id = 1
 
 [connection signal="level_change_requested" from="PortalHandler" to="." method="_on_portal_handler_level_change_requested"]
 [connection signal="zone_changed" from="SafeZones" to="." method="_on_safe_zones_zone_changed"]
+[connection signal="cookie_collected" from="GoldenCookies" to="." method="_on_golden_cookies_cookie_collected"]

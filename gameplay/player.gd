@@ -133,6 +133,8 @@ func on_death():
 	
 	$Helpers/DeathTimer.start()
 	
+	state_machine.transition_to("Idle")
+	
 func _on_hurtbox_hurt() -> void:
 	on_death()
 
