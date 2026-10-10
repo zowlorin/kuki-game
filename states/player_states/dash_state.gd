@@ -60,6 +60,8 @@ func physics_update(_delta: float) -> void:
 	player.helpers.get_node("DashInvinciblity").start()
 	player.can_dash = false
 	
+	var move_direction = Input.get_axis("move_left", "move_right")
+	
 	if not input_frozen and player.can_throw and (Input.is_action_just_pressed("action_throw")):
 		state_machine.transition_to("Throw")
 	
@@ -68,11 +70,19 @@ func physics_update(_delta: float) -> void:
 			state_machine.transition_to("Bounce")
 		elif player.get_last_slide_collision().get_collider() is RigidBody2D:
 			player.get_last_slide_collision().get_collider().apply_central_impulse(2 * -player.get_last_slide_collision().get_normal() * player.push_force)
-	
-	if (curr_frame - player.dash_frame) >= player.dash_duration:
-		state_machine.transition_to("Fall")
-	
-	player.fall_frame = player.dash_frame
+	if not input_frozen and ((abs(move_direction) > 0 and move_direction != true_direction)):
+		if player.is_on_floor():
+			input_listener.get_buffer("MoveLeftBuffer").consume()
+			input_listener.get_buffer("MoveRightBuffer").consume()
+			state_machine.transition_to("Walk")
+		else:
+			state_machine.transition_to("Fall")
+	elif (curr_frame - player.dash_frame) >= player.dash_duration:
+		if (player.is_on_floor()):
+			state_machine.transition_to("Idle")
+		else:
+			state_machine.transition_to("Fall")
+
 	player.velocity.y = (1 - (player.fall_curve.sample((curr_frame - player.dash_frame) / player.fall_duration))) * player.fall_speed
 
 func _on_player_input_freezed(active: bool) -> void:

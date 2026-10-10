@@ -28,12 +28,9 @@ func physics_update(_delta: float) -> void:
 		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
 			bouncing = true
 			state_machine.transition_to("Bounce")
-	if player.is_on_floor() and player.get_platform_velocity() != Vector2.ZERO:
+	if player.is_on_floor() and player.get_platform_velocity() != Vector2.ZERO and not bouncing:
 		emit_land_particles()
 		state_machine.transition_to("Idle")
-	elif player.is_on_floor() and not bouncing:
-		emit_land_particles()
-		state_machine.transition_to("Stagger")
 	elif player.is_on_floor() and not input_frozen and (abs(Input.get_axis("move_left", "move_right")) > 0 or input_listener.get_buffer("MoveLeftBuffer").is_buffered() or input_listener.get_buffer("MoveRightBuffer").is_buffered()):
 		input_listener.get_buffer("MoveLeftBuffer").consume()
 		input_listener.get_buffer("MoveRightBuffer").consume()
@@ -46,6 +43,9 @@ func physics_update(_delta: float) -> void:
 		state_machine.transition_to("Dash")
 	elif not input_frozen and player.can_throw and (Input.is_action_just_pressed("action_throw")):
 		state_machine.transition_to("Throw")
+	elif player.is_on_floor():
+		emit_land_particles()
+		state_machine.transition_to("Idle")
 	
 
 func emit_land_particles() -> void:
