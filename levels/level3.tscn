@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://di8j2uaoyn0nr" path="res://components/pressure_plate.tscn" id="15_gxq45"]
 [ext_resource type="PackedScene" uid="uid://b83gms022hnxe" path="res://components/box_container.tscn" id="16_el2p7"]
 [ext_resource type="PackedScene" uid="uid://d8o7asq8gyif" path="res://components/gate.tscn" id="17_gg5ra"]
-[ext_resource type="PackedScene" uid="uid://g236muxvb3eb" path="res://components/moving_platform.tscn" id="18_bmipv"]
+[ext_resource type="PackedScene" uid="uid://qwaaokt33dau" path="res://components/moving_platform.tscn" id="18_bmipv"]
 [ext_resource type="Script" uid="uid://bmdxml1isrn2k" path="res://handlers/safe_zones.gd" id="19_478y7"]
 [ext_resource type="PackedScene" uid="uid://btc8woaxqjc1l" path="res://components/safe_zone.tscn" id="20_crwx7"]
 
@@ -225,7 +225,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4lmri"]
-size = Vector2(41, 48)
+size = Vector2(104, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3cyh"]
 size = Vector2(112, 20)
@@ -381,7 +381,7 @@ script = ExtResource("19_478y7")
 position = Vector2(-184, -23)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZones/SafeZone" unique_id=1638949874]
-position = Vector2(44.5, -1)
+position = Vector2(12, 7)
 shape = SubResource("RectangleShape2D_4lmri")
 
 [node name="SafeZone5" parent="SafeZones" unique_id=2082741328 instance=ExtResource("20_crwx7")]
@@ -395,14 +395,14 @@ shape = SubResource("RectangleShape2D_i3cyh")
 position = Vector2(603, -122)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZones/SafeZone4" unique_id=50897996]
-position = Vector2(0.5, 0)
+position = Vector2(-998, -286)
 shape = SubResource("RectangleShape2D_4lmri")
 
 [node name="SafeZone2" parent="SafeZones" unique_id=746882270 instance=ExtResource("20_crwx7")]
 position = Vector2(-175, -317)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZones/SafeZone2" unique_id=1503526227]
-position = Vector2(-1, 3)
+position = Vector2(-9, 3)
 shape = SubResource("RectangleShape2D_x6jsp")
 
 [node name="SafeZone3" parent="SafeZones" unique_id=388970533 instance=ExtResource("20_crwx7")]
