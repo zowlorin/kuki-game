@@ -7,7 +7,7 @@ extends StaticBody2D
 @onready var blocked: bool = true:
 	set(x):
 		blocked = x
-		$CollisionShape2D.disabled = !blocked
+		$CollisionShape2D.set_deferred("disabled", !blocked)
 
 func on_open():
 	AudioManager.play("DoorSFX")
