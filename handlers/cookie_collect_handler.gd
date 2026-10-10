@@ -11,7 +11,16 @@ signal value_changed(x: int)
 		cookies_collected = x
 		value_changed.emit(cookies_collected)
 		
+@onready var cookies_fed: int = 0
 
+func can_feed_cookies() -> bool:
+	return cookies_collected > 0
+	
+func on_cookie_fed():
+	if not can_feed_cookies():
+		return
+	cookies_fed += 1
+	cookies_collected -= 1
 
 func is_collected(id: int) -> bool:
 	return id in collected

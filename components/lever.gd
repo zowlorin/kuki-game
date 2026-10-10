@@ -29,7 +29,7 @@ func _input(event: InputEvent) -> void:
 	if (!ev.pressed):
 		return
 	
-	if (!ev.keycode == Key.KEY_E):
+	if (!ev.keycode == Key.KEY_F):
 		return
 		
 	if (!player_interacting):
