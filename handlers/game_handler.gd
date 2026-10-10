@@ -25,9 +25,6 @@ signal game_end
 
 @onready var ended: bool = false
 
-func _ready() -> void:
-	AudioManager.play("GameMusic")
-
 func request_main_menu():
 	running = false
 	paused = false

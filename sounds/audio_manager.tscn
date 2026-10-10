@@ -86,3 +86,6 @@ volume_db = -10.0
 [node name="MusicDelay" type="Timer" parent="." unique_id=1064084986]
 wait_time = 3.0
 one_shot = true
+
+[connection signal="finished" from="TitleMusic" to="." method="_on_music_finished"]
+[connection signal="finished" from="GameMusic" to="." method="_on_music_finished"]

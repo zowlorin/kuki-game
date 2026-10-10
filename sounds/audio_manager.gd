@@ -53,7 +53,7 @@ func fade_out(key: String, duration: float = 1.0) -> void:
 	var tween := create_tween()
 	_tweens[sound] = tween
 	
-	tween.tween_property(sound, "volume_db", linear_to_db(0.0001), duration)
+	tween.tween_property(sound, "volume_db", linear_to_db(0.001), duration)
 	await tween.finished
 
 	if sound.playing:
