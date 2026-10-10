@@ -21,8 +21,12 @@
 [ext_resource type="Texture2D" uid="uid://xjuim5mbgtst" path="res://assets/cookie.png" id="16_82xsv"]
 [ext_resource type="Script" uid="uid://4wdlpx2suflw" path="res://handlers/cookie_collect_handler.gd" id="16_getpj"]
 [ext_resource type="Script" uid="uid://cfal2nwnfnxgd" path="res://ui/cookie_meter.gd" id="17_ryguw"]
+[ext_resource type="Script" uid="uid://beloep4d6j7ft" path="res://handlers/game_timer.gd" id="18_1u8w0"]
 [ext_resource type="Script" uid="uid://ba6x2ctaq0v1y" path="res://effects/death_blackout.gd" id="18_074og"]
 [ext_resource type="Script" uid="uid://dky05smnfnl6p" path="res://effects/load_blackout.gd" id="20_82xsv"]
+[ext_resource type="Script" uid="uid://sa1825kyq307" path="res://timer_ui.gd" id="21_0odxb"]
+[ext_resource type="Script" uid="uid://drv12u70ld0p8" path="res://ui/end_screen.gd" id="24_a6jrf"]
+[ext_resource type="Script" uid="uid://7c5ilx1xo5ax" path="res://ui/return_button.gd" id="24_lswn8"]
 
 [sub_resource type="Curve" id="Curve_0xm2m"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.32038835, 0.6631579), 1.0204334, 1.0204334, 0, 0, Vector2(0.5485437, 0.9157895), 0.59818506, 0.59818506, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -35,6 +39,9 @@ point_count = 4
 [sub_resource type="Curve" id="Curve_ycdy4"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.26530614, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0odxb"]
+bg_color = Color(0, 0, 0, 0.8352941)
 
 [sub_resource type="Animation" id="Animation_cegan"]
 resource_name = "Blackout"
@@ -295,6 +302,9 @@ script = ExtResource("15_yaehf")
 [node name="CookieCollectHandler" type="Node2D" parent="Handlers" unique_id=1914114899]
 script = ExtResource("16_getpj")
 
+[node name="GameTimer" type="Node2D" parent="Handlers" unique_id=132148241]
+script = ExtResource("18_1u8w0")
+
 [node name="UI" type="CanvasLayer" parent="." unique_id=419646893]
 process_mode = 3
 
@@ -338,6 +348,23 @@ offset_right = 158.0
 offset_bottom = 88.0
 theme_override_font_sizes/font_size = 32
 text = "X"
+
+[node name="RunTimer" type="Control" parent="UI/HUD" unique_id=661909571]
+anchors_preset = 0
+offset_left = 963.0
+offset_top = 46.0
+offset_right = 1122.0
+offset_bottom = 129.0
+script = ExtResource("21_0odxb")
+
+[node name="MainLabel" type="Label" parent="UI/HUD/RunTimer" unique_id=971482647]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -23.0
+offset_right = 129.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 48
+text = "00:00"
 
 [node name="PauseMenu" type="Control" parent="UI" unique_id=322721065]
 layout_mode = 3
@@ -472,6 +499,74 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "MUSIC VOLUME"
 
+[node name="EndScreen" type="Control" parent="UI" unique_id=1503197286]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("24_a6jrf")
+
+[node name="Panel" type="Panel" parent="UI/EndScreen" unique_id=1231944255]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0odxb")
+
+[node name="Label" type="Label" parent="UI/EndScreen" unique_id=1501542876]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = -70.0
+offset_right = 172.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "the chud has been satisfied...."
+
+[node name="Time" type="Label" parent="UI/EndScreen" unique_id=1953409797]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.5
+offset_top = -187.0
+offset_right = 61.5
+offset_bottom = -99.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "00:00"
+
+[node name="ReturnButton" type="Button" parent="UI/EndScreen" unique_id=1589207951]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = 1.0
+offset_right = 80.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "RETURN"
+script = ExtResource("24_lswn8")
+
 [node name="ScreenFX" type="CanvasLayer" parent="." unique_id=924266912]
 
 [node name="DeathBlackout" type="ColorRect" parent="ScreenFX" unique_id=1316575967]
@@ -515,10 +610,16 @@ libraries/ = SubResource("AnimationLibrary_getpj")
 [connection signal="died" from="World/Player" to="ScreenFX/DeathBlackout" method="_on_player_died"]
 [connection signal="request_projectile" from="World/Player" to="World/Projectiles" method="_on_player_request_projectile"]
 [connection signal="safe_zone_requested" from="World/Player" to="Handlers/RespawnHandler" method="_on_player_safe_zone_requested"]
+[connection signal="game_end" from="Handlers/GameHandler" to="World/Player" method="_on_game_handler_game_end"]
+[connection signal="game_end" from="Handlers/GameHandler" to="Handlers/GameTimer" method="_on_game_handler_game_end"]
+[connection signal="game_end" from="Handlers/GameHandler" to="UI/EndScreen" method="_on_game_handler_game_end"]
 [connection signal="pause_state_changed" from="Handlers/GameHandler" to="UI/PauseMenu" method="_on_game_handler_pause_state_changed"]
 [connection signal="pause_state_changed" from="Handlers/GameHandler" to="UI/SettingsMenu" method="_on_game_handler_pause_state_changed"]
 [connection signal="safe_zone_granted" from="Handlers/RespawnHandler" to="World/Player" method="_on_respawn_handler_safe_zone_granted"]
+[connection signal="necessary_cookies_collected" from="Handlers/CookieCollectHandler" to="Handlers/GameHandler" method="_on_cookie_collect_handler_necessary_cookies_collected"]
 [connection signal="value_changed" from="Handlers/CookieCollectHandler" to="UI/HUD/CookieMeter" method="_on_cookie_collect_handler_value_changed"]
+[connection signal="run_timed" from="Handlers/GameTimer" to="UI/EndScreen" method="_on_game_timer_run_timed"]
+[connection signal="time_changed" from="Handlers/GameTimer" to="UI/HUD/RunTimer" method="_on_game_timer_time_changed"]
 [connection signal="game_quit_requested" from="UI/PauseMenu" to="Handlers/GameHandler" method="_on_pause_menu_game_quit_requested"]
 [connection signal="game_resume_requested" from="UI/PauseMenu" to="Handlers/GameHandler" method="_on_pause_menu_game_resume_requested"]
 [connection signal="menu_focused" from="UI/PauseMenu" to="Handlers/GameHandler" method="_on_pause_menu_menu_focused"]
@@ -527,3 +628,5 @@ libraries/ = SubResource("AnimationLibrary_getpj")
 [connection signal="pressed" from="UI/PauseMenu/SettingsButton" to="UI/PauseMenu" method="_on_settings_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/ResumeButton" to="UI/PauseMenu" method="_on_resume_button_pressed"]
 [connection signal="exit_requested" from="UI/SettingsMenu" to="UI/PauseMenu" method="_on_settings_menu_exit_requested"]
+[connection signal="main_menu_requested" from="UI/EndScreen" to="Handlers/GameHandler" method="_on_end_screen_main_menu_requested"]
+[connection signal="pressed" from="UI/EndScreen/ReturnButton" to="UI/EndScreen" method="_on_return_button_pressed"]

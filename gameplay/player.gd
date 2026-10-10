@@ -184,3 +184,7 @@ func teleport(target_position: Vector2):
 	camera.global_position = target_position + initial_rel
 	await get_tree().process_frame
 	camera.position_smoothing_enabled = true
+
+
+func _on_game_handler_game_end() -> void:
+	input_frozen = true

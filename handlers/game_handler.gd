@@ -2,6 +2,7 @@ extends Node2D
 
 signal pause_state_changed(active: bool)
 signal game_quit
+signal game_end
 
 @onready var paused: bool = false:
 	set(x):
@@ -21,6 +22,8 @@ signal game_quit
 			game_quit.emit()
 
 @onready var pause_menu_focused: bool = false
+
+@onready var ended: bool = false
 
 func _ready() -> void:
 	AudioManager.play("GameMusic")
@@ -65,3 +68,12 @@ func _on_pause_menu_game_quit_requested() -> void:
 
 func _on_pause_menu_menu_focused(active: bool) -> void:
 	pause_menu_focused = active
+
+
+func _on_end_screen_main_menu_requested() -> void:
+	request_main_menu()
+
+
+func _on_cookie_collect_handler_necessary_cookies_collected() -> void:
+	ended = true
+	game_end.emit()

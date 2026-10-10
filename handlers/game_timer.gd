@@ -1,0 +1,25 @@
+extends Node2D
+
+signal time_changed(value: float)
+signal run_timed(value: float)
+
+@onready var start_time = Time.get_unix_time_from_system()
+
+@onready var current_time: float = 0:
+	set(x):
+		current_time = x
+		time_changed.emit(x)
+		
+@onready var final_time: float = 0
+
+@onready var updating: bool = true
+
+func _process(delta: float) -> void:
+	if (!updating):
+		return
+	current_time = Time.get_unix_time_from_system() - start_time
+
+func _on_game_handler_game_end() -> void:
+	final_time = current_time
+	updating = false
+	run_timed.emit(final_time)

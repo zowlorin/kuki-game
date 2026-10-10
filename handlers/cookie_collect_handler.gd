@@ -1,6 +1,7 @@
 extends Node2D
 
 signal value_changed(x: int)
+signal necessary_cookies_collected
 
 @onready var collected: Array = []
 
@@ -13,6 +14,8 @@ signal value_changed(x: int)
 		
 @onready var cookies_fed: int = 0
 
+@export var cookies_needed: int = 1
+
 func can_feed_cookies() -> bool:
 	return cookies_collected > 0
 	
@@ -21,6 +24,9 @@ func on_cookie_fed():
 		return
 	cookies_fed += 1
 	cookies_collected -= 1
+	
+	if (cookies_fed >= cookies_needed):
+		necessary_cookies_collected.emit()
 
 func is_collected(id: int) -> bool:
 	return id in collected
