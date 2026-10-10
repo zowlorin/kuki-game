@@ -14,6 +14,7 @@ func enter() -> void:
 	player.get_node("AnimatedSprite2D").play("walk")
 	
 	move_direction = Input.get_axis("move_left", "move_right")
+
 	
 	if (input_frozen):
 		move_direction = 0

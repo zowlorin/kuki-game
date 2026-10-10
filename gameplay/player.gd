@@ -111,6 +111,7 @@ func _physics_process(_delta: float) -> void:
 	if was_on_floor != is_on_floor() and $Helpers/CoyoteTimer.is_stopped():
 		$Helpers/CoyoteTimer.start()
 		on_coyote = true
+		
 
 func _on_coyote_timer_timeout() -> void:
 	on_coyote = false
