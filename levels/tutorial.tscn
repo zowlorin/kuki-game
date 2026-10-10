@@ -25,7 +25,6 @@
 [ext_resource type="Texture2D" uid="uid://bt6lvs43ttj0o" path="res://assets/tilesets/pink_ground.png" id="16_ssn57"]
 [ext_resource type="Texture2D" uid="uid://bqukipb45sb24" path="res://assets/tilesets/brown_ground.png" id="17_xwxsl"]
 [ext_resource type="Script" uid="uid://l076i8u4p0hn" path="res://handlers/golden_cookies.gd" id="18_fpvtr"]
-[ext_resource type="PackedScene" uid="uid://bcwt84x78xu6h" path="res://components/golden_cookie.tscn" id="18_obw5j"]
 [ext_resource type="Texture2D" uid="uid://d2rhmdllap05o" path="res://assets/sprites/trashpile.png" id="26_8bi7p"]
 [ext_resource type="PackedScene" uid="uid://wkbpy211s0d8" path="res://effects/wind_particles.tscn" id="27_we2w3"]
 [ext_resource type="Script" uid="uid://5tclep32w5hw" path="res://gameplay/camera_area.gd" id="29_rxgvf"]
@@ -932,10 +931,6 @@ shape = SubResource("RectangleShape2D_8rd0g")
 
 [node name="GoldenCookies" type="Node2D" parent="." unique_id=1862802138]
 script = ExtResource("18_fpvtr")
-
-[node name="GoldenCookie" parent="GoldenCookies" unique_id=1766023232 instance=ExtResource("18_obw5j")]
-position = Vector2(115, -109)
-id = 1
 
 [node name="wind particles" parent="." unique_id=182577858 instance=ExtResource("27_we2w3")]
 

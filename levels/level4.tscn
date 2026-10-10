@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bkw1a51ob5sl4" path="res://components/lever.tscn" id="14_q0ied"]
 [ext_resource type="PackedScene" uid="uid://di8j2uaoyn0nr" path="res://components/pressure_plate.tscn" id="15_781as"]
 [ext_resource type="PackedScene" uid="uid://b83gms022hnxe" path="res://components/box_container.tscn" id="16_pfr8s"]
+[ext_resource type="PackedScene" uid="uid://bmkpnxm4anog4" path="res://components/bounce_pad.tscn" id="17_im0iu"]
 [ext_resource type="PackedScene" uid="uid://d8o7asq8gyif" path="res://components/gate.tscn" id="17_s47u1"]
 [ext_resource type="PackedScene" uid="uid://g236muxvb3eb" path="res://components/moving_platform.tscn" id="18_jaa0q"]
 [ext_resource type="Script" uid="uid://bmdxml1isrn2k" path="res://handlers/safe_zones.gd" id="19_knyjd"]
@@ -211,6 +212,9 @@ position = Vector2(440, 0)
 
 [node name="BoxContainer" parent="." unique_id=440766301 instance=ExtResource("16_pfr8s")]
 position = Vector2(343, -11)
+
+[node name="BouncePad" parent="." unique_id=340428913 instance=ExtResource("17_im0iu")]
+position = Vector2(98, -10)
 
 [node name="Gates" type="Node2D" parent="." unique_id=1286166510]
 

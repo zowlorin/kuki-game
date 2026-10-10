@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://r82ip1jvly4x" path="res://components/portal.tscn" id="11_43cms"]
 [ext_resource type="Texture2D" uid="uid://bpupo1u5lydj6" path="res://assets/tilesets/caramelcenter.png" id="11_i3cyh"]
 [ext_resource type="Texture2D" uid="uid://b6btr6xegcrwj" path="res://assets/tilesets/carameltop.png" id="12_x6jsp"]
-[ext_resource type="Script" uid="uid://fyknb0uu7pb5" path="res://components/door.gd" id="12_5peto"]
 [ext_resource type="PackedScene" uid="uid://d1cggey58xuwd" path="res://components/door.tscn" id="13_sv5e8"]
 [ext_resource type="PackedScene" uid="uid://bkw1a51ob5sl4" path="res://components/lever.tscn" id="14_vnxxs"]
 [ext_resource type="PackedScene" uid="uid://di8j2uaoyn0nr" path="res://components/pressure_plate.tscn" id="15_gxq45"]
@@ -234,7 +233,7 @@ size = Vector2(112, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6jsp"]
 size = Vector2(80, 20)
 
-[node name="Level" type="Node2D" unique_id=1638046035]
+[node name="Level3" type="Node2D" unique_id=1638046035]
 script = ExtResource("1_283cd")
 
 [node name="Parallax" type="Node2D" parent="." unique_id=104666188]
@@ -316,7 +315,7 @@ script = ExtResource("10_6slt7")
 [node name="Portal" parent="PortalHandler" unique_id=1857128004 instance=ExtResource("11_43cms")]
 position = Vector2(0, -39)
 id = "b1"
-target_id = "level4"
+target_id = "level3"
 target_level = "uid://ci0mg4cw3htbo"
 
 [node name="Doors" type="Node2D" parent="." unique_id=682166261]
@@ -411,3 +410,5 @@ position = Vector2(346, -237)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZones/SafeZone3" unique_id=200102127]
 position = Vector2(-2, 3)
 shape = SubResource("RectangleShape2D_x6jsp")
+
+[connection signal="level_change_requested" from="PortalHandler" to="." method="_on_portal_handler_level_change_requested"]

@@ -37,10 +37,13 @@ func physics_update(_delta: float) -> void:
 	player.velocity.x = player.mirror_factor[int(player.mirrored)] * move_direction * player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed
 	
 	if player.get_last_slide_collision() != null:
-		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
-			state_machine.transition_to("Bounce")
-		elif player.get_last_slide_collision().get_collider() is RigidBody2D and player.get_node("RayCast2D").is_colliding():
+		var collision = player.get_last_slide_collision()
+		if bouncy_nodes.has(collision.get_collider()):
+			if (collision.get_collider().allow_horizontal_bounce and abs(collision.get_normal().x) >= abs(collision.get_normal().y)) or abs(collision.get_normal().y) >= abs(collision.get_normal().x):
+				state_machine.transition_to("Bounce")
+		elif collision.get_collider() is RigidBody2D and player.get_node("RayCast2D").is_colliding():
 			state_machine.transition_to("Push")
+	
 	if not input_frozen and player.can_throw and (Input.is_action_just_pressed("action_throw")):
 		state_machine.transition_to("Throw")
 	elif (player.is_on_floor() or player.on_coyote) and not input_frozen and (Input.is_action_just_pressed("jump") or input_listener.get_buffer("JumpBuffer").is_buffered()):

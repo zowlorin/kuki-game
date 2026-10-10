@@ -30,15 +30,15 @@ func physics_update(_delta: float) -> void:
 		player.velocity.x = 0
 		state_machine.transition_to("Idle")
 		
-		
 	if player.get_last_slide_collision() != null:
-		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
-			state_machine.transition_to("Bounce")
+		var collision = player.get_last_slide_collision()
+		if bouncy_nodes.has(collision.get_collider()):
+			if (collision.get_collider().allow_horizontal_bounce and abs(collision.get_normal().x) >= abs(collision.get_normal().y)) or abs(collision.get_normal().y) >= abs(collision.get_normal().x):
+				state_machine.transition_to("Bounce")
 	
 	if not input_frozen and player.can_throw and (Input.is_action_just_pressed("action_throw")):
 		state_machine.transition_to("Throw")
 			
-	
 	if not input_frozen and player.can_throw and (Input.is_action_just_pressed("action_throw")):
 		state_machine.transition_to("Throw")
 	elif not player.is_on_floor():

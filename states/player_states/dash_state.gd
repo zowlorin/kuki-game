@@ -67,10 +67,13 @@ func physics_update(_delta: float) -> void:
 		state_machine.transition_to("Throw")
 	
 	if player.get_last_slide_collision() != null:
-		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
-			state_machine.transition_to("Bounce")
-		elif player.get_last_slide_collision().get_collider() is RigidBody2D:
-			player.get_last_slide_collision().get_collider().apply_central_impulse(2 * -player.get_last_slide_collision().get_normal() * player.push_force)
+		var collision = player.get_last_slide_collision()
+		if bouncy_nodes.has(collision.get_collider()):
+			if (collision.get_collider().allow_horizontal_bounce and abs(collision.get_normal().x) >= abs(collision.get_normal().y)) or abs(collision.get_normal().y) >= abs(collision.get_normal().x):
+				state_machine.transition_to("Bounce")
+		elif collision.get_collider() is RigidBody2D:
+			collision.get_collider().apply_central_impulse(2 * -collision.get_normal() * player.push_force)
+	
 	if not input_frozen and ((abs(move_direction) > 0 and move_direction != true_direction)):
 		if player.is_on_floor():
 			input_listener.get_buffer("MoveLeftBuffer").consume()

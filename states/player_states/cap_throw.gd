@@ -36,6 +36,12 @@ func physics_update(_delta: float) -> void:
 		AudioManager.play("ThrowSFX", 0.9, 1.1)
 		player.can_throw = false
 	
+	if player.get_last_slide_collision() != null:
+		var collision = player.get_last_slide_collision()
+		if bouncy_nodes.has(collision.get_collider()):
+			if (collision.get_collider().allow_horizontal_bounce and abs(collision.get_normal().x) >= abs(collision.get_normal().y)) or abs(collision.get_normal().y) >= abs(collision.get_normal().x):
+				state_machine.transition_to("Bounce")
+	
 	if player.can_dash and not input_frozen and (Input.is_action_just_pressed("dash") or input_listener.get_buffer("DashBuffer").is_buffered()):
 		input_listener.get_buffer("DashBuffer").consume()
 		state_machine.transition_to("Dash")

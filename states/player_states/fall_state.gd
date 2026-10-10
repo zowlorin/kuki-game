@@ -28,9 +28,11 @@ func physics_update(_delta: float) -> void:
 	player.velocity.y = (1 - (player.fall_curve.sample((curr_frame - player.fall_frame) / player.fall_duration))) * player.fall_speed
 	
 	if player.get_last_slide_collision() != null:
-		if bouncy_nodes.has(player.get_last_slide_collision().get_collider()):
-			bouncing = true
-			state_machine.transition_to("Bounce")
+		var collision = player.get_last_slide_collision()
+		if bouncy_nodes.has(collision.get_collider()):
+			if (collision.get_collider().allow_horizontal_bounce and abs(collision.get_normal().x) >= abs(collision.get_normal().y)) or abs(collision.get_normal().y) >= abs(collision.get_normal().x):
+				state_machine.transition_to("Bounce")
+	
 	if player.is_on_floor() and player.get_platform_velocity() != Vector2.ZERO and not bouncing:
 		emit_land_particles()
 		state_machine.transition_to("Stagger")

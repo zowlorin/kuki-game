@@ -13,6 +13,8 @@ class_name PlayerBounce
 func enter() -> void:
 	player.get_node("AnimatedSprite2D").play("jump")
 	
+	AudioManager.play("BounceSFX")
+	
 	collision = player.get_last_slide_collision()
 	bounce_frame = Time.get_unix_time_from_system()
 
@@ -37,14 +39,17 @@ func physics_update(_delta: float) -> void:
 	var bounce_vel = collision.get_normal() * (player.bounce_curve.sample((curr_frame - bounce_frame) / player.bounce_duration)) * player.bounce_speed
 	var bounciness = lerp(collision.get_collider().physics_material_override.bounce, 0.8, (curr_frame - bounce_frame)/player.bounce_duration)
 	
-	if collision.get_collider().name == "ChudBody":
+	if collision.get_collider().allow_horizontal_bounce:
 		var body = collision.get_collider()
 		if abs(collision.get_normal().x) >= abs(collision.get_normal().y):
 			body.owner.play_animation("h_bounce")
 		else:
 			body.owner.play_animation("v_bounce")
 	
-	player.velocity.x = bounce_vel.x + player.mirror_factor[int(player.mirrored)] * move_direction * player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed
+	if collision.get_collider().allow_horizontal_bounce:
+		player.velocity.x = bounce_vel.x + player.mirror_factor[int(player.mirrored)] * move_direction * player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed
+	else:
+		player.velocity.x = player.mirror_factor[int(player.mirrored)] * move_direction * player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed
 	player.velocity.y = bounce_vel.y + bounciness * (1 - (player.fall_curve.sample((curr_frame - player.fall_frame) / player.fall_duration))) * player.fall_speed
 
 func _on_player_input_freezed(active: bool) -> void:
