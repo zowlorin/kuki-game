@@ -22,6 +22,9 @@ signal game_quit
 
 @onready var pause_menu_focused: bool = false
 
+func _ready() -> void:
+	AudioManager.play("GameMusic")
+
 func request_main_menu():
 	running = false
 	paused = false

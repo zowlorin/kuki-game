@@ -12,6 +12,7 @@ func _ready():
 func trigger():
 	active = pressed
 	
+	AudioManager.play("PressurePlateSFX")
 	$Sprite2D.frame = 1 if active else 0
 	
 	on_triggered.emit(active)

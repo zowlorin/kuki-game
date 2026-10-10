@@ -1,17 +1,88 @@
 [gd_scene format=3 uid="uid://c30sw3fcdaaqa"]
 
 [ext_resource type="Script" uid="uid://cfvvvdwy6d4tq" path="res://sounds/audio_manager.gd" id="1_6aj3w"]
-[ext_resource type="AudioStream" uid="uid://cj66f5p70wh13" path="res://sounds/sfx/dash-2.wav" id="2_6aj3w"]
-[ext_resource type="AudioStream" uid="uid://c1xwierxiesl7" path="res://sounds/sfx/jump-4.wav" id="3_6aj3w"]
+[ext_resource type="AudioStream" uid="uid://bjlkvdtflsdb2" path="res://assets/sounds/SFX/Character/kuki-dash.wav" id="2_6aj3w"]
+[ext_resource type="AudioStream" uid="uid://bgv6swqj75hne" path="res://assets/sounds/SFX/Character/kuki-landing.wav" id="2_8bfp5"]
+[ext_resource type="AudioStream" uid="uid://6hryugepi8an" path="res://assets/sounds/Music/sugarcrash - song 1.mp3" id="2_do75d"]
+[ext_resource type="AudioStream" uid="uid://wkmnhurklyov" path="res://assets/sounds/SFX/UI/start.wav" id="2_ngqnk"]
+[ext_resource type="AudioStream" uid="uid://bqc4yeggcgt6x" path="res://assets/sounds/SFX/Character/kuki-jump.wav" id="3_8bfp5"]
+[ext_resource type="AudioStream" uid="uid://d1tsg7vsjt8f4" path="res://assets/sounds/SFX/UI/pause.wav" id="3_do75d"]
+[ext_resource type="AudioStream" uid="uid://d35dhsjpfticg" path="res://assets/sounds/Music/sugarcrash - song 2.mp3" id="3_on3wc"]
+[ext_resource type="AudioStream" uid="uid://kmmykftijxsg" path="res://assets/sounds/SFX/UI/click.wav" id="4_on3wc"]
+[ext_resource type="AudioStream" uid="uid://b6cmwv8nxinv6" path="res://assets/sounds/SFX/Character/kuki-push.wav" id="5_6n5tw"]
+[ext_resource type="AudioStream" uid="uid://cb3206ftulvd0" path="res://assets/sounds/SFX/Environment/door.wav" id="6_76xm7"]
+[ext_resource type="AudioStream" uid="uid://q52i5e7d660t" path="res://assets/sounds/SFX/Environment/portal.wav" id="6_vwu7p"]
+[ext_resource type="AudioStream" uid="uid://c5ym31fg4npyy" path="res://assets/sounds/SFX/Environment/pressure-plate.wav" id="7_5ap4w"]
+[ext_resource type="AudioStream" uid="uid://2ipuxwc7udqt" path="res://assets/sounds/SFX/Environment/lever.wav" id="7_k6bw1"]
+[ext_resource type="AudioStream" uid="uid://bcf8qannk2yo4" path="res://assets/sounds/SFX/Environment/mirror.wav" id="10_ww2nj"]
+[ext_resource type="AudioStream" uid="uid://hk0ov45pq8vm" path="res://assets/sounds/SFX/Character/kuki-beret-throw.wav" id="11_f8jcy"]
+[ext_resource type="AudioStream" uid="uid://bpktnxtb4exm8" path="res://assets/sounds/SFX/Character/kuki-death.wav" id="12_r2lgn"]
 
 [node name="AudioManager" type="Node" unique_id=892622769]
 script = ExtResource("1_6aj3w")
 
+[node name="TitleMusic" type="AudioStreamPlayer" parent="." unique_id=476633027]
+stream = ExtResource("2_do75d")
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="." unique_id=824982977]
+stream = ExtResource("3_on3wc")
+
+[node name="StartSFX" type="AudioStreamPlayer" parent="." unique_id=2049984553]
+stream = ExtResource("2_ngqnk")
+volume_db = 5.0
+
+[node name="PauseSFX" type="AudioStreamPlayer" parent="." unique_id=554930212]
+stream = ExtResource("3_do75d")
+volume_db = 5.0
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=1886872072]
+stream = ExtResource("4_on3wc")
+volume_db = 5.0
+
+[node name="LandSFX" type="AudioStreamPlayer" parent="." unique_id=1187082036]
+stream = ExtResource("2_8bfp5")
+volume_db = -10.0
+
 [node name="DashSFX" type="AudioStreamPlayer" parent="." unique_id=870351820]
 stream = ExtResource("2_6aj3w")
+volume_db = -10.0
 
 [node name="JumpSFX" type="AudioStreamPlayer" parent="." unique_id=182919991]
-stream = ExtResource("3_6aj3w")
+stream = ExtResource("3_8bfp5")
+volume_db = -10.0
+
+[node name="PushSFX" type="AudioStreamPlayer" parent="." unique_id=612174261]
+stream = ExtResource("5_6n5tw")
+volume_db = -10.0
+
+[node name="ThrowSFX" type="AudioStreamPlayer" parent="." unique_id=1161619987]
+stream = ExtResource("11_f8jcy")
+volume_db = -10.0
+
+[node name="DeathSFX" type="AudioStreamPlayer" parent="." unique_id=115812165]
+stream = ExtResource("12_r2lgn")
+volume_db = -10.0
+
+[node name="DoorSFX" type="AudioStreamPlayer" parent="." unique_id=876846493]
+stream = ExtResource("6_76xm7")
+volume_db = -10.0
+
+[node name="LeverSFX" type="AudioStreamPlayer" parent="." unique_id=904279426]
+stream = ExtResource("7_k6bw1")
+volume_db = -10.0
+
+[node name="PortalSFX" type="AudioStreamPlayer" parent="." unique_id=15309196]
+stream = ExtResource("6_vwu7p")
+volume_db = -10.0
+
+[node name="PressurePlateSFX" type="AudioStreamPlayer" parent="." unique_id=58419476]
+stream = ExtResource("7_5ap4w")
+volume_db = -10.0
+
+[node name="MirrorSFX" type="AudioStreamPlayer" parent="." unique_id=2053865835]
+stream = ExtResource("10_ww2nj")
+volume_db = -10.0
 
 [node name="MusicDelay" type="Timer" parent="." unique_id=1064084986]
+wait_time = 3.0
 one_shot = true

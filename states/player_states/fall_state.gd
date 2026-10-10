@@ -16,6 +16,9 @@ func enter() -> void:
 	player.fall_frame = Time.get_unix_time_from_system()
 	bouncing = false
 
+func exit() -> void:
+	AudioManager.play("LandSFX")
+
 func physics_update(_delta: float) -> void:
 	var curr_frame = Time.get_unix_time_from_system()
 	var move_direction = Input.get_axis("move_left", "move_right")
@@ -56,7 +59,6 @@ func emit_land_particles() -> void:
 
 func update(_delta: float) -> void:
 	sprite.flip_h = (player.mirror_factor[int(player.mirrored)] * player.prev_direction) < 0
-
 
 func _on_player_input_freezed(active: bool) -> void:
 	input_frozen = active

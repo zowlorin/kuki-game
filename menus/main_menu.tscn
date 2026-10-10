@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://co4r8urg14ta2" path="res://menus/main_menu.gd" id="1_06t4h"]
 [ext_resource type="Texture2D" uid="uid://dhm6iv76dtw83" path="res://assets/gui/keyart.png" id="2_ij7vn"]
 [ext_resource type="Texture2D" uid="uid://cr5l5jkkf45c2" path="res://assets/gui/titlescreen_title.png" id="3_yjgyn"]
-[ext_resource type="AudioStream" uid="uid://d0a3i2bb2v1hv" path="res://assets/music/sugarcrash - song 1.wav" id="4_rqbgu"]
 
 [sub_resource type="Animation" id="Animation_ij7vn"]
 resource_name = "Main"
@@ -193,9 +192,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-
-[node name="TitleMusic" type="AudioStreamPlayer" parent="." unique_id=1085498031]
-stream = ExtResource("4_rqbgu")
-autoplay = true
 
 [connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]
