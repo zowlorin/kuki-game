@@ -37,7 +37,6 @@ func _input(event: InputEvent) -> void:
 		
 	on_interact()
 
-
 func _on_timer_timeout() -> void:
 	cooling = false
 
