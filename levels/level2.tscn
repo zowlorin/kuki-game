@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bcwt84x78xu6h" path="res://components/golden_cookie.tscn" id="17_hfi3b"]
 [ext_resource type="Script" uid="uid://bmdxml1isrn2k" path="res://handlers/safe_zones.gd" id="19_pi0ug"]
 [ext_resource type="PackedScene" uid="uid://btc8woaxqjc1l" path="res://components/safe_zone.tscn" id="20_8men3"]
+[ext_resource type="PackedScene" uid="uid://c3a18hx64j05t" path="res://gameplay/dash_replenish.tscn" id="23_sr7fn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vuw6k"]
 size = Vector2(1047, 399.25)
@@ -409,6 +410,20 @@ script = ExtResource("16_s0tuf")
 [node name="GoldenCookie" parent="GoldenCookies" unique_id=1766023232 instance=ExtResource("17_hfi3b")]
 position = Vector2(47, -263)
 id = 5
+
+[node name="DashReplenish" type="Node2D" parent="." unique_id=1143569882]
+
+[node name="DashReplenish" parent="DashReplenish" unique_id=643126448 instance=ExtResource("23_sr7fn")]
+position = Vector2(126, -85)
+
+[node name="DashReplenish2" parent="DashReplenish" unique_id=7714435 instance=ExtResource("23_sr7fn")]
+position = Vector2(300, -95)
+
+[node name="DashReplenish3" parent="DashReplenish" unique_id=157719176 instance=ExtResource("23_sr7fn")]
+position = Vector2(435, -117)
+
+[node name="DashReplenish4" parent="DashReplenish" unique_id=296037787 instance=ExtResource("23_sr7fn")]
+position = Vector2(567, -139)
 
 [connection signal="player_entered" from="CameraAreas" to="." method="_on_camera_areas_player_entered"]
 [connection signal="player_exited" from="CameraAreas" to="." method="_on_camera_areas_player_exited"]

@@ -188,3 +188,8 @@ func teleport(target_position: Vector2):
 
 func _on_game_handler_game_end() -> void:
 	input_frozen = true
+
+
+func _on_pickup_box_area_entered(area: Area2D) -> void:
+	$Helpers/DashCooldown.stop()
+	can_dash = true
