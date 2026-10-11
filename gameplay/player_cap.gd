@@ -24,13 +24,14 @@ signal activity_changed(active: bool)
 		if not active:
 			velocity = Vector2.ZERO
 
-@export var max_hits: int = 2
-			
+@export var max_hits: int = 1
 			
 			
 func deactivate():
 	active = false
 	hits = 0
+	visible = false
+	velocity = Vector2.ZERO
 
 @onready var hits: int = 0:
 	set(x):
@@ -62,6 +63,10 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
+	if (body is Player):
+		deactivate()
+		return
+		
 	on_hurt()
 
 
