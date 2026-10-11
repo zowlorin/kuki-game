@@ -7,4 +7,5 @@ func _on_player_cap_state_changed(active: bool) -> void:
 	if (active):
 		$AnimationPlayer.play("Lost")
 	else:
+		AudioManager.play("BeretReturnSFX")
 		$AnimationPlayer.play("Gained")

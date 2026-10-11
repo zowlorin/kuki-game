@@ -74,7 +74,7 @@ signal safe_zone_requested
 
 @onready var velocity_snapshot: Vector2 = Vector2.ZERO
 
-@onready var camera: Camera2D = get_parent().get_node("Camera2D")
+@onready var camera: Camera2D
 
 var frozen: bool = false:
 	set(x):
@@ -100,7 +100,9 @@ var input_frozen: bool = false:
 func _ready() -> void:
 	if mirrored:
 		$PlayerLight.hide()
+		return
 	
+	camera = get_parent().get_node("Camera2D")
 	frozen = true
 	input_frozen = true
 
