@@ -39,7 +39,7 @@ func physics_update(_delta: float) -> void:
 	var bounce_vel = collision.get_normal() * (player.bounce_curve.sample((curr_frame - bounce_frame) / player.bounce_duration)) * player.bounce_speed
 	var bounciness = lerp(collision.get_collider().physics_material_override.bounce, 0.8, (curr_frame - bounce_frame)/player.bounce_duration)
 	
-	if collision.get_collider().allow_horizontal_bounce:
+	if collision.get_collider().name == "ChudBody":
 		var body = collision.get_collider()
 		if abs(collision.get_normal().x) >= abs(collision.get_normal().y):
 			body.owner.play_animation("h_bounce")

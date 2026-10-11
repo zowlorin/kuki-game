@@ -661,7 +661,7 @@ radius = 10.198039
 [node name="Player" type="CharacterBody2D" unique_id=1561153767]
 z_index = 100
 collision_layer = 2
-collision_mask = 27
+collision_mask = 155
 script = ExtResource("1_4flbx")
 jump_curve = SubResource("Curve_onrkg")
 jump_duration = 0.3
