@@ -46,7 +46,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"default",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="Gradient" id="Gradient_lbg6m"]
@@ -61,6 +61,7 @@ script = ExtResource("1_7o6kn")
 shape = SubResource("CircleShape2D_7o6kn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1280490084]
+modulate = Color(0.8192272, 0.81922793, 0.81922746, 1)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_hnnho")
 autoplay = "default"

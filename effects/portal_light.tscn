@@ -11,6 +11,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.86647725, 0.86647725)
 
 [node name="PortalLight" type="PointLight2D" unique_id=308606959]
+visible = false
 scale = Vector2(2.6249998, 3)
 energy = 0.2
 shadow_enabled = true
