@@ -26,6 +26,8 @@
 [ext_resource type="Script" uid="uid://dne4uas1nd86u" path="res://handlers/hud.gd" id="19_xuqvo"]
 [ext_resource type="Script" uid="uid://dky05smnfnl6p" path="res://effects/load_blackout.gd" id="20_82xsv"]
 [ext_resource type="Script" uid="uid://sa1825kyq307" path="res://timer_ui.gd" id="21_0odxb"]
+[ext_resource type="Script" uid="uid://d1juqade1wypc" path="res://beret_icon.gd" id="23_kq58d"]
+[ext_resource type="Texture2D" uid="uid://bb65qieeptwm6" path="res://assets/beret.png" id="23_qsp4k"]
 [ext_resource type="Script" uid="uid://drv12u70ld0p8" path="res://ui/end_screen.gd" id="24_a6jrf"]
 [ext_resource type="Script" uid="uid://7c5ilx1xo5ax" path="res://ui/return_button.gd" id="24_lswn8"]
 
@@ -40,6 +42,168 @@ point_count = 4
 [sub_resource type="Curve" id="Curve_ycdy4"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.26530614, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="Animation" id="Animation_seu75"]
+resource_name = "Gained"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.165, 1.165), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(201, -36), Vector2(-64.00122, -36)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect/ColorRect:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_htxhm"]
+resource_name = "Lost"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.165, 1.165), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033668973, 0.25203633),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-64.00122, -36), Vector2(-101, -36), Vector2(175.99998, -36)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect/ColorRect:color")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.23333332),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kq58d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(961, 103)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect/ColorRect:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jq2sk"]
+_data = {
+&"Gained": SubResource("Animation_seu75"),
+&"Lost": SubResource("Animation_htxhm"),
+&"RESET": SubResource("Animation_kq58d")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0odxb"]
 bg_color = Color(0, 0, 0, 0.8352941)
@@ -326,8 +490,10 @@ script = ExtResource("19_xuqvo")
 
 [node name="CookieMeter" type="Control" parent="UI/HUD" unique_id=1160072182]
 anchors_preset = 0
-offset_right = 185.0
-offset_bottom = 130.0
+offset_left = -6.0
+offset_top = 4.0
+offset_right = 179.0
+offset_bottom = 134.0
 mouse_filter = 2
 script = ExtResource("17_ryguw")
 
@@ -361,20 +527,65 @@ text = "X"
 
 [node name="RunTimer" type="Control" parent="UI/HUD" unique_id=661909571]
 anchors_preset = 0
-offset_left = 963.0
-offset_top = 46.0
-offset_right = 1122.0
-offset_bottom = 129.0
+offset_left = 162.0
+offset_top = 34.0
+offset_right = 321.0
+offset_bottom = 117.0
 script = ExtResource("21_0odxb")
 
 [node name="MainLabel" type="Label" parent="UI/HUD/RunTimer" unique_id=971482647]
-layout_mode = 0
-offset_left = 6.0
-offset_top = -23.0
-offset_right = 129.0
-offset_bottom = 65.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.5
+offset_top = -44.0
+offset_right = 61.5
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 48
 text = "00:00"
+
+[node name="BeretIcon" type="Control" parent="UI/HUD" unique_id=1772242742]
+anchors_preset = 0
+offset_left = 1025.0
+offset_top = 71.0
+offset_right = 1065.0
+offset_bottom = 111.0
+script = ExtResource("23_kq58d")
+
+[node name="TextureRect" type="TextureRect" parent="UI/HUD/BeretIcon" unique_id=1014313932]
+visible = false
+clip_children = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 941.0
+offset_top = 83.0
+offset_right = 1109.0024
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("23_qsp4k")
+stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="UI/HUD/BeretIcon/TextureRect" unique_id=1736731397]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/HUD/BeretIcon" unique_id=1680350449]
+libraries/ = SubResource("AnimationLibrary_jq2sk")
 
 [node name="PauseMenu" type="Control" parent="UI" unique_id=322721065]
 visible = false
@@ -620,6 +831,7 @@ libraries/ = SubResource("AnimationLibrary_getpj")
 [connection signal="level_setup_done" from="World/LevelContainer/LevelHandler" to="World/Camera2D" method="_on_level_handler_level_setup_done"]
 [connection signal="respawn_target_changed" from="World/LevelContainer/LevelHandler" to="Handlers/RespawnHandler" method="_on_level_handler_respawn_target_changed"]
 [connection signal="timeout" from="World/LevelContainer/LevelHandler/Timer" to="World/LevelContainer/LevelHandler" method="_on_timer_timeout"]
+[connection signal="cap_state_changed" from="World/Player" to="UI/HUD/BeretIcon" method="_on_player_cap_state_changed"]
 [connection signal="died" from="World/Player" to="World/LevelContainer/LevelHandler" method="on_cookie_dropped"]
 [connection signal="died" from="World/Player" to="ScreenFX/DeathBlackout" method="_on_player_died"]
 [connection signal="request_projectile" from="World/Player" to="World/Projectiles" method="_on_player_request_projectile"]

@@ -598,8 +598,8 @@ animations = [{
 polygon = PackedVector2Array(4, 0, -6, 0, -6, -19, 2, -19)
 
 [sub_resource type="Gradient" id="Gradient_lb7f8"]
-offsets = PackedFloat32Array(0.0025125628, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.2093596, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_1uyya"]
 gradient = SubResource("Gradient_lb7f8")
@@ -673,10 +673,6 @@ _data = [Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.2), 0.0, 0.0, 0, 0]
 point_count = 2
 metadata/_snap_count = 2
 metadata/_snap_enabled = true
-
-[sub_resource type="Gradient" id="Gradient_lb7f8"]
-offsets = PackedFloat32Array(0, 0.2093596, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Gradient" id="Gradient_1uyya"]
 colors = PackedColorArray(1, 0.24910983, 0.3656889, 1, 1, 1, 1, 1)
@@ -949,4 +945,5 @@ shape = SubResource("CircleShape2D_x4nr5")
 [connection signal="timeout" from="Helpers/DashInvinciblity" to="." method="_on_dash_invinciblity_timeout"]
 [connection signal="timeout" from="Helpers/ThrowCooldown" to="." method="_on_throw_cooldown_timeout"]
 [connection signal="timeout" from="Helpers/DashCooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="activity_changed" from="PlayerCap" to="." method="_on_player_cap_activity_changed"]
 [connection signal="area_entered" from="PickupBox" to="." method="_on_pickup_box_area_entered"]

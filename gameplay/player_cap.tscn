@@ -72,4 +72,9 @@ script = ExtResource("3_o2gpl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker" unique_id=772939717]
 shape = SubResource("CircleShape2D_3owqy")
 
+[node name="Timer" type="Timer" parent="." unique_id=1917935377]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,6 +1,10 @@
 extends StaticBody2D
 
+
+
 class_name PlayerCap
+
+signal activity_changed(active: bool)
 
 @onready var offset: Vector2
 
@@ -16,6 +20,7 @@ class_name PlayerCap
 		$CollisionShape2D.set_deferred("disabled", !x)
 		$Hurtbox/CollisionShape2D.set_deferred("disabled", !x)
 		visible = active
+		activity_changed.emit(active)
 		if not active:
 			velocity = Vector2.ZERO
 
@@ -45,6 +50,7 @@ func throw(position: Vector2, direction: float):
 	velocity = Vector2.RIGHT * direction * speed
 	
 	hits = 0
+	$Timer.start()
 	
 func on_hurt():
 	velocity.x *= -1
@@ -57,3 +63,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	on_hurt()
+
+
+func _on_timer_timeout() -> void:
+	deactivate()
