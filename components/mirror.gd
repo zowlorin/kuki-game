@@ -21,6 +21,8 @@ func _physics_process(delta: float) -> void:
 		mirrored_player.set_collision_layer_value(4, true)
 		mirrored_player.mirrored = true
 		
+		mirrored_player.get_node("AnimatedSprite2D").flip_h = !(target.prev_direction < 0)
+		print(target.prev_direction < 0)
 		mirrored_player.global_position.x = -distance.x + global_position.x
 		mirrored_player.global_position.y = target.global_position.y
 		

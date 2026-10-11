@@ -13,12 +13,14 @@ signal projectile_requested
 @onready var player_cap: PlayerCap = owner.get_node("PlayerCap")
 @onready var player_cap_origin: Node2D = owner.get_node("Helpers/CapOrigin")
 
+@onready var throw_direction: float
 @onready var velocity_snapshot: Vector2 = Vector2.ZERO
 
 func enter() -> void:
 	player.throw_frame = Time.get_unix_time_from_system()
 	player.get_node("AnimatedSprite2D").play("throw")
 	
+	throw_direction = player.prev_direction
 	velocity_snapshot = player.velocity
 	player.velocity = Vector2.ZERO
 
@@ -30,7 +32,7 @@ func physics_update(_delta: float) -> void:
 	var bouncy_nodes = get_tree().get_nodes_in_group("Bouncy")
 	
 	if player.get_node("AnimatedSprite2D").frame == 2:
-		player_cap.throw(player_cap_origin.global_position, player.mirror_factor[int(player.mirrored)] * player.prev_direction)
+		player_cap.throw(player_cap_origin.global_position, player.mirror_factor[int(player.mirrored)] * throw_direction)
 		AudioManager.play("ThrowSFX", 0.9, 1.1)
 		player.can_throw = false
 	
@@ -51,6 +53,9 @@ func physics_update(_delta: float) -> void:
 	
 	elif (curr_frame - player.throw_frame) >= player.throw_duration:
 		state_machine.transition_to("Idle")
+
+func update(_delta: float) -> void:
+	player.get_node("AnimatedSprite2D").flip_h = (player.mirror_factor[int(player.mirrored)] * throw_direction) < 0
 
 func _on_player_input_freezed(active: bool) -> void:
 	input_frozen = active
