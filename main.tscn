@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://bb65qieeptwm6" path="res://assets/beret.png" id="23_qsp4k"]
 [ext_resource type="Script" uid="uid://drv12u70ld0p8" path="res://ui/end_screen.gd" id="24_a6jrf"]
 [ext_resource type="Script" uid="uid://7c5ilx1xo5ax" path="res://ui/return_button.gd" id="24_lswn8"]
+[ext_resource type="Script" uid="uid://p3im25yr3m26" path="res://ui/level_namer.gd" id="29_seu75"]
 
 [sub_resource type="Curve" id="Curve_0xm2m"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.32038835, 0.6631579), 1.0204334, 1.0204334, 0, 0, Vector2(0.5485437, 0.9157895), 0.59818506, 0.59818506, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -267,6 +268,67 @@ _data = {
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0odxb"]
 bg_color = Color(0, 0, 0, 0.8352941)
+
+[sub_resource type="Animation" id="Animation_0rl1p"]
+resource_name = "Main"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7033334, 1.5, 1.8666667, 2.2333333, 2.5666666, 3.5666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-68, -145), Vector2(-68, 53), Vector2(-68, 10), Vector2(-68, -2), Vector2(-68, 18), Vector2(-68, -2), Vector2(-68, -145)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.6666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ok6jj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-68, -145)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ok6jj"]
+_data = {
+&"Main": SubResource("Animation_0rl1p"),
+&"RESET": SubResource("Animation_ok6jj")
+}
 
 [sub_resource type="Animation" id="Animation_cegan"]
 resource_name = "Blackout"
@@ -601,9 +663,9 @@ libraries/ = SubResource("AnimationLibrary_4k2k6")
 
 [node name="RunTimer" type="Control" parent="UI/HUD" unique_id=661909571]
 anchors_preset = 0
-offset_left = 162.0
+offset_left = 960.0
 offset_top = 34.0
-offset_right = 321.0
+offset_right = 1119.0
 offset_bottom = 117.0
 script = ExtResource("21_0odxb")
 
@@ -626,9 +688,9 @@ text = "00:00"
 [node name="BeretIcon" type="Control" parent="UI/HUD" unique_id=1772242742]
 anchors_preset = 0
 offset_left = 1025.0
-offset_top = 71.0
+offset_top = 534.0
 offset_right = 1065.0
-offset_bottom = 111.0
+offset_bottom = 574.0
 script = ExtResource("23_kq58d")
 
 [node name="TextureRect" type="TextureRect" parent="UI/HUD/BeretIcon" unique_id=1014313932]
@@ -864,6 +926,39 @@ theme_override_font_sizes/font_size = 32
 text = "RETURN"
 script = ExtResource("24_lswn8")
 
+[node name="LevelNamer" type="Control" parent="UI" unique_id=1157275642]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 24.0
+offset_right = 20.0
+offset_bottom = 64.0
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+script = ExtResource("29_seu75")
+
+[node name="Label" type="Label" parent="UI/LevelNamer" unique_id=522362175]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -68.0
+offset_top = -145.0
+offset_right = 68.0
+offset_bottom = -118.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 48
+text = "LEVEL 0"
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/LevelNamer" unique_id=1368154637]
+libraries/ = SubResource("AnimationLibrary_ok6jj")
+
 [node name="ScreenFX" type="CanvasLayer" parent="." unique_id=924266912]
 
 [node name="DeathBlackout" type="ColorRect" parent="ScreenFX" unique_id=1316575967]
@@ -898,6 +993,7 @@ libraries/ = SubResource("AnimationLibrary_getpj")
 [connection signal="camera_area_exited" from="World/LevelContainer/LevelHandler" to="World/Camera2D" method="_on_level_handler_camera_area_exited"]
 [connection signal="cookie_collected" from="World/LevelContainer/LevelHandler" to="Handlers/CookieCollectHandler" method="_on_level_handler_cookie_collected"]
 [connection signal="cookie_dropped" from="World/LevelContainer/LevelHandler" to="Handlers/CookieCollectHandler" method="_on_level_handler_cookie_dropped"]
+[connection signal="level_loaded" from="World/LevelContainer/LevelHandler" to="UI/LevelNamer" method="_on_level_handler_level_loaded"]
 [connection signal="level_okay" from="World/LevelContainer/LevelHandler" to="World/Player" method="_on_level_handler_level_okay"]
 [connection signal="level_okay" from="World/LevelContainer/LevelHandler" to="Handlers/GameHandler" method="_on_level_handler_level_okay"]
 [connection signal="level_okay" from="World/LevelContainer/LevelHandler" to="ScreenFX/LoadBlackout" method="_on_level_handler_level_okay"]

@@ -355,6 +355,7 @@ size = Vector2(138, 32)
 
 [node name="Level" type="Node2D" unique_id=1638046035]
 script = ExtResource("1_yydhl")
+title = "Level 1"
 level_id = 1
 
 [node name="Parallax" type="Node2D" parent="." unique_id=1557407053]

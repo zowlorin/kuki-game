@@ -440,6 +440,9 @@ fill_to = Vector2(1, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rd0g"]
 size = Vector2(129, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_we2w3"]
+size = Vector2(3482, 444)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbcni"]
 size = Vector2(725.5, 202.5)
 
@@ -457,6 +460,7 @@ size = Vector2(458.5, 202.5)
 
 [node name="Level" type="Node2D" unique_id=1638046035]
 script = ExtResource("1_ud5cb")
+title = ""
 
 [node name="Parallax" type="Node2D" parent="." unique_id=1557407053]
 
@@ -620,18 +624,32 @@ target_level = "uid://b4v1p6c2bvct7"
 [node name="PortalLight" parent="PortalHandler/Level5" unique_id=1631483404 instance=ExtResource("24_46tuc")]
 
 [node name="SafeZones" type="Node2D" parent="." unique_id=1484401673]
-visible = false
 script = ExtResource("15_8rd0g")
 
 [node name="SafeZone" parent="SafeZones" unique_id=1303144582 instance=ExtResource("16_8rd0g")]
-position = Vector2(-97, -18)
+position = Vector2(-685, -101)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZones/SafeZone" unique_id=1719063788]
-position = Vector2(-292, -94)
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_8rd0g")
+
+[node name="SafeZone2" parent="SafeZones" unique_id=1544368611 instance=ExtResource("16_8rd0g")]
+position = Vector2(1429, -92)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZones/SafeZone2" unique_id=1551619943]
+position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_8rd0g")
 
 [node name="GoldenCookies" type="Node2D" parent="." unique_id=1862802138]
 script = ExtResource("18_fpvtr")
+
+[node name="VoidKill" type="StaticBody2D" parent="." unique_id=540156684]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VoidKill" unique_id=58548917]
+position = Vector2(201, 235)
+shape = SubResource("RectangleShape2D_we2w3")
 
 [node name="wind particles" parent="." unique_id=182577858 instance=ExtResource("27_we2w3")]
 

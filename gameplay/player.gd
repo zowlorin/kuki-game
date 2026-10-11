@@ -199,13 +199,15 @@ func teleport(target_position: Vector2):
 func _on_game_handler_game_end() -> void:
 	input_frozen = true
 
-
-func _on_pickup_box_area_entered(area: Area2D) -> void:
+func replenish_dash():
 	$Helpers/DashCooldown.stop()
 	AudioManager.play("ReplenishSFX")
 	can_dash = true
+	
 
-
+func _on_pickup_box_area_entered(area: Area2D) -> void:
+	replenish_dash()
+	
 func _on_player_cap_activity_changed(active: bool) -> void:
 	cap_state_changed.emit(active)
 	cap_active = active
@@ -220,4 +222,4 @@ func _on_player_cap_activity_changed(active: bool) -> void:
 
 
 func _on_player_cap_cap_recalled() -> void:
-	pass # Replace with function body.
+	replenish_dash()

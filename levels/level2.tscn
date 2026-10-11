@@ -297,6 +297,7 @@ sources/0 = SubResource("TileSetAtlasSource_7a6c5")
 
 [node name="Level2" type="Node2D" unique_id=1638046035]
 script = ExtResource("1_s0tuf")
+title = "Level 2"
 level_id = 2
 
 [node name="CameraAreas" type="Node2D" parent="." unique_id=1917631324]

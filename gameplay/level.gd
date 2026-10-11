@@ -1,6 +1,9 @@
 extends Node2D
 
+
 class_name Level
+
+@export var title: String = "Level X"
 
 signal level_change_requested(scene_path: String, target_id: String)
 signal respawn_target_changed(target: SafeZone)
