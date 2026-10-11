@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cxncecs8mwrsm"]
+
+[ext_resource type="AudioStream" uid="uid://kqyjg3vmbqe0" path="res://assets/sounds/SFX/Environment/lava.wav" id="1_ldphp"]
+
+[node name="LavaSFX" type="AudioStreamPlayer2D" unique_id=1952545217]
+stream = ExtResource("1_ldphp")
+volume_db = 5.0
+autoplay = true
+max_distance = 1000.0
