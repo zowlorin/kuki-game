@@ -115,6 +115,7 @@ size = Vector2(138, 20)
 
 [node name="Level" type="Node2D" unique_id=1638046035]
 script = ExtResource("1_ooqki")
+level_id = 5
 
 [node name="Parallax" type="Node2D" parent="." unique_id=1557407053]
 

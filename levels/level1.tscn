@@ -553,6 +553,7 @@ size = Vector2(138, 32)
 
 [node name="Level" type="Node2D" unique_id=1638046035]
 script = ExtResource("1_yydhl")
+level_id = 1
 
 [node name="Parallax" type="Node2D" parent="." unique_id=1557407053]
 
@@ -682,7 +683,6 @@ script = ExtResource("18_w7ck5")
 
 [node name="GoldenCookie" parent="GoldenCookies" unique_id=1766023232 instance=ExtResource("19_2nn5w")]
 position = Vector2(9, -368)
-id = 1
 
 [connection signal="level_change_requested" from="PortalHandler" to="." method="_on_portal_handler_level_change_requested"]
 [connection signal="zone_changed" from="SafeZones" to="." method="_on_safe_zones_zone_changed"]
