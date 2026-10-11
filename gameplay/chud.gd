@@ -16,11 +16,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func play_animation(animation: String) -> void:
-	$AnimationPlayer.play(animation)
+	if state_machine.current_state.name == "Idle":
+		$AnimationPlayer.play(animation)
 
 func stop_animation() -> void:
-	$AnimationPlayer.stop()
-	$AnimationPlayer.play("RESET")
+	if state_machine.current_state.name != "Idle":
+		$AnimationPlayer.stop()
+		$AnimationPlayer.play("RESET")
 
 func _on_sleep_sfx_finished() -> void:
 	await get_tree().create_timer(0.5).timeout
@@ -47,7 +49,7 @@ func on_interact():
 		return
 	cookie_handler.on_cookie_fed()
 	state_machine.transition_to("Eating")
-	
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and player_interacting:
 		on_interact()

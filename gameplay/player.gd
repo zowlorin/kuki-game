@@ -9,6 +9,8 @@ signal request_projectile(name: String, position: Vector2, extra: Dictionary)
 signal respawned
 signal died
 
+signal cap_state_changed(active: bool)
+
 signal safe_zone_requested
 
 @export_category("Vertical Motion")
@@ -58,6 +60,11 @@ signal safe_zone_requested
 		can_throw = x
 		if (!can_throw):
 			$Helpers/ThrowCooldown.start()
+			throw_cooling = true
+			
+@onready var throw_cooling: bool = false
+
+@onready var cap_active: bool = false
 
 @onready var mirror_factor: Array[int] = [1, -1]
 @onready var prev_direction: float = 1.0
@@ -172,8 +179,12 @@ func _on_throw_projectile_requested() -> void:
 
 
 func _on_throw_cooldown_timeout() -> void:
+	throw_cooling = false
+	
+	if (cap_active):
+		return
+		
 	can_throw = true
-
 
 func _on_level_handler_level_okay() -> void:
 	frozen = false
@@ -189,6 +200,7 @@ func teleport(target_position: Vector2):
 	camera.global_position = target_position + initial_rel
 	await get_tree().process_frame
 	camera.position_smoothing_enabled = true
+	
 
 
 func _on_game_handler_game_end() -> void:
@@ -199,3 +211,20 @@ func _on_pickup_box_area_entered(area: Area2D) -> void:
 	$Helpers/DashCooldown.stop()
 	AudioManager.play("ReplenishSFX")
 	can_dash = true
+
+
+func _on_player_cap_activity_changed(active: bool) -> void:
+	cap_state_changed.emit(active)
+	cap_active = active
+	
+	if (active):
+		return
+	
+	if (throw_cooling):
+		return
+		
+	can_throw = true
+
+
+func _on_player_cap_cap_recalled() -> void:
+	pass # Replace with function body.

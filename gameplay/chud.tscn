@@ -561,7 +561,7 @@ script = ExtResource("7_uci82")
 metadata/_custom_type_script = "uid://3ffqvmakkxoh"
 
 [node name="Timer" type="Timer" parent="StateMachine/Dancing" unique_id=408585010]
-wait_time = 3.0
+wait_time = 16.0
 one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=152524850]

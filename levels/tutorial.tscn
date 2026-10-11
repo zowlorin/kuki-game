@@ -559,16 +559,6 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_710pl")
 texture_scale = 10.0
 
-[node name="Inside" type="PointLight2D" parent="Lights" unique_id=1652181443]
-visible = false
-position = Vector2(176, -176.00002)
-scale = Vector2(2.5163095, 0.8937324)
-shadow_enabled = true
-shadow_item_cull_mask = 2
-texture = SubResource("GradientTexture2D_710pl")
-offset = Vector2(225, 0)
-texture_scale = 10.61
-
 [node name="ChudThrone" type="Sprite2D" parent="." unique_id=1965235037]
 self_modulate = Color(0.6550534, 0.6550533, 0.65505326, 1)
 texture_filter = 1

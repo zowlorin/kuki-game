@@ -9,10 +9,12 @@ class_name PlayerBounce
 @onready var bounce_frame = Time.get_unix_time_from_system()
 @onready var collision = player.get_last_slide_collision()
 
+@onready var chud_interupptable: bool = false
 @onready var move_direction = Input.get_axis("move_left", "move_right")
 @onready var input_frozen: bool = false
 
 func enter() -> void:
+	chud_interupptable = false
 	player.get_node("AnimatedSprite2D").play("jump")
 	
 	AudioManager.play("BounceSFX")
@@ -21,9 +23,22 @@ func enter() -> void:
 	bounce_frame = Time.get_unix_time_from_system()
 
 func exit() -> void:
-	if collision.get_collider().name == "ChudBody":
+	if collision.get_collider().name == "ChudBody" and chud_interupptable:
 		var body = collision.get_collider()
 		body.owner.get_node("AnimatedSprite2D").play("idle")
+
+func handle_if_chud_anim() -> void:
+	if collision.get_collider().name == "ChudBody":
+		var body = collision.get_collider()
+		if body.owner.state_machine.current_state.name != "Idle":
+			return
+		
+		if abs(collision.get_normal().x) >= abs(collision.get_normal().y):
+			body.owner.play_animation("h_bounce")
+		else:
+			body.owner.play_animation("v_bounce")
+		
+		chud_interupptable = true
 
 func physics_update(_delta: float) -> void:
 	move_direction = Input.get_axis("move_left", "move_right")
@@ -35,12 +50,7 @@ func physics_update(_delta: float) -> void:
 	var bounce_vel = collision.get_normal() * (player.bounce_curve.sample((curr_frame - bounce_frame) / player.bounce_duration)) * player.bounce_speed
 	var bounciness = lerp(collision.get_collider().physics_material_override.bounce, 0.8, (curr_frame - bounce_frame)/player.bounce_duration)
 	
-	if collision.get_collider().name == "ChudBody":
-		var body = collision.get_collider()
-		if abs(collision.get_normal().x) >= abs(collision.get_normal().y):
-			body.owner.play_animation("h_bounce")
-		else:
-			body.owner.play_animation("v_bounce")
+	handle_if_chud_anim()
 	
 	if collision.get_collider().allow_horizontal_bounce:
 		player.velocity.x = bounce_vel.x + player.mirror_factor[int(player.mirrored)] * move_direction * player.accel_curve.sample((curr_frame - player.accel_frame) / player.accel_duration) * player.max_speed

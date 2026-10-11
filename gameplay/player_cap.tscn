@@ -46,7 +46,8 @@ radius = 9.0
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("1_7s2al")
-speed = 100.0
+speed = 400.0
+max_hits = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1342779564]
 texture_filter = 1
@@ -59,7 +60,7 @@ shape = SubResource("CircleShape2D_yb31y")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1807286223]
 collision_layer = 0
-collision_mask = 149
+collision_mask = 151
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=2099903922]
 shape = SubResource("CircleShape2D_7s2al")
@@ -72,4 +73,8 @@ script = ExtResource("3_o2gpl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker" unique_id=772939717]
 shape = SubResource("CircleShape2D_3owqy")
 
+[node name="Timer" type="Timer" parent="." unique_id=1917935377]
+one_shot = true
+
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
