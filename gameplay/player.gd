@@ -91,6 +91,9 @@ var input_frozen: bool = false:
 @onready var respawn_target: SafeZone
 
 func _ready() -> void:
+	if mirrored:
+		$PlayerLight.hide()
+	
 	frozen = true
 	input_frozen = true
 
@@ -98,6 +101,7 @@ func _physics_process(_delta: float) -> void:
 	var move_direction: float = Input.get_axis("move_left", "move_right")
 	
 	$RayCast2D.target_position.x = mirror_factor[int(mirrored)] * move_direction * push_range
+	$PlayerLight.position.x = prev_direction * 6
 	
 	if (input_frozen):
 		move_direction = 0

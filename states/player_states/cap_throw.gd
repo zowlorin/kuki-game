@@ -29,8 +29,6 @@ func physics_update(_delta: float) -> void:
 	var curr_frame = Time.get_unix_time_from_system()
 	var bouncy_nodes = get_tree().get_nodes_in_group("Bouncy")
 	
-	player.get_node("Hurtbox").get_child(0).set_deferred("disabled", true)
-	
 	if player.get_node("AnimatedSprite2D").frame == 2:
 		player_cap.throw(player_cap_origin.global_position, player.prev_direction)
 		AudioManager.play("ThrowSFX", 0.9, 1.1)

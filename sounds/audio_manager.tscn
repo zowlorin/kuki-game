@@ -66,7 +66,7 @@ volume_db = -5.0
 
 [node name="DeathSFX" type="AudioStreamPlayer" parent="." unique_id=115812165]
 stream = ExtResource("12_r2lgn")
-volume_db = -5.0
+volume_db = 5.0
 
 [node name="BounceSFX" type="AudioStreamPlayer" parent="." unique_id=1289208904]
 stream = ExtResource("13_1t52r")

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://byxa647f704ai"]
+
+[sub_resource type="Gradient" id="Gradient_wfa2t"]
+offsets = PackedFloat32Array(0.0025125628, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_710pl"]
+gradient = SubResource("Gradient_wfa2t")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[node name="PortalLight" type="PointLight2D" unique_id=308606959]
+scale = Vector2(2.6249998, 3)
+energy = 0.25
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_710pl")
+texture_scale = 2.0

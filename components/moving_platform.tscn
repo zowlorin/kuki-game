@@ -5,6 +5,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3owqy"]
 size = Vector2(52, 19)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_710pl"]
+polygon = PackedVector2Array(26, 10, 26, -9, -26, -9, -26, 10)
+
 [node name="MovingPlatform" type="AnimatableBody2D" unique_id=62694855]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1502707426]
@@ -14,3 +17,6 @@ texture = ExtResource("1_vi2e8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1133098435]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_3owqy")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=360628937]
+occluder = SubResource("OccluderPolygon2D_710pl")

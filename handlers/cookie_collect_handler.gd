@@ -15,7 +15,7 @@ signal necessary_cookies_collected
 		
 @onready var cookies_fed: int = 0
 
-@export var cookies_needed: int = 3
+@export var cookies_needed: int = 2
 
 func can_feed_cookies() -> bool:
 	return cookies_collected > 0
