@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Chud
+
 @export var buffer_frames = 3
 
 @onready var target: CharacterBody2D = get_tree().current_scene.get_node("World/Player")

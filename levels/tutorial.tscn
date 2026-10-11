@@ -563,14 +563,20 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_710pl")
 texture_scale = 10.0
 
-[node name="ChudThrone" type="Sprite2D" parent="." unique_id=1965235037]
+[node name="Visuals" type="Node2D" parent="." unique_id=529966735]
+
+[node name="ChudThrone" type="Sprite2D" parent="Visuals" unique_id=1965235037]
 self_modulate = Color(0.6550534, 0.6550533, 0.65505326, 1)
 texture_filter = 1
 position = Vector2(165, -130)
 texture = ExtResource("26_8bi7p")
 
-[node name="Chud" parent="." unique_id=889230261 instance=ExtResource("15_wjdp3")]
-position = Vector2(168, -68)
+[node name="Label" type="Label" parent="Visuals" unique_id=636461235]
+offset_left = -572.0
+offset_top = -169.0
+offset_right = -458.0
+offset_bottom = -146.0
+text = "WASD to move"
 
 [node name="PortalHandler" type="Node2D" parent="." unique_id=1647731445]
 position = Vector2(0, -41)
@@ -716,6 +722,11 @@ position = Vector2(214, -163)
 
 [node name="DashReplenish6" parent="Pickups" unique_id=725945730 instance=ExtResource("30_wfa2t")]
 position = Vector2(274, -163)
+
+[node name="Chuds" type="Node2D" parent="." unique_id=2025398327]
+
+[node name="Chud" parent="Chuds" unique_id=889230261 instance=ExtResource("15_wjdp3")]
+position = Vector2(168, -68)
 
 [connection signal="level_change_requested" from="PortalHandler" to="." method="_on_portal_handler_level_change_requested"]
 [connection signal="zone_changed" from="SafeZones" to="." method="_on_safe_zones_zone_changed"]

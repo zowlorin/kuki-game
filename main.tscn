@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://cfal2nwnfnxgd" path="res://ui/cookie_meter.gd" id="17_ryguw"]
 [ext_resource type="Script" uid="uid://beloep4d6j7ft" path="res://handlers/game_timer.gd" id="18_1u8w0"]
 [ext_resource type="Script" uid="uid://ba6x2ctaq0v1y" path="res://effects/death_blackout.gd" id="18_074og"]
+[ext_resource type="Script" uid="uid://0a8bb0mj4cea" path="res://ui/state_handler.gd" id="19_htxhm"]
 [ext_resource type="Script" uid="uid://dne4uas1nd86u" path="res://handlers/hud.gd" id="19_xuqvo"]
 [ext_resource type="Script" uid="uid://dky05smnfnl6p" path="res://effects/load_blackout.gd" id="20_82xsv"]
 [ext_resource type="Script" uid="uid://sa1825kyq307" path="res://timer_ui.gd" id="21_0odxb"]
@@ -597,6 +598,9 @@ script = ExtResource("16_getpj")
 [node name="GameTimer" type="Node2D" parent="Handlers" unique_id=132148241]
 process_mode = 3
 script = ExtResource("18_1u8w0")
+
+[node name="GlobalStateHandler" type="Node2D" parent="Handlers" unique_id=1817745159]
+script = ExtResource("19_htxhm")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=419646893]
 process_mode = 3
