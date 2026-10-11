@@ -74,7 +74,7 @@ signal safe_zone_requested
 
 @onready var velocity_snapshot: Vector2 = Vector2.ZERO
 
-@onready var camera: Camera2D = get_parent().get_node("Camera2D")
+@onready var camera: Camera2D
 
 #respawn particles
 @export var respawn_particles: CPUParticles2D
@@ -103,7 +103,9 @@ var input_frozen: bool = false:
 func _ready() -> void:
 	if mirrored:
 		$PlayerLight.hide()
+		return
 	
+	camera = get_parent().get_node("Camera2D")
 	frozen = true
 	input_frozen = true
 
@@ -206,13 +208,15 @@ func teleport(target_position: Vector2):
 func _on_game_handler_game_end() -> void:
 	input_frozen = true
 
-
-func _on_pickup_box_area_entered(area: Area2D) -> void:
+func replenish_dash():
 	$Helpers/DashCooldown.stop()
 	AudioManager.play("ReplenishSFX")
 	can_dash = true
+	
 
-
+func _on_pickup_box_area_entered(area: Area2D) -> void:
+	replenish_dash()
+	
 func _on_player_cap_activity_changed(active: bool) -> void:
 	cap_state_changed.emit(active)
 	cap_active = active
@@ -227,4 +231,4 @@ func _on_player_cap_activity_changed(active: bool) -> void:
 
 
 func _on_player_cap_cap_recalled() -> void:
-	pass # Replace with function body.
+	replenish_dash()

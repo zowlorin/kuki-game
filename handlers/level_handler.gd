@@ -2,6 +2,7 @@ extends Node2D
 
 signal level_okay
 signal level_setup_done
+signal level_loaded(title: String)
 
 signal respawn_target_changed(target: SafeZone)
 signal cookie_collected(id: int)
@@ -84,6 +85,7 @@ func change_level(level_path: String, target_id: String):
 
 	player.teleport(target_portal.global_position)
 	level_setup_done.emit()
+	level_loaded.emit(new_level.title)
 
 func handle_queued_level():
 	if (!level_queued):

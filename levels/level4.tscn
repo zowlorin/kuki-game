@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://b83gms022hnxe" path="res://components/box_container.tscn" id="16_pfr8s"]
 [ext_resource type="PackedScene" uid="uid://bmkpnxm4anog4" path="res://components/bounce_pad.tscn" id="17_im0iu"]
 [ext_resource type="PackedScene" uid="uid://d8o7asq8gyif" path="res://components/gate.tscn" id="17_s47u1"]
+[ext_resource type="PackedScene" uid="uid://ck6cyuhlwhne7" path="res://components/mirror.tscn" id="18_efk67"]
 [ext_resource type="PackedScene" uid="uid://g236muxvb3eb" path="res://components/moving_platform.tscn" id="18_jaa0q"]
 [ext_resource type="Script" uid="uid://bmdxml1isrn2k" path="res://handlers/safe_zones.gd" id="19_knyjd"]
 [ext_resource type="PackedScene" uid="uid://btc8woaxqjc1l" path="res://components/safe_zone.tscn" id="20_nxwod"]
@@ -216,6 +217,11 @@ position = Vector2(343, -11)
 
 [node name="BouncePad" parent="." unique_id=340428913 instance=ExtResource("17_im0iu")]
 position = Vector2(98, -10)
+
+[node name="Mirror" parent="." unique_id=399049558 instance=ExtResource("18_efk67")]
+position = Vector2(407, -136)
+
+[node name="Mirrors" type="Node2D" parent="." unique_id=440934180]
 
 [node name="Gates" type="Node2D" parent="." unique_id=1286166510]
 

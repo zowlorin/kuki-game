@@ -30,7 +30,7 @@ func physics_update(_delta: float) -> void:
 	var bouncy_nodes = get_tree().get_nodes_in_group("Bouncy")
 	
 	if player.get_node("AnimatedSprite2D").frame == 2:
-		player_cap.throw(player_cap_origin.global_position, player.prev_direction)
+		player_cap.throw(player_cap_origin.global_position, player.mirror_factor[int(player.mirrored)] * player.prev_direction)
 		AudioManager.play("ThrowSFX", 0.9, 1.1)
 		player.can_throw = false
 	

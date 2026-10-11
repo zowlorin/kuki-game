@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://cw17f2ormvb7p" path="res://assets/sounds/SFX/Character/chud-cookie.wav" id="13_uci82"]
 [ext_resource type="AudioStream" uid="uid://due0ytpa4ejla" path="res://assets/sounds/SFX/Character/chud-eating.wav" id="17_d5lr2"]
 [ext_resource type="Script" uid="uid://djooihgfucdex" path="res://components/bouncy.gd" id="18_k72q1"]
+[ext_resource type="Script" uid="uid://bgrtdvmt3lwve" path="res://gameplay/chud_dialogue.gd" id="19_bysli"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w4vfs"]
 atlas = ExtResource("6_cebp8")
@@ -582,27 +583,31 @@ libraries/ = SubResource("AnimationLibrary_q1xlo")
 stream = SubResource("AudioStreamRandomizer_710pl")
 volume_db = 5.0
 max_distance = 1000.0
-attenuation = 4.0
+attenuation = 3.0
 
 [node name="WakeSFX" type="AudioStreamPlayer2D" parent="." unique_id=1672707168]
 stream = ExtResource("10_lyp8q")
 volume_db = 5.0
 max_distance = 1000.0
+attenuation = 3.0
 
 [node name="SleepSFX" type="AudioStreamPlayer2D" parent="." unique_id=1542764434]
 stream = ExtResource("8_v0pnj")
 volume_db = 5.0
 max_distance = 1000.0
+attenuation = 3.0
 
 [node name="SingSFX" type="AudioStreamPlayer2D" parent="." unique_id=764370848]
 stream = ExtResource("8_q1xlo")
 volume_db = 5.0
 max_distance = 1000.0
+attenuation = 3.0
 
 [node name="EatSFX" type="AudioStreamPlayer2D" parent="." unique_id=1636816366]
 stream = ExtResource("17_d5lr2")
 volume_db = 5.0
 max_distance = 1000.0
+attenuation = 3.0
 
 [node name="ChudBody" type="StaticBody2D" parent="." unique_id=641567211 groups=["Bouncy"]]
 collision_layer = 128
@@ -630,6 +635,31 @@ collision_mask = 2
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1915414433]
 occluder = SubResource("OccluderPolygon2D_710pl")
+
+[node name="Dialogue" type="Node2D" parent="." unique_id=701142505]
+position = Vector2(0, -92)
+script = ExtResource("19_bysli")
+
+[node name="PanelContainer" type="PanelContainer" parent="Dialogue" unique_id=1406058697]
+offset_left = -1.0
+offset_top = -20.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Dialogue/PanelContainer" unique_id=1224576135]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="Label" type="Label" parent="Dialogue/PanelContainer/MarginContainer" unique_id=1091173720]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
 
 [connection signal="timeout" from="StateMachine/Eating/Timer" to="StateMachine/Eating" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Dancing/Timer" to="StateMachine/Dancing" method="_on_timer_timeout"]
