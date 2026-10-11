@@ -435,7 +435,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_46tuc")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 1)
+fill_to = Vector2(0.81534094, 0.8551136)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rd0g"]
 size = Vector2(129, 20)
@@ -555,6 +555,7 @@ tile_set = ExtResource("15_4kisa")
 [node name="Outside" type="PointLight2D" parent="Lights" unique_id=957134898]
 position = Vector2(-304, -376)
 scale = Vector2(4.3991165, 2.385332)
+energy = 0.35
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_710pl")
 texture_scale = 10.0
