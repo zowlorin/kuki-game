@@ -598,8 +598,8 @@ animations = [{
 polygon = PackedVector2Array(4, 0, -6, 0, -6, -19, 2, -19)
 
 [sub_resource type="Gradient" id="Gradient_lb7f8"]
-offsets = PackedFloat32Array(0.0025125628, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.2093596, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_1uyya"]
 gradient = SubResource("Gradient_lb7f8")
@@ -674,17 +674,26 @@ point_count = 2
 metadata/_snap_count = 2
 metadata/_snap_enabled = true
 
-[sub_resource type="Gradient" id="Gradient_lb7f8"]
-offsets = PackedFloat32Array(0, 0.2093596, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
-
 [sub_resource type="Gradient" id="Gradient_1uyya"]
 colors = PackedColorArray(1, 0.24910983, 0.3656889, 1, 1, 1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_1uyya"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_count = 2
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_qaaio"]
+offsets = PackedFloat32Array(0, 0.7758621, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_sjyi7"]
+colors = PackedColorArray(1, 0.4088891, 0.54233027, 1, 1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x4nr5"]
 radius = 10.198039
 
-[node name="Player" type="CharacterBody2D" unique_id=1561153767]
+[node name="Player" type="CharacterBody2D" unique_id=1561153767 node_paths=PackedStringArray("respawn_particles")]
 light_mask = 0
 z_index = 100
 collision_layer = 2
@@ -702,6 +711,7 @@ dash_speed = 400.0
 dash_duration = 0.2
 bounce_curve = SubResource("Curve_0qvvg")
 bounce_speed = 600.0
+respawn_particles = NodePath("Helpers/RespawnParticles")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1136324206]
 position = Vector2(0, -5)
@@ -775,7 +785,7 @@ light_mask = 2
 texture_filter = 1
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_710pl")
-animation = &"idle"
+animation = &"respawn"
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatedSprite2D" unique_id=1952811938]
 light_mask = 2
@@ -905,6 +915,25 @@ scale_amount_max = 8.0
 scale_amount_curve = SubResource("Curve_lb7f8")
 color_ramp = SubResource("Gradient_lb7f8")
 color_initial_ramp = SubResource("Gradient_1uyya")
+
+[node name="RespawnParticles" type="CPUParticles2D" parent="Helpers" unique_id=116794069]
+emitting = false
+amount = 100
+lifetime = 0.25
+one_shot = true
+emission_shape = 6
+emission_ring_inner_radius = 15.0
+emission_ring_radius = 25.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, -500)
+radial_accel_min = -500.0
+radial_accel_max = -100.0
+scale_amount_min = 5.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_1uyya")
+color_ramp = SubResource("Gradient_qaaio")
+color_initial_ramp = SubResource("Gradient_sjyi7")
 
 [node name="CapOrigin" type="Node2D" parent="Helpers" unique_id=845635378]
 position = Vector2(12, -12)

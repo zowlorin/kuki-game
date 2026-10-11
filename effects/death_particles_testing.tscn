@@ -1,28 +1,33 @@
 [gd_scene format=3 uid="uid://dtthohoo0korx"]
 
 [sub_resource type="Curve" id="Curve_y6ee1"]
-_data = [Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.2), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 metadata/_snap_count = 2
 metadata/_snap_enabled = true
 
 [sub_resource type="Gradient" id="Gradient_bot44"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.7758621, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Gradient" id="Gradient_lb7f8"]
 colors = PackedColorArray(1, 0.4088891, 0.54233027, 1, 1, 1, 1, 1)
 
-[node name="Death Particles Testing" type="Node2D" unique_id=1031191723]
+[node name="Particles Testing" type="Node2D" unique_id=1031191723]
 
 [node name="DeathParticles" type="CPUParticles2D" parent="." unique_id=278198128]
-amount = 50
+emitting = false
+amount = 100
 lifetime = 0.5
-explosiveness = 0.95
+one_shot = true
+emission_shape = 6
+emission_ring_inner_radius = 10.0
+emission_ring_radius = 30.0
 direction = Vector2(0, 0)
 spread = 180.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 100.0
-initial_velocity_max = 200.0
+gravity = Vector2(0, 0)
+radial_accel_min = -200.0
+radial_accel_max = -100.0
 scale_amount_min = 5.0
 scale_amount_max = 8.0
 scale_amount_curve = SubResource("Curve_y6ee1")

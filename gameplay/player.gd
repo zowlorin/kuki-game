@@ -69,6 +69,9 @@ signal safe_zone_requested
 
 @onready var camera: Camera2D = get_parent().get_node("Camera2D")
 
+#respawn particles
+@export var respawn_particles: CPUParticles2D
+
 var frozen: bool = false:
 	set(x):
 		if (frozen == x):
@@ -128,6 +131,10 @@ func _on_dash_cooldown_timeout() -> void:
 	can_dash = true
 
 func on_respawn():
+	respawn_particles.top_level = true
+	respawn_particles.global_position = global_position
+	respawn_particles.restart()	
+	respawn_particles.emitting = true
 	$AnimatedSprite2D.play("respawn")
 	input_frozen = false
 	
