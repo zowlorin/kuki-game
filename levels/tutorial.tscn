@@ -465,7 +465,6 @@ follow_viewport_enabled = true
 
 [node name="Basesky" type="Parallax2D" parent="Parallax/ParallaxBackground" unique_id=670970343]
 scroll_scale = Vector2(0, 0.1)
-repeat_size = Vector2(480, 270)
 repeat_times = 6
 
 [node name="basesky" type="Sprite2D" parent="Parallax/ParallaxBackground/Basesky" unique_id=1113618313]
