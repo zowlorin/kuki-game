@@ -217,3 +217,7 @@ func _on_player_cap_activity_changed(active: bool) -> void:
 		return
 		
 	can_throw = true
+
+
+func _on_player_cap_cap_recalled() -> void:
+	pass # Replace with function body.

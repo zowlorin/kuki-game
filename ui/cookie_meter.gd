@@ -7,3 +7,5 @@ extends Control
 
 func _on_cookie_collect_handler_value_changed(x: int) -> void:
 	known_value = x
+	if (known_value != x):
+		$AnimationPlayer.play("Gained")

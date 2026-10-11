@@ -4,6 +4,7 @@ extends StaticBody2D
 
 class_name PlayerCap
 
+signal cap_recalled
 signal activity_changed(active: bool)
 
 @onready var offset: Vector2
@@ -65,10 +66,10 @@ func _physics_process(delta: float) -> void:
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if (body is Player):
 		deactivate()
+		cap_recalled.emit()
 		return
 		
 	on_hurt()
-
 
 func _on_timer_timeout() -> void:
 	deactivate()
