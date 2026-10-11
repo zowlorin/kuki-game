@@ -514,7 +514,7 @@ bounce = 0.6
 radius = 32.06244
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cebp8"]
-size = Vector2(145, 89)
+size = Vector2(145, 109)
 
 [node name="Chud" type="CharacterBody2D" unique_id=889230261]
 collision_layer = 0
@@ -617,7 +617,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=1152930459]
-position = Vector2(0.5, -44.5)
+position = Vector2(0.5, -54.5)
 shape = SubResource("RectangleShape2D_cebp8")
 
 [node name="RayCast" type="RayCast2D" parent="." unique_id=1971619359]
