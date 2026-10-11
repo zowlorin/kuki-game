@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://wkbpy211s0d8"]
 
+[sub_resource type="Curve" id="Curve_5w35y"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="wind particles" type="Node2D" unique_id=182577858]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1463090497]
-position = Vector2(602, 0)
-amount = 150
-lifetime = 7.18
+position = Vector2(1500, 0)
+amount = 1000
+lifetime = 60.0
 emission_shape = 3
 emission_rect_extents = Vector2(1, 350)
 direction = Vector2(-1, 0)
@@ -13,13 +17,14 @@ spread = 31.57
 gravity = Vector2(0, 0)
 initial_velocity_min = 133.06
 initial_velocity_max = 374.15
-scale_amount_min = 0.0
+scale_amount_min = 0.5
 scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_5w35y")
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="." unique_id=369752750]
-position = Vector2(602, 0)
-amount = 150
-lifetime = 7.18
+position = Vector2(1500, 0)
+amount = 1000
+lifetime = 60.0
 emission_shape = 3
 emission_rect_extents = Vector2(1, 350)
 direction = Vector2(-1, 0)
@@ -27,14 +32,15 @@ spread = 31.57
 gravity = Vector2(0, 0)
 initial_velocity_min = 133.06
 initial_velocity_max = 374.15
-scale_amount_min = 0.0
+scale_amount_min = 0.5
 scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_5w35y")
 color = Color(1, 0.84313726, 1, 1)
 
 [node name="CPUParticles2D3" type="CPUParticles2D" parent="." unique_id=1557996370]
-position = Vector2(602, 0)
-amount = 150
-lifetime = 7.18
+position = Vector2(1500, 0)
+amount = 1000
+lifetime = 60.0
 emission_shape = 3
 emission_rect_extents = Vector2(1, 350)
 direction = Vector2(-1, 0)
@@ -42,6 +48,7 @@ spread = 31.57
 gravity = Vector2(0, 0)
 initial_velocity_min = 133.06
 initial_velocity_max = 374.15
-scale_amount_min = 0.0
+scale_amount_min = 0.5
 scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_5w35y")
 color = Color(0.7647059, 1, 1, 1)
