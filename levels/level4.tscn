@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://02obta6p50c0" path="res://handlers/portal_handler.gd" id="10_nieve"]
 [ext_resource type="PackedScene" uid="uid://r82ip1jvly4x" path="res://components/portal.tscn" id="11_yg108"]
 [ext_resource type="PackedScene" uid="uid://bkw1a51ob5sl4" path="res://components/lever.tscn" id="14_q0ied"]
-[ext_resource type="PackedScene" uid="uid://di8j2uaoyn0nr" path="res://components/pressure_plate.tscn" id="15_781as"]
 [ext_resource type="PackedScene" uid="uid://bmkpnxm4anog4" path="res://components/bounce_pad.tscn" id="17_im0iu"]
 [ext_resource type="PackedScene" uid="uid://d8o7asq8gyif" path="res://components/gate.tscn" id="17_s47u1"]
 [ext_resource type="PackedScene" uid="uid://g236muxvb3eb" path="res://components/moving_platform.tscn" id="18_jaa0q"]
@@ -150,9 +149,6 @@ target_level = "uid://ci0mg4cw3htbo"
 [node name="Lever" parent="TriggerMechs" unique_id=873827231 instance=ExtResource("14_q0ied")]
 position = Vector2(297, 0)
 
-[node name="PressurePlate" parent="TriggerMechs" unique_id=2027544041 instance=ExtResource("15_781as")]
-position = Vector2(437, -25)
-
 [node name="BouncePad" parent="." unique_id=340428913 instance=ExtResource("17_im0iu")]
 position = Vector2(339, -26)
 
@@ -163,10 +159,6 @@ position = Vector2(339, -26)
 [node name="Gate" parent="Gates" unique_id=1108134410 node_paths=PackedStringArray("trigger_mech") instance=ExtResource("17_s47u1")]
 position = Vector2(410, 0)
 trigger_mech = NodePath("../../TriggerMechs/Lever")
-
-[node name="Gate2" parent="Gates" unique_id=1371055051 node_paths=PackedStringArray("trigger_mech") instance=ExtResource("17_s47u1")]
-position = Vector2(468, 0)
-trigger_mech = NodePath("../../TriggerMechs/PressurePlate")
 
 [node name="MovingPlatforms" type="Node2D" parent="." unique_id=1918830428]
 
