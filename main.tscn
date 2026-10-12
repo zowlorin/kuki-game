@@ -18,7 +18,6 @@
 [ext_resource type="Script" uid="uid://co7wfydwqlui6" path="res://ui/pause_menu.gd" id="15_vivmo"]
 [ext_resource type="Script" uid="uid://mn61g2q52r44" path="res://handlers/respawn_handler.gd" id="15_yaehf"]
 [ext_resource type="Script" uid="uid://cajwf2ufg3ji3" path="res://ui/settings_menu.gd" id="16_2cqfq"]
-[ext_resource type="Texture2D" uid="uid://xjuim5mbgtst" path="res://assets/cookie.png" id="16_82xsv"]
 [ext_resource type="Script" uid="uid://4wdlpx2suflw" path="res://handlers/cookie_collect_handler.gd" id="16_getpj"]
 [ext_resource type="Script" uid="uid://cfal2nwnfnxgd" path="res://ui/cookie_meter.gd" id="17_ryguw"]
 [ext_resource type="Script" uid="uid://beloep4d6j7ft" path="res://handlers/game_timer.gd" id="18_1u8w0"]
@@ -31,6 +30,7 @@
 [ext_resource type="Script" uid="uid://d1juqade1wypc" path="res://beret_icon.gd" id="23_kq58d"]
 [ext_resource type="Texture2D" uid="uid://bb65qieeptwm6" path="res://assets/beret.png" id="23_qsp4k"]
 [ext_resource type="Script" uid="uid://drv12u70ld0p8" path="res://ui/end_screen.gd" id="24_a6jrf"]
+[ext_resource type="FontFile" uid="uid://bqonp1oxj6dxw" path="res://assets/gui/m5x7.ttf" id="24_jq2sk"]
 [ext_resource type="Script" uid="uid://7c5ilx1xo5ax" path="res://ui/return_button.gd" id="24_lswn8"]
 [ext_resource type="Script" uid="uid://p3im25yr3m26" path="res://ui/level_namer.gd" id="29_seu75"]
 
@@ -623,39 +623,6 @@ offset_bottom = 130.0
 mouse_filter = 2
 script = ExtResource("17_ryguw")
 
-[node name="TextureRect" type="TextureRect" parent="UI/HUD/CookieMeter" unique_id=829591749]
-visible = false
-clip_children = 2
-texture_filter = 1
-layout_mode = 0
-offset_left = 18.0
-offset_top = 11.0
-offset_right = 124.0
-offset_bottom = 110.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("16_82xsv")
-stretch_mode = 5
-
-[node name="MainLabel" type="Label" parent="UI/HUD/CookieMeter" unique_id=1748082384]
-visible = false
-layout_mode = 0
-offset_left = 141.0
-offset_top = 27.0
-offset_right = 188.0
-offset_bottom = 115.0
-theme_override_font_sizes/font_size = 48
-text = "0"
-
-[node name="Label2" type="Label" parent="UI/HUD/CookieMeter" unique_id=123930088]
-visible = false
-layout_mode = 0
-offset_left = 118.0
-offset_top = 43.0
-offset_right = 158.0
-offset_bottom = 88.0
-theme_override_font_sizes/font_size = 32
-text = "X"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/HUD/CookieMeter" unique_id=307532000]
 libraries/ = SubResource("AnimationLibrary_4k2k6")
 
@@ -690,19 +657,16 @@ script = ExtResource("21_0odxb")
 
 [node name="MainLabel" type="Label" parent="UI/HUD/RunTimer" unique_id=971482647]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -61.5
-offset_top = -44.0
-offset_right = 61.5
-offset_bottom = 44.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 48
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -123.0
+offset_bottom = 88.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("24_jq2sk")
+theme_override_font_sizes/font_size = 64
 text = "00:00"
+horizontal_alignment = 2
 
 [node name="BeretIcon" type="Control" parent="UI/HUD" unique_id=1772242742]
 anchors_preset = 0
@@ -760,12 +724,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -75.0
+offset_top = -25.0
+offset_right = 75.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0, 1.5)
+offset_transform_visual_only = false
+theme_override_fonts/font = ExtResource("24_jq2sk")
+theme_override_font_sizes/font_size = 36
 text = "EXIT"
 
 [node name="SettingsButton" type="Button" parent="UI/PauseMenu" unique_id=1244545946]
@@ -776,12 +745,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -61.0
-offset_right = 60.0
-offset_bottom = -30.0
+offset_left = -75.0
+offset_top = -25.0
+offset_right = 75.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_visual_only = false
+theme_override_fonts/font = ExtResource("24_jq2sk")
+theme_override_font_sizes/font_size = 36
 text = "SETTINGS"
 
 [node name="ResumeButton" type="Button" parent="UI/PauseMenu" unique_id=590692255]
@@ -791,12 +764,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -62.0
-offset_top = -109.0
-offset_right = 62.0
-offset_bottom = -78.0
+offset_left = -75.0
+offset_top = -25.0
+offset_right = 75.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0, -1.5)
+offset_transform_visual_only = false
+theme_override_fonts/font = ExtResource("24_jq2sk")
+theme_override_font_sizes/font_size = 36
 text = "RESUME"
 
 [node name="SettingsMenu" type="Control" parent="UI" unique_id=505827051]
@@ -828,11 +806,14 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Label" type="Label" parent="UI/SettingsMenu/MarginContainer/Control" unique_id=70917410]
+texture_filter = 1
 layout_mode = 0
 offset_left = 28.0
 offset_top = 19.0
 offset_right = 102.0
 offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("24_jq2sk")
+theme_override_font_sizes/font_size = 36
 text = "SETTINGS"
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/SettingsMenu/MarginContainer/Control" unique_id=245493142]
@@ -855,12 +836,15 @@ custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="UI/SettingsMenu/MarginContainer/Control/MarginContainer/VBoxContainer/MainVolumeSetting" unique_id=627595390]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("24_jq2sk")
+theme_override_font_sizes/font_size = 36
 text = "MAIN VOLUME"
 
 [node name="MusicVolumeSetting" type="Control" parent="UI/SettingsMenu/MarginContainer/Control/MarginContainer/VBoxContainer" unique_id=2023021219]
@@ -868,12 +852,15 @@ custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="UI/SettingsMenu/MarginContainer/Control/MarginContainer/VBoxContainer/MusicVolumeSetting" unique_id=411409155]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("24_jq2sk")
+theme_override_font_sizes/font_size = 36
 text = "MUSIC VOLUME"
 
 [node name="EndScreen" type="Control" parent="UI" unique_id=1503197286]
@@ -896,6 +883,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0odxb")
 
 [node name="Label" type="Label" parent="UI/EndScreen" unique_id=1501542876]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -908,10 +896,14 @@ offset_right = 172.0
 offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("24_jq2sk")
+theme_override_font_sizes/font_size = 48
 text = "the chud has been satisfied...."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Time" type="Label" parent="UI/EndScreen" unique_id=1953409797]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -924,10 +916,14 @@ offset_right = 61.5
 offset_bottom = -99.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 64
+theme_override_fonts/font = ExtResource("24_jq2sk")
+theme_override_font_sizes/font_size = 100
 text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ReturnButton" type="Button" parent="UI/EndScreen" unique_id=1589207951]
+texture_filter = 1
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -941,7 +937,8 @@ offset_right = 80.0
 offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("24_jq2sk")
+theme_override_font_sizes/font_size = 36
 text = "RETURN"
 script = ExtResource("24_lswn8")
 
@@ -971,8 +968,10 @@ offset_bottom = -118.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_font_sizes/font_size = 48
+theme_override_fonts/font = ExtResource("24_jq2sk")
+theme_override_font_sizes/font_size = 64
 text = "LEVEL 0"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/LevelNamer" unique_id=1368154637]
