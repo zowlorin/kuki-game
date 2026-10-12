@@ -1135,6 +1135,7 @@ tile_map_data = PackedByteArray("AADz/wgAAAACAAEAAADz/wcAAAACAAEAAADz/wYAAAACAAE
 tile_set = ExtResource("15_4kisa")
 
 [node name="Collision" type="TileMap" parent="." unique_id=1165085173]
+visible = false
 z_index = 10
 texture_filter = 1
 tile_set = SubResource("TileSet_1s5uj")
