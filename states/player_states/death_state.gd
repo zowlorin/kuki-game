@@ -13,4 +13,10 @@ func enter() -> void:
 	AudioManager.play("DeathSFX")
 	player.get_node("AnimatedSprite2D").play("death")
 	player.helpers.get_node("DeathTimer").start()
+	
+	if player.mirrored:
+		player.origin.mirrors.erase(player)
+		player.call_deferred("queue_free")
+		return
+	
 	player.died.emit()
