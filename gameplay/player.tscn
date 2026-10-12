@@ -31,7 +31,7 @@
 [ext_resource type="Script" uid="uid://c3v0yo04o3k78" path="res://gameplay/cap_origin.gd" id="26_x4nr5"]
 
 [sub_resource type="Curve" id="Curve_onrkg"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.41035855, 0.9375), -0.66755325, -0.66755325, 0, 0, Vector2(0.97959197, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5099602, 1), -0.66755325, -0.66755325, 0, 0, Vector2(0.97959197, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_jriu6"]
