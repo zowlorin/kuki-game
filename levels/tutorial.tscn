@@ -208,7 +208,7 @@ terrain_set_0/terrain_0/color = Color(1, 0.8530437, 0.9076079, 1)
 sources/1 = SubResource("TileSetAtlasSource_ssn57")
 sources/0 = SubResource("TileSetAtlasSource_hwbra")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hi7gy"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qx0wt"]
 texture = ExtResource("15_f5lvq")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -274,7 +274,7 @@ texture = ExtResource("15_f5lvq")
 3:3/0/terrain_set = 0
 3:3/0/terrains_peering_bit/top_left_corner = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8bi7p"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5ikpk"]
 texture = ExtResource("16_ssn57")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -340,7 +340,7 @@ texture = ExtResource("16_ssn57")
 3:3/0/terrain_set = 0
 3:3/0/terrains_peering_bit/top_left_corner = 1
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_we2w3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1pqak"]
 texture = ExtResource("17_xwxsl")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -406,7 +406,7 @@ texture = ExtResource("17_xwxsl")
 3:3/0/terrain_set = 0
 3:3/0/terrains_peering_bit/top_left_corner = 2
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_46tuc"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p3vrt"]
 texture = ExtResource("15_rxgvf")
 0:0/animation_columns = 2
 0:0/animation_frame_0/duration = 0.5
@@ -517,7 +517,7 @@ texture = ExtResource("15_rxgvf")
 6:3/0/terrain_set = 0
 6:3/0/terrains_peering_bit/top_left_corner = 3
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qx0wt"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2q0bs"]
 texture = ExtResource("14_1s5uj")
 0:0/animation_columns = 2
 0:0/animation_frame_0/duration = 0.5
@@ -628,7 +628,7 @@ texture = ExtResource("14_1s5uj")
 6:3/0/terrain_set = 0
 6:3/0/terrains_peering_bit/top_left_corner = 4
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5ikpk"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f4uu8"]
 texture = ExtResource("15_2ylfg")
 0:1/animation_columns = 2
 0:1/animation_frame_0/duration = 0.5
@@ -755,12 +755,12 @@ terrain_set_0/terrain_4/name = "lefbrown 4"
 terrain_set_0/terrain_4/color = Color(0.28125, 0.5, 0.25, 1)
 terrain_set_0/terrain_5/name = "white_lef"
 terrain_set_0/terrain_5/color = Color(0.5811849, 0.16858652, 0.8762816, 1)
-sources/0 = SubResource("TileSetAtlasSource_hi7gy")
-sources/1 = SubResource("TileSetAtlasSource_8bi7p")
-sources/2 = SubResource("TileSetAtlasSource_we2w3")
-sources/3 = SubResource("TileSetAtlasSource_46tuc")
-sources/4 = SubResource("TileSetAtlasSource_qx0wt")
-sources/5 = SubResource("TileSetAtlasSource_5ikpk")
+sources/0 = SubResource("TileSetAtlasSource_qx0wt")
+sources/1 = SubResource("TileSetAtlasSource_5ikpk")
+sources/2 = SubResource("TileSetAtlasSource_1pqak")
+sources/3 = SubResource("TileSetAtlasSource_p3vrt")
+sources/4 = SubResource("TileSetAtlasSource_2q0bs")
+sources/5 = SubResource("TileSetAtlasSource_f4uu8")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2fv1q"]
 texture = ExtResource("18_46tuc")
