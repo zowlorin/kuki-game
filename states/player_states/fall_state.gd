@@ -40,12 +40,12 @@ func physics_update(_delta: float) -> void:
 		input_listener.get_buffer("MoveLeftBuffer").consume()
 		input_listener.get_buffer("MoveRightBuffer").consume()
 		state_machine.transition_to("Walk")
-	elif (player.is_on_floor() or player.on_coyote) and not input_frozen and (Input.is_action_just_pressed("jump") or input_listener.get_buffer("JumpBuffer").is_buffered()):
-		input_listener.get_buffer("JumpBuffer").consume()
-		state_machine.transition_to("Jump")
 	elif player.can_dash and not input_frozen and (Input.is_action_just_pressed("dash") or input_listener.get_buffer("DashBuffer").is_buffered()):
 		input_listener.get_buffer("DashBuffer").consume()
 		state_machine.transition_to("Dash")
+	elif (player.is_on_floor() or player.on_coyote) and not input_frozen and (Input.is_action_just_pressed("jump") or input_listener.get_buffer("JumpBuffer").is_buffered()):
+		input_listener.get_buffer("JumpBuffer").consume()
+		state_machine.transition_to("Jump")
 	elif not input_frozen and player.can_throw and (Input.is_action_just_pressed("action_throw")):
 		state_machine.transition_to("Throw")
 	elif player.is_on_floor():

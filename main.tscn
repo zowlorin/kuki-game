@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://dne4uas1nd86u" path="res://handlers/hud.gd" id="19_xuqvo"]
 [ext_resource type="Script" uid="uid://dky05smnfnl6p" path="res://effects/load_blackout.gd" id="20_82xsv"]
 [ext_resource type="Script" uid="uid://sa1825kyq307" path="res://timer_ui.gd" id="21_0odxb"]
+[ext_resource type="Texture2D" uid="uid://ldbfepgg4uem" path="res://assets/sprites/cookie_bar.png" id="23_jq2sk"]
 [ext_resource type="Script" uid="uid://d1juqade1wypc" path="res://beret_icon.gd" id="23_kq58d"]
 [ext_resource type="Texture2D" uid="uid://bb65qieeptwm6" path="res://assets/beret.png" id="23_qsp4k"]
 [ext_resource type="Script" uid="uid://drv12u70ld0p8" path="res://ui/end_screen.gd" id="24_a6jrf"]
@@ -62,7 +63,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect/ColorRect:color")
+tracks/1/path = NodePath("Sprite2D/ColorRect:color")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -89,7 +90,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect/ColorRect:color")
+tracks/1/path = NodePath("Sprite2D/ColorRect:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -615,15 +616,15 @@ grow_vertical = 2
 script = ExtResource("19_xuqvo")
 
 [node name="CookieMeter" type="Control" parent="UI/HUD" unique_id=1160072182]
+layout_mode = 1
 anchors_preset = 0
-offset_left = -6.0
-offset_top = 4.0
-offset_right = 179.0
-offset_bottom = 134.0
+offset_right = 185.0
+offset_bottom = 130.0
 mouse_filter = 2
 script = ExtResource("17_ryguw")
 
 [node name="TextureRect" type="TextureRect" parent="UI/HUD/CookieMeter" unique_id=829591749]
+visible = false
 clip_children = 2
 texture_filter = 1
 layout_mode = 0
@@ -635,16 +636,8 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("16_82xsv")
 stretch_mode = 5
 
-[node name="ColorRect" type="ColorRect" parent="UI/HUD/CookieMeter/TextureRect" unique_id=1659933435]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
-
 [node name="MainLabel" type="Label" parent="UI/HUD/CookieMeter" unique_id=1748082384]
+visible = false
 layout_mode = 0
 offset_left = 141.0
 offset_top = 27.0
@@ -654,6 +647,7 @@ theme_override_font_sizes/font_size = 48
 text = "0"
 
 [node name="Label2" type="Label" parent="UI/HUD/CookieMeter" unique_id=123930088]
+visible = false
 layout_mode = 0
 offset_left = 118.0
 offset_top = 43.0
@@ -664,6 +658,27 @@ text = "X"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/HUD/CookieMeter" unique_id=307532000]
 libraries/ = SubResource("AnimationLibrary_4k2k6")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/HUD/CookieMeter" unique_id=1466843574]
+clip_children = 2
+texture_filter = 1
+position = Vector2(210, 75)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("23_jq2sk")
+hframes = 7
+frame = 6
+
+[node name="ColorRect" type="ColorRect" parent="UI/HUD/CookieMeter/Sprite2D" unique_id=1659933435]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -54.85714
+offset_top = -18.285713
+offset_right = -33.857147
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [node name="RunTimer" type="Control" parent="UI/HUD" unique_id=661909571]
 anchors_preset = 0
