@@ -14,12 +14,15 @@ class_name PlayerBounce
 @onready var input_frozen: bool = false
 
 func enter() -> void:
-	chud_interupptable = false
-	player.get_node("AnimatedSprite2D").play("jump")
-	
-	AudioManager.play("BounceSFX")
-	
 	collision = player.get_last_slide_collision()
+	player.get_node("AnimatedSprite2D").play("jump")
+	chud_interupptable = false
+	
+	if collision.get_collider().name == "ChudBody":
+		AudioManager.play("ChudBounceSFX")
+	else:
+		AudioManager.play("BounceSFX")
+	
 	bounce_frame = Time.get_unix_time_from_system()
 
 func exit() -> void:

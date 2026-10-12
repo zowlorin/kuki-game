@@ -17,11 +17,11 @@
 [ext_resource type="AudioStream" uid="uid://bcf8qannk2yo4" path="res://assets/sounds/SFX/Environment/mirror.wav" id="10_ww2nj"]
 [ext_resource type="AudioStream" uid="uid://hk0ov45pq8vm" path="res://assets/sounds/SFX/Character/kuki-beret-throw.wav" id="11_f8jcy"]
 [ext_resource type="AudioStream" uid="uid://bpktnxtb4exm8" path="res://assets/sounds/SFX/Character/kuki-death.wav" id="12_r2lgn"]
-[ext_resource type="AudioStream" uid="uid://cyv1rwuc307bn" path="res://assets/sounds/SFX/Character/kuki-beret.wav" id="12_wjbck"]
 [ext_resource type="AudioStream" uid="uid://ddas2pve7n0sb" path="res://assets/sounds/SFX/Environment/bounce-pad.wav" id="13_1t52r"]
-[ext_resource type="AudioStream" uid="uid://ct3pqkmoyk8q7" path="res://assets/sounds/SFX/Character/kuki-collect.wav" id="13_r2lgn"]
 [ext_resource type="AudioStream" uid="uid://dg0vu3rbu01e" path="res://assets/sounds/SFX/Character/kuki-dash-replenish.wav" id="13_vikcq"]
+[ext_resource type="AudioStream" uid="uid://blvq725ydvnnx" path="res://assets/sounds/SFX/Character/kuki-cookie-collect.wav" id="16_auk0b"]
 [ext_resource type="AudioStream" uid="uid://c2xuhpho3buil" path="res://assets/sounds/SFX/Character/kuki-revive.wav" id="16_v3ipf"]
+[ext_resource type="AudioStream" uid="uid://wipgm6gyyl7i" path="res://assets/sounds/SFX/Character/chud-bounce.wav" id="22_v3ipf"]
 
 [node name="AudioManager" type="Node" unique_id=892622769]
 script = ExtResource("1_6aj3w")
@@ -61,12 +61,12 @@ stream = ExtResource("3_8bfp5")
 stream = ExtResource("5_6n5tw")
 volume_db = -5.0
 
-[node name="ThrowSFX" type="AudioStreamPlayer" parent="." unique_id=1161619987]
+[node name="BeretReturnSFX" type="AudioStreamPlayer" parent="." unique_id=1161619987]
 stream = ExtResource("11_f8jcy")
 volume_db = -5.0
 
-[node name="BeretReturnSFX" type="AudioStreamPlayer" parent="." unique_id=505220371]
-stream = ExtResource("12_wjbck")
+[node name="ThrowSFX" type="AudioStreamPlayer" parent="." unique_id=505220371]
+stream = ExtResource("11_f8jcy")
 volume_db = -5.0
 
 [node name="DeathSFX" type="AudioStreamPlayer" parent="." unique_id=115812165]
@@ -79,13 +79,13 @@ volume_db = -5.0
 
 [node name="ReplenishSFX" type="AudioStreamPlayer" parent="." unique_id=752849372]
 stream = ExtResource("13_vikcq")
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="ReviveSFX" type="AudioStreamPlayer" parent="." unique_id=354737408]
 stream = ExtResource("16_v3ipf")
 
-[node name="CollectSFX" type="AudioStreamPlayer" parent="." unique_id=1263462590]
-stream = ExtResource("13_r2lgn")
+[node name="CCollectSFX" type="AudioStreamPlayer" parent="." unique_id=1263462590]
+stream = ExtResource("16_auk0b")
 
 [node name="DoorSFX" type="AudioStreamPlayer" parent="." unique_id=876846493]
 stream = ExtResource("6_76xm7")
@@ -106,6 +106,9 @@ volume_db = -5.0
 [node name="MirrorSFX" type="AudioStreamPlayer" parent="." unique_id=2053865835]
 stream = ExtResource("10_ww2nj")
 volume_db = -5.0
+
+[node name="ChudBounceSFX" type="AudioStreamPlayer" parent="." unique_id=655797456]
+stream = ExtResource("22_v3ipf")
 
 [node name="MusicDelay" type="Timer" parent="." unique_id=1064084986]
 wait_time = 3.0
