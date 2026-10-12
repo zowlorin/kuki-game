@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://wkbpy211s0d8" path="res://effects/wind_particles.tscn" id="27_we2w3"]
 [ext_resource type="Script" uid="uid://5tclep32w5hw" path="res://gameplay/camera_area.gd" id="29_rxgvf"]
 [ext_resource type="Script" uid="uid://u7cugm6oaic6" path="res://gameplay/camera_areas.gd" id="29_wfa2t"]
+[ext_resource type="PackedScene" uid="uid://bcwt84x78xu6h" path="res://components/golden_cookie.tscn" id="30_2ylfg"]
 [ext_resource type="Texture2D" uid="uid://c3fu0voqfkx84" path="res://assets/tilesets/shadows.png" id="30_46tuc"]
 [ext_resource type="PackedScene" uid="uid://c3a18hx64j05t" path="res://gameplay/dash_replenish.tscn" id="30_wfa2t"]
 [ext_resource type="PackedScene" uid="uid://bkw1a51ob5sl4" path="res://components/lever.tscn" id="32_vbcni"]
@@ -1014,7 +1015,7 @@ size = Vector2(1035.5, 202.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfa2t"]
 size = Vector2(458.5, 202.5)
 
-[node name="Level3" type="Node2D" unique_id=1638046035]
+[node name="Level4" type="Node2D" unique_id=1638046035]
 script = ExtResource("1_ud5cb")
 title = ""
 
@@ -1250,6 +1251,9 @@ shape = SubResource("RectangleShape2D_8rd0g")
 [node name="GoldenCookies" type="Node2D" parent="." unique_id=1862802138]
 script = ExtResource("18_fpvtr")
 
+[node name="GoldenCookie" parent="GoldenCookies" unique_id=1766023232 instance=ExtResource("30_2ylfg")]
+position = Vector2(0, -100)
+
 [node name="VoidKill" type="StaticBody2D" parent="." unique_id=540156684]
 collision_layer = 4
 collision_mask = 0
@@ -1347,21 +1351,6 @@ shape = SubResource("RectangleShape2D_wfa2t")
 position = Vector2(143, 77)
 
 [node name="Pickups" type="Node2D" parent="." unique_id=634277778]
-
-[node name="DashReplenish" parent="Pickups" unique_id=643126448 instance=ExtResource("30_wfa2t")]
-position = Vector2(0, -120)
-
-[node name="DashReplenish2" parent="Pickups" unique_id=1675422760 instance=ExtResource("30_wfa2t")]
-position = Vector2(52, -136)
-
-[node name="DashReplenish3" parent="Pickups" unique_id=592371391 instance=ExtResource("30_wfa2t")]
-position = Vector2(107, -157)
-
-[node name="DashReplenish4" parent="Pickups" unique_id=1366030056 instance=ExtResource("30_wfa2t")]
-position = Vector2(155, -163)
-
-[node name="DashReplenish5" parent="Pickups" unique_id=49354583 instance=ExtResource("30_wfa2t")]
-position = Vector2(214, -163)
 
 [node name="DashReplenish6" parent="Pickups" unique_id=725945730 instance=ExtResource("30_wfa2t")]
 position = Vector2(-176, -393)
