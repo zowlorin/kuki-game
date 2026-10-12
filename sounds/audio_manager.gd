@@ -53,12 +53,14 @@ func fade_out(key: String, duration: float = 1.0) -> void:
 	var tween := create_tween()
 	_tweens[sound] = tween
 	
+	var initial_db = sound.volume_db
+	
 	tween.tween_property(sound, "volume_db", linear_to_db(0.001), duration)
 	await tween.finished
 
 	if sound.playing:
 		sound.stop()
-		sound.volume_db = 0.0  # Reset volume for future plays
+		sound.volume_db = initial_db # Reset volume for future plays
 	
 	_tweens.erase(sound)
 	silenced.emit(key)
