@@ -18,7 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://hk0ov45pq8vm" path="res://assets/sounds/SFX/Character/kuki-beret-throw.wav" id="11_f8jcy"]
 [ext_resource type="AudioStream" uid="uid://bpktnxtb4exm8" path="res://assets/sounds/SFX/Character/kuki-death.wav" id="12_r2lgn"]
 [ext_resource type="AudioStream" uid="uid://ddas2pve7n0sb" path="res://assets/sounds/SFX/Environment/bounce-pad.wav" id="13_1t52r"]
-[ext_resource type="AudioStream" uid="uid://dg0vu3rbu01e" path="res://assets/sounds/SFX/Character/kuki-dash-replenish.wav" id="13_vikcq"]
+[ext_resource type="AudioStream" uid="uid://cgsdylr0oxs4s" path="res://assets/sounds/SFX/Character/kuki-dash-replenished.wav" id="14_v3ipf"]
 [ext_resource type="AudioStream" uid="uid://blvq725ydvnnx" path="res://assets/sounds/SFX/Character/kuki-cookie-collect.wav" id="16_auk0b"]
 [ext_resource type="AudioStream" uid="uid://c2xuhpho3buil" path="res://assets/sounds/SFX/Character/kuki-revive.wav" id="16_v3ipf"]
 [ext_resource type="AudioStream" uid="uid://wipgm6gyyl7i" path="res://assets/sounds/SFX/Character/chud-bounce.wav" id="22_v3ipf"]
@@ -63,11 +63,9 @@ volume_db = -5.0
 
 [node name="BeretReturnSFX" type="AudioStreamPlayer" parent="." unique_id=1161619987]
 stream = ExtResource("11_f8jcy")
-volume_db = -5.0
 
 [node name="ThrowSFX" type="AudioStreamPlayer" parent="." unique_id=505220371]
 stream = ExtResource("11_f8jcy")
-volume_db = -5.0
 
 [node name="DeathSFX" type="AudioStreamPlayer" parent="." unique_id=115812165]
 stream = ExtResource("12_r2lgn")
@@ -78,8 +76,8 @@ stream = ExtResource("13_1t52r")
 volume_db = -5.0
 
 [node name="ReplenishSFX" type="AudioStreamPlayer" parent="." unique_id=752849372]
-stream = ExtResource("13_vikcq")
-volume_db = -10.0
+stream = ExtResource("14_v3ipf")
+volume_db = -5.0
 
 [node name="ReviveSFX" type="AudioStreamPlayer" parent="." unique_id=354737408]
 stream = ExtResource("16_v3ipf")
