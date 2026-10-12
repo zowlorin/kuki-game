@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://ddas2pve7n0sb" path="res://assets/sounds/SFX/Environment/bounce-pad.wav" id="13_1t52r"]
 [ext_resource type="AudioStream" uid="uid://ct3pqkmoyk8q7" path="res://assets/sounds/SFX/Character/kuki-collect.wav" id="13_r2lgn"]
 [ext_resource type="AudioStream" uid="uid://dg0vu3rbu01e" path="res://assets/sounds/SFX/Character/kuki-dash-replenish.wav" id="13_vikcq"]
+[ext_resource type="AudioStream" uid="uid://c2xuhpho3buil" path="res://assets/sounds/SFX/Character/kuki-revive.wav" id="16_v3ipf"]
 
 [node name="AudioManager" type="Node" unique_id=892622769]
 script = ExtResource("1_6aj3w")
@@ -79,6 +80,9 @@ volume_db = -5.0
 [node name="ReplenishSFX" type="AudioStreamPlayer" parent="." unique_id=752849372]
 stream = ExtResource("13_vikcq")
 volume_db = -5.0
+
+[node name="ReviveSFX" type="AudioStreamPlayer" parent="." unique_id=354737408]
+stream = ExtResource("16_v3ipf")
 
 [node name="CollectSFX" type="AudioStreamPlayer" parent="." unique_id=1263462590]
 stream = ExtResource("13_r2lgn")

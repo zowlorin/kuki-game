@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://co4r8urg14ta2" path="res://menus/main_menu.gd" id="1_06t4h"]
 [ext_resource type="Texture2D" uid="uid://dhm6iv76dtw83" path="res://assets/gui/keyart.png" id="2_ij7vn"]
 [ext_resource type="Texture2D" uid="uid://cr5l5jkkf45c2" path="res://assets/gui/titlescreen_title.png" id="3_yjgyn"]
+[ext_resource type="FontFile" uid="uid://bqonp1oxj6dxw" path="res://assets/gui/m5x7.ttf" id="4_rqbgu"]
 
 [sub_resource type="Animation" id="Animation_ij7vn"]
 resource_name = "Main"
@@ -162,6 +163,7 @@ grow_vertical = 2
 texture = ExtResource("3_yjgyn")
 
 [node name="Button" type="Button" parent="UI" unique_id=109606557]
+texture_filter = 1
 custom_minimum_size = Vector2(128, 0)
 anchors_preset = 8
 anchor_left = 0.5
@@ -170,12 +172,13 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 195.0
 offset_top = 80.0
-offset_right = 364.0
-offset_bottom = 122.0
+offset_right = 400.0
+offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("4_rqbgu")
+theme_override_font_sizes/font_size = 36
 text = "   start game   "
 icon_alignment = 1
 

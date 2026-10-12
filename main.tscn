@@ -32,6 +32,7 @@
 [ext_resource type="Script" uid="uid://drv12u70ld0p8" path="res://ui/end_screen.gd" id="24_a6jrf"]
 [ext_resource type="FontFile" uid="uid://bqonp1oxj6dxw" path="res://assets/gui/m5x7.ttf" id="24_jq2sk"]
 [ext_resource type="Script" uid="uid://7c5ilx1xo5ax" path="res://ui/return_button.gd" id="24_lswn8"]
+[ext_resource type="Texture2D" uid="uid://d0mxnnstx8vei" path="res://assets/gui/timer.png" id="25_4k2k6"]
 [ext_resource type="Script" uid="uid://p3im25yr3m26" path="res://ui/level_namer.gd" id="29_seu75"]
 
 [sub_resource type="Curve" id="Curve_0xm2m"]
@@ -105,6 +106,140 @@ _data = {
 &"Gained": SubResource("Animation_jq2sk"),
 &"RESET": SubResource("Animation_4k2k6")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rl1p"]
+atlas = ExtResource("25_4k2k6")
+region = Rect2(0, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok6jj"]
+atlas = ExtResource("25_4k2k6")
+region = Rect2(17, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_facbu"]
+atlas = ExtResource("25_4k2k6")
+region = Rect2(34, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1qrp"]
+atlas = ExtResource("25_4k2k6")
+region = Rect2(51, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_come4"]
+atlas = ExtResource("25_4k2k6")
+region = Rect2(68, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8e4i"]
+atlas = ExtResource("25_4k2k6")
+region = Rect2(85, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lmeg"]
+atlas = ExtResource("25_4k2k6")
+region = Rect2(102, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cp0l"]
+atlas = ExtResource("25_4k2k6")
+region = Rect2(119, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2t1y"]
+atlas = ExtResource("25_4k2k6")
+region = Rect2(136, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gngh3"]
+atlas = ExtResource("25_4k2k6")
+region = Rect2(153, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n3wm"]
+atlas = ExtResource("25_4k2k6")
+region = Rect2(170, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnost"]
+atlas = ExtResource("25_4k2k6")
+region = Rect2(187, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnkbs"]
+atlas = ExtResource("25_4k2k6")
+region = Rect2(204, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6a44"]
+atlas = ExtResource("25_4k2k6")
+region = Rect2(221, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cbny"]
+atlas = ExtResource("25_4k2k6")
+region = Rect2(238, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrvbo"]
+atlas = ExtResource("25_4k2k6")
+region = Rect2(255, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uypp3"]
+atlas = ExtResource("25_4k2k6")
+region = Rect2(272, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blkrb"]
+atlas = ExtResource("25_4k2k6")
+region = Rect2(289, 0, 17, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_710pl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rl1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok6jj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_facbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1qrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_come4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8e4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lmeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cp0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2t1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gngh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0n3wm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnost")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnkbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6a44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cbny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrvbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uypp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blkrb")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="Animation" id="Animation_seu75"]
 resource_name = "Gained"
@@ -648,6 +783,7 @@ grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
 [node name="RunTimer" type="Control" parent="UI/HUD" unique_id=661909571]
+texture_filter = 1
 anchors_preset = 0
 offset_left = 960.0
 offset_top = 34.0
@@ -667,6 +803,12 @@ theme_override_fonts/font = ExtResource("24_jq2sk")
 theme_override_font_sizes/font_size = 64
 text = "00:00"
 horizontal_alignment = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/HUD/RunTimer/MainLabel" unique_id=495392037]
+position = Vector2(-20, 25)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_710pl")
+autoplay = "default"
 
 [node name="BeretIcon" type="Control" parent="UI/HUD" unique_id=1772242742]
 anchors_preset = 0
@@ -1035,6 +1177,7 @@ libraries/ = SubResource("AnimationLibrary_getpj")
 [connection signal="value_changed" from="Handlers/CookieCollectHandler" to="UI/HUD/CookieMeter" method="_on_cookie_collect_handler_value_changed"]
 [connection signal="run_timed" from="Handlers/GameTimer" to="UI/EndScreen" method="_on_game_timer_run_timed"]
 [connection signal="time_changed" from="Handlers/GameTimer" to="UI/HUD/RunTimer" method="_on_game_timer_time_changed"]
+[connection signal="time_pause_state_changed" from="Handlers/GameTimer" to="UI/HUD/RunTimer" method="_on_time_pause_state_changed"]
 [connection signal="game_quit_requested" from="UI/PauseMenu" to="Handlers/GameHandler" method="_on_pause_menu_game_quit_requested"]
 [connection signal="game_resume_requested" from="UI/PauseMenu" to="Handlers/GameHandler" method="_on_pause_menu_game_resume_requested"]
 [connection signal="menu_focused" from="UI/PauseMenu" to="Handlers/GameHandler" method="_on_pause_menu_menu_focused"]
