@@ -681,9 +681,6 @@ script = ExtResource("23_x6jsp")
 [node name="GoldenCookie" parent="GoldenCookies" unique_id=1766023232 instance=ExtResource("24_rg68n")]
 position = Vector2(304, -452)
 
-[node name="GoldenCookie2" parent="GoldenCookies" unique_id=381441220 instance=ExtResource("24_rg68n")]
-position = Vector2(-429, -21)
-
 [node name="collision tilemap" type="TileMap" parent="." unique_id=785629726]
 visible = false
 z_index = 4
