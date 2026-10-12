@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://dne4uas1nd86u" path="res://handlers/hud.gd" id="19_xuqvo"]
 [ext_resource type="Script" uid="uid://dky05smnfnl6p" path="res://effects/load_blackout.gd" id="20_82xsv"]
 [ext_resource type="Script" uid="uid://sa1825kyq307" path="res://timer_ui.gd" id="21_0odxb"]
+[ext_resource type="Texture2D" uid="uid://ldbfepgg4uem" path="res://assets/sprites/cookie_bar.png" id="23_jq2sk"]
 [ext_resource type="Script" uid="uid://d1juqade1wypc" path="res://beret_icon.gd" id="23_kq58d"]
 [ext_resource type="Texture2D" uid="uid://bb65qieeptwm6" path="res://assets/beret.png" id="23_qsp4k"]
 [ext_resource type="Script" uid="uid://drv12u70ld0p8" path="res://ui/end_screen.gd" id="24_a6jrf"]
@@ -104,6 +105,21 @@ _data = {
 &"Gained": SubResource("Animation_jq2sk"),
 &"RESET": SubResource("Animation_4k2k6")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4k2k6"]
+atlas = ExtResource("23_jq2sk")
+region = Rect2(558, 0, 93, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4lmeg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4k2k6")
+}],
+"loop": 1,
+"name": &"cookiebar",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_seu75"]
 resource_name = "Gained"
@@ -664,6 +680,13 @@ text = "X"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/HUD/CookieMeter" unique_id=307532000]
 libraries/ = SubResource("AnimationLibrary_4k2k6")
+
+[node name="CookieBar" type="AnimatedSprite2D" parent="UI/HUD/CookieMeter" unique_id=36420338]
+texture_filter = 1
+position = Vector2(250, 100)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_4lmeg")
+animation = &"cookiebar"
 
 [node name="RunTimer" type="Control" parent="UI/HUD" unique_id=661909571]
 anchors_preset = 0
