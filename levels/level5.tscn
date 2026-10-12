@@ -270,7 +270,7 @@ size = Vector2(114.5, 24)
 size = Vector2(65, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bq8nq"]
-size = Vector2(64, 24)
+size = Vector2(32, 40)
 
 [node name="Level" type="Node2D" unique_id=1638046035]
 script = ExtResource("1_ooqki")
@@ -476,6 +476,20 @@ position = Vector2(-226, -407)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZones/SafeZone3" unique_id=383679362]
 position = Vector2(2, -5)
+shape = SubResource("RectangleShape2D_bq8nq")
+
+[node name="SafeZone4" parent="SafeZones" unique_id=1314443724 instance=ExtResource("20_kqk47")]
+position = Vector2(199, -122)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZones/SafeZone4" unique_id=300815332]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_bq8nq")
+
+[node name="SafeZone5" parent="SafeZones" unique_id=739376322 instance=ExtResource("20_kqk47")]
+position = Vector2(191, -373)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZones/SafeZone5" unique_id=35953226]
+position = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_bq8nq")
 
 [node name="Mirror" parent="." unique_id=399049558 instance=ExtResource("21_nv45w")]

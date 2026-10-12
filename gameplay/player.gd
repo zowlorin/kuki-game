@@ -74,6 +74,7 @@ signal safe_zone_requested
 
 @onready var velocity_snapshot: Vector2 = Vector2.ZERO
 
+@onready var origin: Mirror
 @onready var camera: Camera2D
 
 #respawn particles
