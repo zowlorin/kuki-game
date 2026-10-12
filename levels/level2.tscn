@@ -505,16 +505,10 @@ position = Vector2(47, -263)
 [node name="DashReplenish" type="Node2D" parent="." unique_id=1143569882]
 
 [node name="DashReplenish" parent="DashReplenish" unique_id=643126448 instance=ExtResource("23_sr7fn")]
-position = Vector2(126, -85)
-
-[node name="DashReplenish2" parent="DashReplenish" unique_id=7714435 instance=ExtResource("23_sr7fn")]
-position = Vector2(300, -95)
+position = Vector2(225, -85)
 
 [node name="DashReplenish3" parent="DashReplenish" unique_id=157719176 instance=ExtResource("23_sr7fn")]
-position = Vector2(435, -117)
-
-[node name="DashReplenish4" parent="DashReplenish" unique_id=296037787 instance=ExtResource("23_sr7fn")]
-position = Vector2(567, -139)
+position = Vector2(498, -131)
 
 [node name="CollisionVisualsGround" type="TileMapLayer" parent="." unique_id=1032250481]
 texture_filter = 1
