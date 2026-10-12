@@ -13,9 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://sx10eg47p3mk" path="res://assets/tilesets/red_crystals_hazard.png" id="10_62um3"]
 [ext_resource type="PackedScene" uid="uid://r82ip1jvly4x" path="res://components/portal.tscn" id="11_o3dio"]
 [ext_resource type="Texture2D" uid="uid://bpupo1u5lydj6" path="res://assets/tilesets/caramelcenter.png" id="11_s7sq4"]
-[ext_resource type="Script" uid="uid://fyknb0uu7pb5" path="res://components/door.gd" id="12_6s8mo"]
 [ext_resource type="Texture2D" uid="uid://b6btr6xegcrwj" path="res://assets/tilesets/carameltop.png" id="12_8380d"]
-[ext_resource type="PackedScene" uid="uid://d1cggey58xuwd" path="res://components/door.tscn" id="13_1qwqs"]
 [ext_resource type="PackedScene" uid="uid://bkw1a51ob5sl4" path="res://components/lever.tscn" id="14_6rnnv"]
 [ext_resource type="PackedScene" uid="uid://di8j2uaoyn0nr" path="res://components/pressure_plate.tscn" id="15_05uw5"]
 [ext_resource type="PackedScene" uid="uid://b83gms022hnxe" path="res://components/box_container.tscn" id="16_eavc2"]
@@ -359,18 +357,6 @@ position = Vector2(0, -39)
 id = "b1"
 target_id = "level5"
 target_level = "uid://ci0mg4cw3htbo"
-
-[node name="Doors" type="Node2D" parent="." unique_id=1030373650]
-visible = false
-script = ExtResource("12_6s8mo")
-
-[node name="P1" parent="Doors" unique_id=1141982792 node_paths=PackedStringArray("target_door") instance=ExtResource("13_1qwqs")]
-position = Vector2(216, 0)
-target_door = NodePath("../P2")
-
-[node name="P2" parent="Doors" unique_id=1013884350 node_paths=PackedStringArray("target_door") instance=ExtResource("13_1qwqs")]
-position = Vector2(-112, 0)
-target_door = NodePath("../P1")
 
 [node name="BoxContainer" parent="." unique_id=440766301 instance=ExtResource("16_eavc2")]
 visible = false
