@@ -82,7 +82,6 @@ volume_db = -5.0
 
 [node name="CollectSFX" type="AudioStreamPlayer" parent="." unique_id=1263462590]
 stream = ExtResource("13_r2lgn")
-volume_db = -5.0
 
 [node name="DoorSFX" type="AudioStreamPlayer" parent="." unique_id=876846493]
 stream = ExtResource("6_76xm7")

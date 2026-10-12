@@ -6,16 +6,16 @@ signal necessary_cookies_collected
 @onready var collected: Array = []
 @onready var fed: Array = []
 
+@onready var cookies_fed: int = 0
 @onready var cookies_collected: int = 0:
 	set(x):
 		if (cookies_collected == x):
 			return 
 		cookies_collected = x
-		value_changed.emit(cookies_collected)
+		value_changed.emit(cookies_collected + cookies_fed)
 		
-@onready var cookies_fed: int = 0
 
-@export var cookies_needed: int = 2
+@export var cookies_needed: int = 6
 
 func can_feed_cookies() -> bool:
 	return cookies_collected > 0

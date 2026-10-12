@@ -507,7 +507,6 @@ stream = ExtResource("25_tv7bq")
 volume_db = 5.0
 autoplay = true
 max_distance = 1000.0
-id = 2
 
 [connection signal="level_change_requested" from="PortalHandler" to="." method="_on_portal_handler_level_change_requested"]
 [connection signal="zone_changed" from="SafeZones" to="." method="_on_safe_zones_zone_changed"]
