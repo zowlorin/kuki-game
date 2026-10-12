@@ -1221,17 +1221,8 @@ target_level = "uid://bh06prch1dkc2"
 [node name="PortalLight" parent="PortalHandler/Level3" unique_id=238856485 instance=ExtResource("24_46tuc")]
 visible = true
 
-[node name="Level4" parent="PortalHandler" unique_id=769586984 instance=ExtResource("9_ui1w4")]
-position = Vector2(1177, -87)
-id = "level4"
-target_id = "b1"
-target_level = "uid://brb8gpiqa8lpd"
-
-[node name="PortalLight" parent="PortalHandler/Level4" unique_id=1912957974 instance=ExtResource("24_46tuc")]
-visible = true
-
 [node name="Level5" parent="PortalHandler" unique_id=721253599 instance=ExtResource("9_ui1w4")]
-position = Vector2(1369, -88)
+position = Vector2(1177, -88)
 id = "level5"
 target_id = "b1"
 target_level = "uid://b4v1p6c2bvct7"

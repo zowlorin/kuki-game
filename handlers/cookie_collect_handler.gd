@@ -15,7 +15,7 @@ signal necessary_cookies_collected
 		value_changed.emit(cookies_collected + cookies_fed)
 		
 
-@export var cookies_needed: int = 6
+@export var cookies_needed: int = 5
 
 func can_feed_cookies() -> bool:
 	return cookies_collected > 0
