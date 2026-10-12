@@ -11,9 +11,6 @@ func _physics_process(_delta: float) -> void:
 	
 	if not $TriggerMech.player_interacting:
 		$AnimatedSprite2D.play("untouched")
-		
-
 
 func _on_trigger_mech_hit() -> void:
-	print("hi")
 	$AnimatedSprite2D.play("bouncing")
