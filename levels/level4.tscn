@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://bkw1a51ob5sl4" path="res://components/lever.tscn" id="14_q0ied"]
 [ext_resource type="PackedScene" uid="uid://bmkpnxm4anog4" path="res://components/bounce_pad.tscn" id="17_im0iu"]
 [ext_resource type="PackedScene" uid="uid://d8o7asq8gyif" path="res://components/gate.tscn" id="17_s47u1"]
-[ext_resource type="PackedScene" uid="uid://g236muxvb3eb" path="res://components/moving_platform.tscn" id="18_jaa0q"]
 [ext_resource type="Script" uid="uid://bmdxml1isrn2k" path="res://handlers/safe_zones.gd" id="19_knyjd"]
 [ext_resource type="PackedScene" uid="uid://btc8woaxqjc1l" path="res://components/safe_zone.tscn" id="20_nxwod"]
 
@@ -24,44 +23,6 @@ texture = ExtResource("7_jyx7s")
 [sub_resource type="TileSet" id="TileSet_6htc0"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ui1w4")
-
-[sub_resource type="Animation" id="Animation_tx362"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MovingPlatform:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_ls4ot"]
-resource_name = "movement"
-length = 5.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MovingPlatform:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.43, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(218, -174), Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_tx362"]
-_data = {
-&"RESET": SubResource("Animation_tx362"),
-&"movement": SubResource("Animation_ls4ot")
-}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3owqy"]
 size = Vector2(138, 20)
@@ -150,26 +111,13 @@ target_level = "uid://ci0mg4cw3htbo"
 position = Vector2(297, 0)
 
 [node name="BouncePad" parent="." unique_id=340428913 instance=ExtResource("17_im0iu")]
-position = Vector2(339, -26)
-
-[node name="Mirrors" type="Node2D" parent="." unique_id=440934180]
+position = Vector2(239, -49)
 
 [node name="Gates" type="Node2D" parent="." unique_id=1286166510]
 
 [node name="Gate" parent="Gates" unique_id=1108134410 node_paths=PackedStringArray("trigger_mech") instance=ExtResource("17_s47u1")]
 position = Vector2(410, 0)
 trigger_mech = NodePath("../../TriggerMechs/Lever")
-
-[node name="MovingPlatforms" type="Node2D" parent="." unique_id=1918830428]
-
-[node name="PlatformHolder" type="Node2D" parent="MovingPlatforms" unique_id=1326670427]
-position = Vector2(532, -44)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatforms/PlatformHolder" unique_id=1760451236]
-libraries/ = SubResource("AnimationLibrary_tx362")
-autoplay = &"movement"
-
-[node name="MovingPlatform" parent="MovingPlatforms/PlatformHolder" unique_id=62694855 instance=ExtResource("18_jaa0q")]
 
 [node name="SafeZones" type="Node2D" parent="." unique_id=626739451]
 script = ExtResource("19_knyjd")

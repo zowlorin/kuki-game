@@ -142,12 +142,13 @@ func _on_dash_cooldown_timeout() -> void:
 func on_respawn():
 	respawn_particles.top_level = true
 	respawn_particles.global_position = global_position
-	respawn_particles.restart()	
+	respawn_particles.restart()
 	respawn_particles.emitting = true
 	$AnimatedSprite2D.play("respawn")
 	input_frozen = false
 	
 	await $AnimatedSprite2D.animation_finished
+	AudioManager.play("ReviveSFX")
 	state_machine.transition_to("Idle")
 
 func on_death():

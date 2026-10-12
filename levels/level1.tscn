@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://btc8woaxqjc1l" path="res://components/safe_zone.tscn" id="19_l7nqg"]
 [ext_resource type="PackedScene" uid="uid://byxa647f704ai" path="res://effects/portal_light.tscn" id="22_wieee"]
 [ext_resource type="AudioStream" uid="uid://kqyjg3vmbqe0" path="res://assets/sounds/SFX/Environment/lava.wav" id="25_tv7bq"]
+[ext_resource type="PackedScene" uid="uid://wkbpy211s0d8" path="res://effects/wind_particles.tscn" id="26_wieee"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ui1w4"]
 texture = ExtResource("7_ls4ot")
@@ -507,6 +508,8 @@ stream = ExtResource("25_tv7bq")
 volume_db = 5.0
 autoplay = true
 max_distance = 1000.0
+
+[node name="wind particles" parent="." unique_id=182577858 instance=ExtResource("26_wieee")]
 
 [connection signal="level_change_requested" from="PortalHandler" to="." method="_on_portal_handler_level_change_requested"]
 [connection signal="zone_changed" from="SafeZones" to="." method="_on_safe_zones_zone_changed"]
