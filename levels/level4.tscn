@@ -45,7 +45,7 @@ repeat_times = 6
 z_index = -8
 texture_filter = 1
 texture_repeat = 2
-position = Vector2(194.66667, 109.333336)
+position = Vector2(183, 164)
 texture = ExtResource("2_im0iu")
 
 [node name="Farclouds" type="Parallax2D" parent="Parallax/ParallaxBackground" unique_id=114043497]
