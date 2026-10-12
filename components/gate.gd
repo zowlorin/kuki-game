@@ -3,8 +3,9 @@ extends StaticBody2D
 
 
 @export var trigger_mech: TriggerMech
+@export var inverted: bool = false
 
-@onready var blocked: bool = true:
+@onready var blocked: bool = !inverted:
 	set(x):
 		blocked = x
 		$CollisionShape2D.set_deferred("disabled", !blocked)
@@ -19,7 +20,7 @@ func on_close():
 	$AnimationPlayer.play("Close")
 	blocked = true
 	
-@onready var open: bool = false:
+@onready var open: bool = inverted:
 	set(x):
 		if (x and not open):
 			on_open()
@@ -32,14 +33,19 @@ func on_close():
 @onready var queued_actions: Array = []
 
 func on_trigger(active: bool):
+	var target_state = !active if inverted else active
 	if (cooling):
-		queued_actions.append(active)
+		queued_actions.append(target_state)
 		return
 		
-	open = active
+	open = target_state
 	$Timer.start()
 
 func _ready() -> void:
+	if inverted:
+		$AnimationPlayer.play("Open")
+		$AnimationPlayer.seek($AnimationPlayer.get_animation("Open").length, true)
+		
 	if (!trigger_mech):
 		return
 		
