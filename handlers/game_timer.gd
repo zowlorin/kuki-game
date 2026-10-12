@@ -1,5 +1,6 @@
 extends Node2D
 
+signal time_pause_state_changed(paused: bool)
 signal time_changed(value: float)
 signal run_timed(value: float)
 
@@ -33,6 +34,7 @@ func _on_game_handler_game_end() -> void:
 
 func _on_game_handler_pause_state_changed(active: bool) -> void:
 	paused = active
+	time_pause_state_changed.emit(paused)
 	if (active):
 		time_guaranteed += Time.get_unix_time_from_system() - start_time
 	else:

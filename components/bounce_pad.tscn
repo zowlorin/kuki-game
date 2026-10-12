@@ -1,13 +1,51 @@
 [gd_scene format=3 uid="uid://bmkpnxm4anog4"]
 
 [ext_resource type="Script" uid="uid://djooihgfucdex" path="res://components/bouncy.gd" id="1_lnuxa"]
-[ext_resource type="Texture2D" uid="uid://cvellfqwgwhv5" path="res://assets/sprites/movingplatform.png" id="2_m38ku"]
+[ext_resource type="Texture2D" uid="uid://c4lwcvsnbaw54" path="res://assets/sprites/bouncepad.png" id="2_lnuxa"]
+[ext_resource type="Script" uid="uid://dryvspb4hkna0" path="res://gameplay/player_expansion/trigger_mech.gd" id="3_m38ku"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_710pl"]
 bounce = 0.6
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tod47"]
+atlas = ExtResource("2_lnuxa")
+region = Rect2(0, 0, 48, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m38ku"]
+atlas = ExtResource("2_lnuxa")
+region = Rect2(48, 0, 48, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7w11x"]
+atlas = ExtResource("2_lnuxa")
+region = Rect2(0, 0, 48, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_710pl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tod47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m38ku")
+}],
+"loop": 1,
+"name": &"bouncing",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7w11x")
+}],
+"loop": 1,
+"name": &"untouched",
+"speed": 8.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_710pl"]
-size = Vector2(52, 19)
+size = Vector2(42, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jxb28"]
+size = Vector2(42, 118)
 
 [node name="BouncePad" type="StaticBody2D" unique_id=340428913 groups=["Bouncy"]]
 collision_layer = 128
@@ -15,10 +53,25 @@ collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_710pl")
 script = ExtResource("1_lnuxa")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1374154621]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=777947871]
 texture_filter = 1
-texture = ExtResource("2_m38ku")
+sprite_frames = SubResource("SpriteFrames_710pl")
+animation = &"bouncing"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=905690466]
-position = Vector2(0, 0.5)
+position = Vector2(1, -0.5)
 shape = SubResource("RectangleShape2D_710pl")
+
+[node name="TriggerMech" type="Area2D" parent="." unique_id=281367134]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_m38ku")
+metadata/_custom_type_script = "uid://dryvspb4hkna0"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerMech" unique_id=1407488761]
+position = Vector2(1, -49)
+shape = SubResource("RectangleShape2D_jxb28")
+
+[connection signal="body_entered" from="TriggerMech" to="TriggerMech" method="_on_body_entered"]
+[connection signal="body_exited" from="TriggerMech" to="TriggerMech" method="_on_body_exited"]
+[connection signal="hit" from="TriggerMech" to="." method="_on_trigger_mech_hit"]
