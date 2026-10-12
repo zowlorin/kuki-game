@@ -26,7 +26,7 @@
 [ext_resource type="Script" uid="uid://dne4uas1nd86u" path="res://handlers/hud.gd" id="19_xuqvo"]
 [ext_resource type="Script" uid="uid://dky05smnfnl6p" path="res://effects/load_blackout.gd" id="20_82xsv"]
 [ext_resource type="Script" uid="uid://sa1825kyq307" path="res://timer_ui.gd" id="21_0odxb"]
-[ext_resource type="Texture2D" uid="uid://ldbfepgg4uem" path="res://assets/sprites/cookie_bar.png" id="23_jq2sk"]
+[ext_resource type="Texture2D" uid="uid://csp7n2g31xkse" path="res://assets/gui/cookie-bar-ui.png" id="22_4k2k6"]
 [ext_resource type="Script" uid="uid://d1juqade1wypc" path="res://beret_icon.gd" id="23_kq58d"]
 [ext_resource type="Texture2D" uid="uid://bb65qieeptwm6" path="res://assets/beret.png" id="23_qsp4k"]
 [ext_resource type="Script" uid="uid://drv12u70ld0p8" path="res://ui/end_screen.gd" id="24_a6jrf"]
@@ -766,9 +766,9 @@ clip_children = 2
 texture_filter = 1
 position = Vector2(210, 75)
 scale = Vector2(3.5, 3.5)
-texture = ExtResource("23_jq2sk")
-hframes = 7
-frame = 6
+texture = ExtResource("22_4k2k6")
+hframes = 6
+frame = 5
 
 [node name="ColorRect" type="ColorRect" parent="UI/HUD/CookieMeter/Sprite2D" unique_id=1659933435]
 anchors_preset = 15
